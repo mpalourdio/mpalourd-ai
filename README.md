@@ -10,7 +10,7 @@ Don't forget to export the `SPRING_AI_OPENAI_API_KEY` environment variable.
 
 # Steps
 
-- Build the image : `mvn clean -Pnative,front spring-boot:build-image`.
+- Build the image : `mvn clean -Pnative spring-boot:build-image`.
 - Run the image : `docker run -e SPRING_AI_OPENAI_API_KEY=$SPRING_AI_OPENAI_API_KEY -p8080:8080 mpalourd-ai:X.X.X`.
 
 # Image ready to test ?

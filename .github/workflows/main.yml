@@ -24,7 +24,7 @@ jobs:
           cache: 'maven'
 
       - name: GraalVM Compile and image generation
-        run: ./mvnw clean -Pnative,front spring-boot:build-image -Dspring-boot.build-image.imagePlatform=linux/arm64
+        run: ./mvnw clean -Pnative spring-boot:build-image -Dspring-boot.build-image.imagePlatform=linux/arm64
 
       - name: Backup image and move it to tmp folder
         run: mkdir imagebackup && docker save -o imagebackup/mpalourdai.tar docker.io/library/mpalourd-ai:0.0.1-SNAPSHOT

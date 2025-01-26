@@ -34,12 +34,13 @@
             "baseHref": "/",
             "preserveSymlinks": true,
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/favicon.png",
+              "src/robots.txt"
             ],
             "styles": [
               "src/styles.scss",
               "node_modules/prismjs/themes/prism-okaidia.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css"
             ],
             "scripts": [
