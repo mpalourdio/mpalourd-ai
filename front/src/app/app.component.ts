@@ -8,7 +8,7 @@
  */
 
 import { Component } from '@angular/core';
-import { NgHttpLoaderComponent } from 'ng-http-loader';
+import { NgHttpLoaderComponent, Spinkit } from 'ng-http-loader';
 import { RouterOutlet } from "@angular/router";
 
 @Component({
@@ -19,4 +19,5 @@ import { RouterOutlet } from "@angular/router";
 })
 export class AppComponent {
 
+    protected readonly Spinkit = Spinkit;
 }

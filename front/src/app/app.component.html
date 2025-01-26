@@ -1,6 +1,6 @@
 <router-outlet></router-outlet>
 <ng-http-loader
-    #ngHttpLoader
+    [spinner]="Spinkit.skSpinnerPulse"
     [debounceDelay]="150"
     [minDuration]="1000">
 </ng-http-loader>
