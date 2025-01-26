@@ -7,15 +7,6 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Routes } from '@angular/router';
-
-export const routes: Routes = [
-    {
-        path: '',
-        loadComponent : () => import('./answer/answer.component').then(m => m.AnswerComponent)
-    },
-    {
-        path: '**',
-        redirectTo: ''
-    },
-];
+export interface Answer {
+    result: string
+}

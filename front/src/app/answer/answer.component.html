@@ -1,1 +1,31 @@
-<p>answer works!</p>
+<div class="container">
+    <h1 class="mt-3 mb-3">mpalourd-ai©</h1>
+    <h6>(suck at naming, good at coding)</h6>
+    <div class="row g-2 mb-3 mt-3">
+        <div class="col-sm">
+            <div class="form">
+                <label for="prompt" class="visually-hidden">Prompt</label>
+                <input type="text" class="form-control" name="prompt" id="prompt" placeholder="Prompt"
+                       [(ngModel)]="prompt">
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form">
+                <button type="submit" class="btn btn-primary" (click)="request()"
+                        [disabled]="!prompt">Go!
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <markdown
+            *ngIf="answer?.result"
+            lineNumbers
+            class="variable-binding"
+            [data]="answer?.result">
+        </markdown>
+        {{ errorMessage }}
+    </div>
+</div>

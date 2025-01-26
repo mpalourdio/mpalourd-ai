@@ -11,6 +11,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { Answer } from "./model/answer";
 
 @Injectable({
     providedIn: 'root'
@@ -20,18 +21,13 @@ export class HttpService {
     constructor(private http: HttpClient) {
     }
 
-    answser(): Observable<string[] | object> {
-        return this.http.post(
-            'api/answer',
-            null
+    request(prompt: string): Observable<Answer> {
+        return this.http.post<Answer>(
+            'api/openai/chat',
+            prompt
         ).pipe(
-            map(this.extractData),
             catchError(this.handleError)
         );
-    }
-
-    private extractData(res: unknown): string[] | object {
-        return res || {};
     }
 
     private handleError(error: HttpErrorResponse | unknown): Observable<never> {
