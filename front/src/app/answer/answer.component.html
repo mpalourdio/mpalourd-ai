@@ -35,6 +35,7 @@
     @if (!!answer?.result || !!errorMessage) {
         <div class="pb-3">
             <markdown
+                clipboard
                 *ngIf="answer?.result"
                 lineNumbers
                 class="variable-binding"
