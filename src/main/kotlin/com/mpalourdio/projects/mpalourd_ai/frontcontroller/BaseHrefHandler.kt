@@ -24,7 +24,7 @@ internal const val URL_SEPARATOR = "/"
 internal const val FRONT_CONTROLLER = "index.html"
 
 @Service
-class FrontControllerHandler(private val serverProperties: ServerProperties) {
+class BaseHrefHandler(private val serverProperties: ServerProperties) {
 
     fun buildFrontControllerResource(resource: Resource): TransformedResource {
         try {

@@ -10,7 +10,7 @@
 package com.mpalourdio.projects.mpalourd_ai.config
 
 import com.mpalourdio.projects.mpalourd_ai.frontcontroller.FRONT_CONTROLLER
-import com.mpalourdio.projects.mpalourd_ai.frontcontroller.FrontControllerHandler
+import com.mpalourdio.projects.mpalourd_ai.frontcontroller.BaseHrefHandler
 import com.mpalourdio.projects.mpalourd_ai.frontcontroller.URL_SEPARATOR
 import org.springframework.boot.autoconfigure.web.WebProperties
 import org.springframework.context.ApplicationContext
@@ -27,7 +27,7 @@ private const val PATH_PATTERNS = "/**"
 @Configuration(proxyBeanMethods = false)
 class SinglePageAppConfig(
     webProperties: WebProperties,
-    private val frontControllerHandler: FrontControllerHandler,
+    private val baseHrefHandler: BaseHrefHandler,
     private val applicationContext: ApplicationContext
 ) : WebMvcConfigurer {
 
@@ -50,7 +50,7 @@ class SinglePageAppConfig(
                 .map { path -> applicationContext.getResource(path + FRONT_CONTROLLER) }
                 .filter(this::resourceExistsAndIsReadable)
                 .findFirst()
-                .map(frontControllerHandler::buildFrontControllerResource)
+                .map(baseHrefHandler::buildFrontControllerResource)
                 .orElseGet { null }
         }
 
