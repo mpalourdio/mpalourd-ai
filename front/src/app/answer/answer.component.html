@@ -3,9 +3,9 @@
         <h1 class="pt-3">mpalourd-ai</h1>
         <span class="text-body-tertiary pb-3 fst-italic small">coding useless shit for years</span>
     </div>
-    <form class="pt-3 shadow p-3 mb-4 bg-body-tertiary rounded">
+    <form class="pt-0 shadow p-3 mb-4 bg-body-tertiary rounded">
         <div class="row">
-            <div class="col-8">
+            <div class="col-md-8 col-sm-12 mt-3">
                 <div class="input-group">
                     <span class="input-group-text pt-0 pb-0" id="basic-addon1"><i class="bi bi-terminal-fill fs-5"></i></span>
                     <label for="prompt" class="visually-hidden">Prompt</label>
@@ -14,11 +14,11 @@
                            name="prompt"
                            id="prompt"
                            autocomplete="off"
-                           placeholder="Mon premier est une mite, mon second est errant. Qui suis-je ?"
+                           placeholder="Cyril Hanouna a-t-il un anus ?"
                            [(ngModel)]="prompt">
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-md-4 col-sm-12 mt-3 text-end text-md-start">
                 <button type="submit"
                         class="btn btn-success"
                         (click)="request()"
