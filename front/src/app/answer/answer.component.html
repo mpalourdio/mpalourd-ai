@@ -1,30 +1,38 @@
 <div class="container bg-grey min-vh-100">
-    <h1 class="pt-3">mpalourd-ai*</h1>
-    <h6>*coding useless shit for years</h6>
-    <div>
-        <form class="pb-3 pt-3">
-            <div class="row g-2">
-                <div class="col-sm">
-                    <div class="form">
-                        <label for="prompt" class="visually-hidden">Prompt</label>
-                        <input type="text" class="form-control" name="prompt" id="prompt" placeholder="Mon premier est une mite, mon second est errant. Qui suis-je ?"
-                               [(ngModel)]="prompt">
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="form">
-                        <button type="submit" class="btn btn-primary" (click)="request()"
-                                [disabled]="!prompt">Go!
-                        </button>
-
-                    </div>
+    <div class="row">
+        <h1 class="pt-3">mpalourd-ai</h1>
+        <span class="text-body-tertiary pb-3 fst-italic small">coding useless shit for years</span>
+    </div>
+    <form class="pt-3 shadow p-3 mb-4 bg-body-tertiary rounded">
+        <div class="row">
+            <div class="col-8">
+                <div class="input-group">
+                    <span class="input-group-text pt-0 pb-0" id="basic-addon1"><i class="bi bi-terminal-fill fs-5"></i></span>
+                    <label for="prompt" class="visually-hidden">Prompt</label>
+                    <input type="text"
+                           class="form-control"
+                           name="prompt"
+                           id="prompt"
+                           autocomplete="false"
+                           placeholder="Mon premier est une mite, mon second est errant. Qui suis-je ?"
+                           [(ngModel)]="prompt">
                 </div>
             </div>
-        </form>
-    </div>
+            <div class="col-4">
+                <button type="submit"
+                        class="btn btn-success"
+                        (click)="request()"
+                        [disabled]="!prompt">Go!
+                </button>&ngsp;.
+                <button type="button"
+                        class="btn btn-warning"
+                        (click)="clear()">Clear
+                </button>
+            </div>
+        </div>
+    </form>
 
     @if (!!answer?.result || !!errorMessage) {
-        <hr>
         <div class="pb-3">
             <markdown
                 *ngIf="answer?.result"
@@ -33,7 +41,9 @@
                 class="variable-binding"
                 [data]="answer?.result">
             </markdown>
-            <p>{{ errorMessage }}</p>
+            <div class="alert alert-danger" role="alert" *ngIf="!!errorMessage">
+                {{ errorMessage }}
+            </div>
         </div>
     }
 </div>

@@ -38,7 +38,7 @@ export class AnswerComponent {
     request(): void {
         this.errorMessage = '';
         this.answer = null;
-console.log(this.prompt);
+
         this._httpService
             .request(this.prompt)
             .subscribe({
@@ -46,5 +46,11 @@ console.log(this.prompt);
                 // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 error: err => this.errorMessage = 'An arror has occured, please retry later.'
             });
+    }
+
+    clear(): void {
+        this.errorMessage = '';
+        this.answer = null;
+        this.prompt = '';
     }
 }
