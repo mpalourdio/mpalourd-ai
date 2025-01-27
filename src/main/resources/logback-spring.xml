@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                <![CDATA[[%d{dd-MM-yyyy HH:mm:ss.SSS}] [%X{request-user-id}] [%X{security-context}] [%X{request-correlation-id}] %magenta([%thread]) %highlight([%-5level]) [%logger{36}.%M] - %msg%n]]>
+            </pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.apache" level="WARN" />
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+</configuration>
