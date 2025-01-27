@@ -36,8 +36,8 @@
         <div class="pb-3">
             <markdown
                 clipboard
-                *ngIf="answer?.result"
                 lineNumbers
+                *ngIf="answer?.result"
                 [data]="answer?.result">
             </markdown>
             <div class="alert alert-danger" role="alert" *ngIf="!!errorMessage">
