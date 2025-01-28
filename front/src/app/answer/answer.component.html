@@ -7,8 +7,9 @@
         <div class="row">
             <div class="col-md-8 col-sm-12 mt-3">
                 <div class="input-group">
-                    <span class="input-group-text pt-0 pb-0" id="basic-addon1"><i class="bi bi-terminal-fill fs-5"></i></span>
-                    <label for="prompt" class="visually-hidden">Prompt</label>
+                    <span class="input-group-text pt-0 pb-0" id="terminal">
+                        <i class="bi bi-terminal-fill fs-5"></i>
+                    </span>
                     <input type="text"
                            class="form-control"
                            name="prompt"
@@ -16,6 +17,13 @@
                            autocomplete="off"
                            placeholder="Cyril Hanouna a-t-il un anus ?"
                            [(ngModel)]="prompt">
+                    <div class="input-group-text">
+                        <input type="checkbox"
+                               class="form-check-input mt-0"
+                               id="funny"
+                               name="funny"
+                               [(ngModel)]="isFunny">
+                    </div>
                 </div>
             </div>
             <div class="col-md-4 col-sm-12 mt-3 text-end text-md-start">
@@ -23,6 +31,8 @@
                         class="btn btn-success"
                         (click)="request()"
                         [disabled]="!prompt">Go!
+                        <i [class]="{'bi-emoji-smile-upside-down-fill': isFunny,'bi-emoji-smile-fill': !isFunny}"
+                        class="bi fs-6 ms-2"></i>
                 </button>&ngsp;
                 <button type="button"
                         class="btn btn-warning"

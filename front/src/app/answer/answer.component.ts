@@ -30,6 +30,7 @@ export class AnswerComponent {
     @Input() prompt!: string;
     answer!: Answer | null;
     errorMessage = '';
+    isFunny=true;
 
     constructor(httpService: HttpService) {
         this._httpService = httpService;
@@ -40,7 +41,7 @@ export class AnswerComponent {
         this.answer = null;
 
         this._httpService
-            .request(this.prompt)
+            .request(this.prompt, this.isFunny)
             .subscribe({
                 next: results => this.answer = results,
                 // eslint-disable-next-line @typescript-eslint/no-unused-vars
