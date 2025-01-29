@@ -12,7 +12,9 @@ import com.mpalourdio.projects.mpalourd_ai.config.AiConfigurationProperties
 import com.mpalourdio.projects.mpalourd_ai.model.ChatRequestBody
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.ai.autoconfigure.openai.OpenAiChatProperties
 import org.springframework.ai.chat.client.ChatClient
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.security.web.csrf.CsrfToken
 import org.springframework.web.bind.annotation.*
 import java.io.File
@@ -22,6 +24,7 @@ import java.io.File
 class OpenAiController(
     chatClientBuilder: ChatClient.Builder,
     aiConfigurationProperties: AiConfigurationProperties,
+    private final val openAiChatProperties: OpenAiChatProperties,
 ) {
     private val customDefaultSystem: String =
         File(aiConfigurationProperties.defaultSystemFilePath).readText(Charsets.UTF_8)
@@ -34,6 +37,7 @@ class OpenAiController(
 
     init {
         log.info("Custom default system: \n${this.customDefaultSystem}")
+        log.info("Chat Model in use: ${this.openAiChatProperties.options.model}")
     }
 
     @GetMapping("/csrf")
