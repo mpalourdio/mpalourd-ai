@@ -9,10 +9,13 @@
 
 package com.mpalourdio.projects.mpalourd_ai
 
+import com.mpalourdio.projects.mpalourd_ai.config.AiConfigurationProperties
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
+@EnableConfigurationProperties(AiConfigurationProperties::class)
 class MpalourdAiApplication
 
 fun main(args: Array<String>) {

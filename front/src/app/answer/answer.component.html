@@ -20,9 +20,9 @@
                     <div class="input-group-text">
                         <input type="checkbox"
                                class="form-check-input mt-0"
-                               id="funny"
-                               name="funny"
-                               [(ngModel)]="isFunny">
+                               id="custom"
+                               name="custom"
+                               [(ngModel)]="isCustom">
                     </div>
                 </div>
             </div>
@@ -31,8 +31,7 @@
                         class="btn btn-success"
                         (click)="request()"
                         [disabled]="!prompt">Go!
-                        <i [class]="{'bi-emoji-smile-upside-down-fill': isFunny,'bi-emoji-smile-fill': !isFunny}"
-                        class="bi fs-6 ms-2"></i>
+                    <i [class]="{'bi-emoji-smile-upside-down-fill': isCustom,'bi-emoji-smile-fill': !isCustom}" class="bi fs-6 ms-2"></i>
                 </button>&ngsp;
                 <button type="button"
                         class="btn btn-warning"
