@@ -21,10 +21,10 @@ export class HttpService {
     constructor(private http: HttpClient) {
     }
 
-    request(prompt: string, isFunny: boolean): Observable<Answer> {
+    request(prompt: string, isCustom: boolean): Observable<Answer> {
         return this.http.post<Answer>(
             'api/openai/chat',
-            { prompt, isFunny }
+            { prompt, isCustom }
         ).pipe(
             catchError(this.handleError)
         );

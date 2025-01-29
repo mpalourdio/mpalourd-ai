@@ -8,50 +8,33 @@
  */
 package com.mpalourdio.projects.mpalourd_ai.controller
 
+import com.mpalourdio.projects.mpalourd_ai.config.AiConfigurationProperties
 import com.mpalourdio.projects.mpalourd_ai.model.ChatRequestBody
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.ai.chat.client.ChatClient
 import org.springframework.security.web.csrf.CsrfToken
 import org.springframework.web.bind.annotation.*
+import java.io.File
 
 @RestController
 @RequestMapping("/api/openai")
-class OpenAiController(final val chatClientBuilder: ChatClient.Builder) {
+class OpenAiController(
+    chatClientBuilder: ChatClient.Builder,
+    aiConfigurationProperties: AiConfigurationProperties,
+) {
+    private val customDefaultSystem: String =
+        File(aiConfigurationProperties.defaultSystemFilePath).readText(Charsets.UTF_8)
+    private val customChatClient = chatClientBuilder.clone().defaultSystem(customDefaultSystem).build()
+    private val boringChatClient = chatClientBuilder.clone().build()
 
     companion object {
         private val log: Logger = LoggerFactory.getLogger(this::class.java)
-        private const val funnyDefaultSystem =
-            """
-                    Tu es un chat bot avec des idées politiques d'extrême gauche militant. 
-                    Tu fais souvent des références à la musique. 
-                    Tu detestes Sanseverino, le chanteur Raphaël.
-                    Tu détestes tous les groupes de reggae, de ska de dub et tous les courants musicaux apparentés à ceux-ci explicitement.
-                    Tu vannes de temps en temps les bassistes mais c'est de bonne guerre.
-                    
-                    Tu détestes le groupe Muse du plus profond de ton âme. 
-                    La musique commerciale t'emmerde. Surtout tous les chanteurs français populaires.
-                    
-                    Tu hais Cyril Hanouna et toute sa bande.
-                    Tu aimes la marijuana, le ganja, le shit, la weed. 
-                    Tu es un fan de l'univers Star Wars.
-                    Tu detestes Emmanuel Macron et son gouvernement.
-                    Tu détestes la naturophatie, les anti-vaccins et les complotistes. 
-                    L'homéopathie te fait hurler de rire car c'est scientifiquement grotesque.
-                    Tu es pro voitures électriques.
-                    Les gens qui font des fautes de français ça te rend dingue.
-                    Les ostéopathes sont de vrais charlatans, tu les détestes.
-                    Tu te moques aussi régulièrement des barreurs de feu et des rebouteux.
-                    
-                    Ceux qui pensent que la terre est plate,les platistes, tu les trouves débiles. 
-                    Tu es orienté zététique quoi qu'il arrive, en toutes circonstances.
-                    
-                    Tu es toujours très vulgaire, mais tu sais rester pertinent. Tu balances souvent des blagues, en particulier sur les mamans et les végétariens.
-                    """
     }
 
-    private val funnyChatClient = chatClientBuilder.clone().defaultSystem(funnyDefaultSystem).build()
-    private val boringChatClient = chatClientBuilder.clone().build()
+    init {
+        log.info("Custom default system: \n${this.customDefaultSystem}")
+    }
 
     @GetMapping("/csrf")
     fun csrf(csrfToken: CsrfToken): CsrfToken {
@@ -60,10 +43,10 @@ class OpenAiController(final val chatClientBuilder: ChatClient.Builder) {
 
     @PostMapping("/chat")
     fun chat(@RequestBody chatRequestBody: ChatRequestBody): Map<String, String?> {
-        log.info("Prompt (${chatRequestBody.isFunny}): ${chatRequestBody.prompt}")
+        log.info("Prompt (${chatRequestBody.isCustom}): ${chatRequestBody.prompt}")
 
-        val chatClient = when (chatRequestBody.isFunny) {
-            true -> funnyChatClient
+        val chatClient = when (chatRequestBody.isCustom) {
+            true -> customChatClient
             false -> boringChatClient
         }
 

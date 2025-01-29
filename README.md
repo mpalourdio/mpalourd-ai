@@ -12,8 +12,15 @@ You can also export `SPRING_AI_OPENAI_CHAT_OPTIONS_MODEL` for more convenience.
 # Steps
 
 - Build the image : `mvn clean -Pnative spring-boot:build-image`.
-- Run the image : `docker run -e SPRING_AI_OPENAI_CHAT_OPTIONS_MODEL=gpt-4o-mini -e SPRING_AI_OPENAI_API_KEY=$SPRING_AI_OPENAI_API_KEY -p8080:8080 mpalourd-ai:X.X.X`.
+- Run the image :
+```bash
+docker run -e SPRING_AI_OPENAI_CHAT_OPTIONS_MODEL=gpt-4o-mini \
+  -e SPRING_AI_OPENAI_API_KEY=$SPRING_AI_OPENAI_API_KEY \
+  -e MPALOURDAI_DEFAULTSYSTEMFILEPATH=/tmp/defaultsystem.txt \
+  -v /host/defaultsystem.txt:/container/defaultsystem.txt \
+  -p 8080:8080 mpalourd-ai:X.X.X`.
 
+```
 # Image ready to test ?
 
 Just grab [this image generated from GitHub actions](https://mpalourdio.github.io/mpalourd-ai/mpalourdai.tar).

@@ -8,11 +8,11 @@
  */
 
 import { Component, Input } from '@angular/core';
-import { HttpService } from "../http.service";
-import { FormsModule } from "@angular/forms";
-import { Answer } from "../model/answer";
-import { MarkdownComponent } from "ngx-markdown";
-import { NgIf } from "@angular/common";
+import { HttpService } from '../http.service';
+import { FormsModule } from '@angular/forms';
+import { Answer } from '../model/answer';
+import { MarkdownComponent } from 'ngx-markdown';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-answer',
@@ -30,7 +30,7 @@ export class AnswerComponent {
     @Input() prompt!: string;
     answer!: Answer | null;
     errorMessage = '';
-    isFunny=true;
+    isCustom = true;
 
     constructor(httpService: HttpService) {
         this._httpService = httpService;
@@ -41,7 +41,7 @@ export class AnswerComponent {
         this.answer = null;
 
         this._httpService
-            .request(this.prompt, this.isFunny)
+            .request(this.prompt, this.isCustom)
             .subscribe({
                 next: results => this.answer = results,
                 // eslint-disable-next-line @typescript-eslint/no-unused-vars
