@@ -23,12 +23,12 @@ import java.io.File
 class OpenAiController(
     chatClientBuilder: ChatClient.Builder,
     aiConfigurationProperties: AiConfigurationProperties,
-    private final val openAiChatProperties: OpenAiChatProperties,
+    private val openAiChatProperties: OpenAiChatProperties,
 ) {
-    private val customDefaultSystem: String =
+    private final val customDefaultSystem: String =
         File(aiConfigurationProperties.defaultSystemFilePath).readText(Charsets.UTF_8)
-    private val customChatClient = chatClientBuilder.clone().defaultSystem(customDefaultSystem).build()
-    private val boringChatClient = chatClientBuilder.clone().build()
+    private final val customChatClient = chatClientBuilder.clone().defaultSystem(customDefaultSystem).build()
+    private final val boringChatClient = chatClientBuilder.clone().build()
 
     companion object {
         private val log: Logger = LoggerFactory.getLogger(this::class.java)
