@@ -21,16 +21,16 @@ export class HttpService {
     constructor(private http: HttpClient) {
     }
 
-    request(prompt: string, isCustom: boolean): Observable<Answer> {
+    request$(prompt: string, isCustom: boolean): Observable<Answer> {
         return this.http.post<Answer>(
             'api/openai/chat',
             { prompt, isCustom }
         ).pipe(
-            catchError(this.handleError)
+            catchError(this.handleError$)
         );
     }
 
-    private handleError(error: HttpErrorResponse | unknown): Observable<never> {
+    private handleError$(error: HttpErrorResponse | unknown): Observable<never> {
         console.log(error);
         return throwError(() => error);
     }

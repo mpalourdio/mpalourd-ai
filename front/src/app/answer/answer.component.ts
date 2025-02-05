@@ -41,11 +41,10 @@ export class AnswerComponent {
         this.answer = null;
 
         this._httpService
-            .request(this.prompt, this.isCustom)
+            .request$(this.prompt, this.isCustom)
             .subscribe({
                 next: results => this.answer = results,
-                // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                error: err => this.errorMessage = 'An arror has occured, please retry later.'
+                error: () => this.errorMessage = 'An arror has occured, please retry later.'
             });
     }
 
