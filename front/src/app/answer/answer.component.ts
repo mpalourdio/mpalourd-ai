@@ -7,7 +7,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Component, Input } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { HttpService } from '../http.service';
 import { FormsModule } from '@angular/forms';
 import { Answer } from '../model/answer';
@@ -24,16 +24,21 @@ import { NgIf } from '@angular/common';
     templateUrl: './answer.component.html',
     styleUrl: './answer.component.scss'
 })
-export class AnswerComponent {
+export class AnswerComponent implements AfterViewInit{
     private _httpService: HttpService;
 
     @Input() prompt!: string;
+    @ViewChild("promptField") promptField!: ElementRef;
     answer!: Answer | null;
     errorMessage = '';
     isCustom = false;
 
     constructor(httpService: HttpService) {
         this._httpService = httpService;
+    }
+
+    ngAfterViewInit(): void {
+        this.promtFieldFocus();
     }
 
     request(): void {
@@ -52,5 +57,10 @@ export class AnswerComponent {
         this.errorMessage = '';
         this.answer = null;
         this.prompt = '';
+        this.promtFieldFocus();
+    }
+
+    private promtFieldFocus(): void {
+        this.promptField.nativeElement.focus();
     }
 }
