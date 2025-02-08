@@ -30,7 +30,7 @@ export class AnswerComponent {
     @Input() prompt!: string;
     answer!: Answer | null;
     errorMessage = '';
-    isCustom = true;
+    isCustom = false;
 
     constructor(httpService: HttpService) {
         this._httpService = httpService;
