@@ -41,6 +41,7 @@ class OpenAiController(
         .build()
 
     private final val boringChatClient = chatClientBuilder.clone()
+        .defaultSystem("You are the mpalourdio corp. chatbot")
         .defaultAdvisors(messageChatMemoryAdvisor)
         .build()
 
