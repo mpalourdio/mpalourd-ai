@@ -7,7 +7,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, model, ViewChild } from '@angular/core';
 import { HttpService } from '../http.service';
 import { FormsModule } from '@angular/forms';
 import { Answer } from '../model/answer';
@@ -24,11 +24,11 @@ import { NgIf } from '@angular/common';
     templateUrl: './answer.component.html',
     styleUrl: './answer.component.scss'
 })
-export class AnswerComponent implements AfterViewInit{
+export class AnswerComponent implements AfterViewInit {
     private _httpService: HttpService;
 
-    @Input() prompt!: string;
     @ViewChild("promptField") promptField!: ElementRef;
+    prompt = model<string | null>();
     answer!: Answer | null;
     errorMessage = '';
     isCustom = false;
@@ -46,7 +46,7 @@ export class AnswerComponent implements AfterViewInit{
         this.answer = null;
 
         this._httpService
-            .request$(this.prompt, this.isCustom)
+            .request$(this.prompt(), this.isCustom)
             .subscribe({
                 next: results => this.answer = results,
                 error: () => this.errorMessage = 'An arror has occured, please retry later.'
@@ -56,7 +56,7 @@ export class AnswerComponent implements AfterViewInit{
     clear(): void {
         this.errorMessage = '';
         this.answer = null;
-        this.prompt = '';
+        this.prompt.set(null);
         this.promtFieldFocus();
     }
 

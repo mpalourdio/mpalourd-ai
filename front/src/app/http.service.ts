@@ -21,7 +21,7 @@ export class HttpService {
     constructor(private http: HttpClient) {
     }
 
-    request$(prompt: string, isCustom: boolean): Observable<Answer> {
+    request$(prompt: string | null | undefined, isCustom: boolean): Observable<Answer> {
         return this.http.post<Answer>(
             'api/openai/chat',
             { prompt, isCustom }
