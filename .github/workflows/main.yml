@@ -4,7 +4,7 @@ on: [ push, pull_request, workflow_dispatch ]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
     strategy:
       max-parallel: 4
       matrix:
@@ -14,9 +14,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-
       - uses: graalvm/setup-graalvm@v1
         with:
           distribution: 'graalvm-community'
@@ -24,7 +21,7 @@ jobs:
           cache: 'maven'
 
       - name: GraalVM Compile and image generation
-        run: ./mvnw clean -Pnative spring-boot:build-image -Dspring-boot.build-image.imagePlatform=linux/arm64
+        run: ./mvnw clean -Pnative spring-boot:build-image
 
       - name: Backup image and move it to tmp folder
         run: mkdir imagebackup && docker save -o imagebackup/mpalourdai.tar docker.io/library/mpalourd-ai:0.0.1-SNAPSHOT
