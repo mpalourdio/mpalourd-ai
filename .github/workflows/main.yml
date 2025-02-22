@@ -8,19 +8,29 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        graalvm-version: [ 21 ]
+        java-version: [ 21 ]
+        node-version: [ 22.x ]
 
     steps:
+
       - name: Checkout
         uses: actions/checkout@v4
 
-      - uses: graalvm/setup-graalvm@v1
+      - name: Set up JDK ${{ matrix.java-version }}
+        uses: actions/setup-java@v4
         with:
-          distribution: 'graalvm-community'
-          java-version: ${{ matrix.graalvm-version }}
+          distribution: 'temurin'
+          java-version: ${{ matrix.java-version }}
           cache: 'maven'
 
-      - name: GraalVM Compile and image generation
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: 'front'
+
+      - name: Docker image generation
         run: ./mvnw clean -Pnative spring-boot:build-image
 
       - name: Backup image and move it to tmp folder
