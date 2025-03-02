@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { Answer } from '../model/answer';
 import { MarkdownComponent } from 'ngx-markdown';
 import { NgIf } from '@angular/common';
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
     selector: 'app-answer',
@@ -25,7 +26,6 @@ import { NgIf } from '@angular/common';
     styleUrl: './answer.component.scss'
 })
 export class AnswerComponent implements AfterViewInit {
-    private _httpService: HttpService;
 
     @ViewChild("promptField") promptField!: ElementRef;
     prompt = model<string | null>();
@@ -33,19 +33,39 @@ export class AnswerComponent implements AfterViewInit {
     errorMessage = '';
     isCustom = false;
 
-    constructor(httpService: HttpService) {
-        this._httpService = httpService;
+    constructor(private httpService: HttpService,
+                private router: Router,
+                private route: ActivatedRoute) {
     }
 
     ngAfterViewInit(): void {
         this.promtFieldFocus();
+        this.updateQueryParamsOnPromptChange();
+        this.updatePromptOnQueryParamsChange();
+    }
+
+    private updatePromptOnQueryParamsChange(): void {
+        this.route
+            .queryParams
+            .subscribe(queryParams => this.prompt.set(queryParams['search']));
+    }
+
+    private updateQueryParamsOnPromptChange(): void {
+        this.prompt.subscribe(value => {
+            value = value || null;
+            this.router.navigate([], {
+                queryParams: {
+                    search: value
+                }
+            }).then();
+        });
     }
 
     request(): void {
         this.errorMessage = '';
         this.answer = null;
 
-        this._httpService
+        this.httpService
             .request$(this.prompt(), this.isCustom)
             .subscribe({
                 next: results => this.answer = results,
