@@ -52,10 +52,9 @@ export class AnswerComponent implements AfterViewInit {
 
     private updateQueryParamsOnPromptChange(): void {
         this.prompt.subscribe(value => {
-            value = value || null;
             this.router.navigate([], {
                 queryParams: {
-                    search: value
+                    search: value || null
                 }
             }).then();
         });
