@@ -9,6 +9,7 @@
 
 package com.mpalourdio.projects.mpalourd_ai.config
 
+import com.mpalourdio.projects.mpalourd_ai.filter.CacheControlHeaderFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.annotation.Order
@@ -18,6 +19,10 @@ import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository
 import org.springframework.security.web.csrf.CsrfTokenRequestHandler
 import org.springframework.security.web.csrf.XorCsrfTokenRequestAttributeHandler
+import org.springframework.security.web.header.HeaderWriterFilter
+import org.springframework.security.web.util.matcher.AndRequestMatcher
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher
+import org.springframework.security.web.util.matcher.NegatedRequestMatcher
 
 @Configuration(proxyBeanMethods = false)
 class WebSecurityConfig {
@@ -54,7 +59,14 @@ class WebSecurityConfig {
     @Throws(Exception::class)
     fun staticResources(http: HttpSecurity): SecurityFilterChain {
         http {
-            securityMatcher("/static/**")
+            securityMatcher(
+                AndRequestMatcher(
+                    NegatedRequestMatcher(antMatcher("/api/**")),
+                    NegatedRequestMatcher(antMatcher("/")),
+                    NegatedRequestMatcher(antMatcher("/index.html"))
+                )
+            )
+            addFilterAfter<HeaderWriterFilter>(CacheControlHeaderFilter())
             authorizeHttpRequests {
                 authorize(anyRequest, permitAll)
             }
