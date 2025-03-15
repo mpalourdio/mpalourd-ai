@@ -20,6 +20,7 @@ import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor
 import org.springframework.ai.chat.memory.InMemoryChatMemory
 import org.springframework.security.web.csrf.CsrfToken
 import org.springframework.web.bind.annotation.*
+import reactor.core.publisher.Flux
 import java.io.File
 
 @RestController
@@ -60,7 +61,7 @@ class OpenAiController(
     }
 
     @PostMapping("/chat")
-    fun chat(@RequestBody chatRequestBody: ChatRequestBody): Map<String, String?> {
+    fun chat(@RequestBody chatRequestBody: ChatRequestBody): Flux<String> {
         log.info("Prompt (${chatRequestBody.isCustom}): ${chatRequestBody.prompt}, for session ${session.id}")
 
         val chatClient = when (chatRequestBody.isCustom) {
@@ -68,11 +69,9 @@ class OpenAiController(
             false -> boringChatClient
         }
 
-        val result = chatClient.prompt(chatRequestBody.prompt)
+        return chatClient.prompt(chatRequestBody.prompt)
             .advisors { a -> a.param(CHAT_MEMORY_CONVERSATION_ID_KEY, session.id) }
-            .call()
+            .stream()
             .content()
-
-        return mapOf("result" to result)
     }
 }

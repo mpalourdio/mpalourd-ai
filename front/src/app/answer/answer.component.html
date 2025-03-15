@@ -31,8 +31,9 @@
                 <button type="submit"
                         class="btn btn-success"
                         (click)="request()"
-                        [disabled]="!prompt">Go!
-                    <i [class]="{'bi-emoji-smile-upside-down-fill': isCustom,'bi-emoji-smile-fill': !isCustom}" class="bi fs-6 ms-2"></i>
+                        [disabled]="!prompt()">Go!
+                    <i [class]="{'bi-emoji-smile-upside-down-fill': isCustom,'bi-emoji-smile-fill': !isCustom}"
+                       class="bi fs-6 ms-2"></i>
                 </button>&ngsp;
                 <button type="button"
                         class="btn btn-warning"
@@ -42,13 +43,13 @@
         </div>
     </form>
 
-    @if (!!answer?.result || !!errorMessage) {
+    @if (!!answer() || !!errorMessage) {
         <div class="pb-3">
             <markdown
                 clipboard
                 lineNumbers
-                *ngIf="answer?.result"
-                [data]="answer?.result">
+                *ngIf="!!answer()"
+                [data]="answer()">
             </markdown>
             <div class="alert alert-danger" role="alert" *ngIf="!!errorMessage">
                 {{ errorMessage }}

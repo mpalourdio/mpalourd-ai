@@ -7,11 +7,10 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Answer } from "./model/answer";
 
 @Injectable({
     providedIn: 'root'
@@ -21,10 +20,11 @@ export class HttpService {
     constructor(private http: HttpClient) {
     }
 
-    request$(prompt: string | null | undefined, isCustom: boolean): Observable<Answer> {
-        return this.http.post<Answer>(
+    request$(prompt: string | null | undefined, isCustom: boolean): Observable<HttpEvent<string>> {
+        return this.http.post(
             'api/openai/chat',
-            { prompt, isCustom }
+            { prompt, isCustom },
+            { observe: 'events', responseType: 'text', reportProgress: true }
         ).pipe(
             catchError(this.handleError$)
         );
