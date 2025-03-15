@@ -18,6 +18,7 @@ import org.springframework.ai.chat.client.ChatClient
 import org.springframework.ai.chat.client.advisor.AbstractChatMemoryAdvisor.CHAT_MEMORY_CONVERSATION_ID_KEY
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor
 import org.springframework.ai.chat.memory.InMemoryChatMemory
+import org.springframework.http.MediaType
 import org.springframework.security.web.csrf.CsrfToken
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Flux
@@ -60,7 +61,7 @@ class OpenAiController(
         return csrfToken;
     }
 
-    @PostMapping("/chat")
+    @PostMapping(value = ["/chat"], produces = [MediaType.TEXT_PLAIN_VALUE])
     fun chat(@RequestBody chatRequestBody: ChatRequestBody): Flux<String> {
         log.info("Prompt (${chatRequestBody.isCustom}): ${chatRequestBody.prompt}, for session ${session.id}")
 
