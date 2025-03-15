@@ -7,13 +7,14 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { AfterViewInit, Component, ElementRef, model, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, model, signal, ViewChild } from '@angular/core';
 import { HttpService } from '../http.service';
 import { FormsModule } from '@angular/forms';
-import { Answer } from '../model/answer';
 import { MarkdownComponent } from 'ngx-markdown';
 import { NgIf } from '@angular/common';
 import { ActivatedRoute, Router } from "@angular/router";
+import { HttpDownloadProgressEvent, HttpEventType } from "@angular/common/http";
+import { tap } from "rxjs";
 
 @Component({
     selector: 'app-answer',
@@ -29,7 +30,7 @@ export class AnswerComponent implements AfterViewInit {
 
     @ViewChild("promptField") promptField!: ElementRef;
     prompt = model<string | null>();
-    answer!: Answer | null;
+    answer = signal<string>('');
     errorMessage = '';
     isCustom = false;
 
@@ -62,19 +63,25 @@ export class AnswerComponent implements AfterViewInit {
 
     request(): void {
         this.errorMessage = '';
-        this.answer = null;
+        this.answer.set('');
 
         this.httpService
             .request$(this.prompt(), this.isCustom)
+            .pipe(
+                tap(event => {
+                    if (event.type === HttpEventType.DownloadProgress) {
+                        this.answer.set((event as HttpDownloadProgressEvent).partialText!);
+                    }
+                })
+            )
             .subscribe({
-                next: results => this.answer = results,
                 error: () => this.errorMessage = 'An arror has occured, please retry later.'
             });
     }
 
     clear(): void {
         this.errorMessage = '';
-        this.answer = null;
+        this.answer.set('');
         this.prompt.set(null);
         this.promtFieldFocus();
     }

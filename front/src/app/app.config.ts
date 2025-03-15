@@ -10,17 +10,18 @@
 import { ApplicationConfig, inject, provideAppInitializer, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
-import { HttpClient, provideHttpClient, withInterceptors } from "@angular/common/http";
-import { pendingRequestsInterceptor$ } from "ng-http-loader";
+import { HttpClient, provideHttpClient, withFetch, withInterceptors } from "@angular/common/http";
 import { firstValueFrom } from "rxjs";
 import { provideMarkdown } from 'ngx-markdown';
+import { pendingRequestsInterceptor$ } from "ng-http-loader";
 
 export const appConfig: ApplicationConfig = {
     providers: [
         provideZoneChangeDetection({ eventCoalescing: true }),
         provideRouter(routes),
         provideHttpClient(
-            withInterceptors([pendingRequestsInterceptor$])
+            withInterceptors([pendingRequestsInterceptor$]),
+            withFetch()
         ),
         provideAppInitializer(() => {
             const http = inject(HttpClient);
