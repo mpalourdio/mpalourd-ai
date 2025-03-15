@@ -11,7 +11,7 @@ import { AfterViewInit, Component, ElementRef, model, signal, ViewChild } from '
 import { HttpService } from '../http.service';
 import { FormsModule } from '@angular/forms';
 import { MarkdownComponent } from 'ngx-markdown';
-import { NgIf } from '@angular/common';
+import { NgIf, ViewportScroller } from '@angular/common';
 import { ActivatedRoute, Router } from "@angular/router";
 import { HttpDownloadProgressEvent, HttpEventType } from "@angular/common/http";
 import { tap } from "rxjs";
@@ -36,7 +36,8 @@ export class AnswerComponent implements AfterViewInit {
 
     constructor(private httpService: HttpService,
                 private router: Router,
-                private route: ActivatedRoute) {
+                private route: ActivatedRoute,
+                private scroller: ViewportScroller) {
     }
 
     ngAfterViewInit(): void {
@@ -71,6 +72,7 @@ export class AnswerComponent implements AfterViewInit {
                 tap(event => {
                     if (event.type === HttpEventType.DownloadProgress) {
                         this.answer.set((event as HttpDownloadProgressEvent).partialText!);
+                        this.scroller.scrollToAnchor("scroll-anchor");
                     }
                 })
             )
