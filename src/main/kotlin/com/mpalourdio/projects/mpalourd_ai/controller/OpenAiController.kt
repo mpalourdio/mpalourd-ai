@@ -18,6 +18,7 @@ import org.springframework.ai.chat.client.ChatClient
 import org.springframework.ai.chat.client.advisor.AbstractChatMemoryAdvisor.CHAT_MEMORY_CONVERSATION_ID_KEY
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor
 import org.springframework.ai.chat.memory.InMemoryChatMemory
+import org.springframework.ai.chat.prompt.ChatOptions
 import org.springframework.http.MediaType
 import org.springframework.security.web.csrf.CsrfToken
 import org.springframework.web.bind.annotation.*
@@ -70,7 +71,13 @@ class OpenAiController(
             false -> boringChatClient
         }
 
-        return chatClient.prompt(chatRequestBody.prompt)
+        return chatClient.prompt(chatRequestBody.modelType.formatting + chatRequestBody.prompt)
+            .options(
+                ChatOptions.builder()
+                    .model(chatRequestBody.modelType.name)
+                    .temperature(chatRequestBody.modelType.temperature)
+                    .build()
+            )
             .advisors { a -> a.param(CHAT_MEMORY_CONVERSATION_ID_KEY, session.id) }
             .stream()
             .content()
