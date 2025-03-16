@@ -13,7 +13,6 @@ import com.mpalourdio.projects.mpalourd_ai.model.ChatRequestBody
 import jakarta.servlet.http.HttpSession
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.springframework.ai.autoconfigure.openai.OpenAiChatProperties
 import org.springframework.ai.chat.client.ChatClient
 import org.springframework.ai.chat.client.advisor.AbstractChatMemoryAdvisor.CHAT_MEMORY_CONVERSATION_ID_KEY
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor
@@ -30,7 +29,6 @@ import java.io.File
 class OpenAiController(
     chatClientBuilder: ChatClient.Builder,
     aiConfigurationProperties: AiConfigurationProperties,
-    private val openAiChatProperties: OpenAiChatProperties,
     private val session: HttpSession
 ) {
     private final val customDefaultSystem: String =
@@ -54,7 +52,6 @@ class OpenAiController(
 
     init {
         log.info("Custom default system: \n${this.customDefaultSystem}")
-        log.info("Chat Model in use: ${this.openAiChatProperties.options.model}")
     }
 
     @GetMapping("/csrf")
@@ -64,14 +61,19 @@ class OpenAiController(
 
     @PostMapping("/chat", produces = [MediaType.TEXT_PLAIN_VALUE])
     fun chat(@RequestBody chatRequestBody: ChatRequestBody): Flux<String> {
-        log.info("Prompt (${chatRequestBody.isCustom}): ${chatRequestBody.prompt}, for session ${session.id}")
+        val concatPrompt = chatRequestBody.modelType.formatting.orEmpty() + chatRequestBody.prompt
+
+        log.info(
+            "Prompt (${chatRequestBody.isCustom}): ${concatPrompt}, for session ${session.id}. " +
+                    "Using model: ${chatRequestBody.modelType.name}, temperature: ${chatRequestBody.modelType.temperature}"
+        )
 
         val chatClient = when (chatRequestBody.isCustom) {
             true -> customChatClient
             false -> boringChatClient
         }
 
-        return chatClient.prompt(chatRequestBody.modelType.formatting + chatRequestBody.prompt)
+        return chatClient.prompt(concatPrompt)
             .options(
                 ChatOptions.builder()
                     .model(chatRequestBody.modelType.name)
