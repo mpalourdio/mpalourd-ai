@@ -63,7 +63,7 @@ class OpenAiController(
 
     @PostMapping("/chat", produces = [MediaType.TEXT_PLAIN_VALUE])
     fun chat(@RequestBody chatRequestBody: ChatRequestBody): Flux<String> {
-        log.info("Prompt (${chatRequestBody.isCustom}): ${chatRequestBody.prompt}, for session ${session.id}. Using model: ${chatRequestBody.modelType.name}")
+        log.info("Prompt (${chatRequestBody.isCustom}): ${chatRequestBody.prompt}, for session ${session.id}. Using model: ${chatRequestBody.modelType.name}, temperature: ${chatRequestBody.modelType.temperature}")
 
         val chatClient = when (chatRequestBody.isCustom) {
             true -> customChatClient
