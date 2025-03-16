@@ -11,6 +11,7 @@ import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { ModelType } from "./model/model-type";
 
 @Injectable({
     providedIn: 'root'
@@ -20,10 +21,10 @@ export class HttpService {
     constructor(private http: HttpClient) {
     }
 
-    request$(prompt: string | null | undefined, isCustom: boolean): Observable<HttpEvent<string>> {
+    request$(prompt: string | null | undefined, isCustom: boolean, modelType: ModelType): Observable<HttpEvent<string>> {
         return this.http.post(
             'api/openai/chat',
-            { prompt, isCustom },
+            { prompt, isCustom, modelType },
             { observe: 'events', responseType: 'text', reportProgress: true }
         ).pipe(
             catchError(this.handleError$)

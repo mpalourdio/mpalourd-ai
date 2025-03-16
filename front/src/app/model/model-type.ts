@@ -7,8 +7,24 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.mpalourdio.projects.mpalourd_ai.model
-
-data class ChatRequestBody(val prompt:String, val isCustom: Boolean, val modelType: ModelType) {
+export interface ModelType {
+    name: string;
+    temperature: number;
+    formatting?: string;
 }
-data class ModelType(val name: String, val temperature: Double, val formatting: String?)
+
+export const modelTypes: ModelType[] = [
+    {
+        name: 'gpt-4o-mini',
+        temperature: 0.7
+    },
+    {
+        name: 'gpt-4o',
+        temperature: 0.7
+    },
+    {
+        name: 'o3-mini',
+        temperature: 1.0,
+        formatting: 'Formatting re-enabled '
+    },
+];

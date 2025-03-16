@@ -18,6 +18,13 @@
                            autocomplete="off"
                            placeholder="Does Björk fart sometimes?"
                            [(ngModel)]="prompt">
+                    <div class="input-group-append">
+                        <select class="form-select" name="model" [(ngModel)]="modelType" id="model">
+                            @for (model of models; track model.name) {
+                                <option [ngValue]="model">{{ model.name }}</option>
+                            }
+                        </select>
+                    </div>
                     <div class="input-group-text">
                         <input type="checkbox"
                                class="form-check-input mt-0"

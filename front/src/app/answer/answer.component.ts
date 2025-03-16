@@ -15,6 +15,7 @@ import { NgIf, ViewportScroller } from '@angular/common';
 import { ActivatedRoute, Router } from "@angular/router";
 import { HttpDownloadProgressEvent, HttpEventType } from "@angular/common/http";
 import { tap } from "rxjs";
+import { modelTypes } from "../model/model-type";
 
 @Component({
     selector: 'app-answer',
@@ -33,6 +34,8 @@ export class AnswerComponent implements AfterViewInit {
     answer = signal<string>('');
     errorMessage = '';
     isCustom = false;
+    models = modelTypes;
+    modelType = modelTypes[0];
 
     constructor(private httpService: HttpService,
                 private router: Router,
@@ -67,7 +70,7 @@ export class AnswerComponent implements AfterViewInit {
         this.answer.set('');
 
         this.httpService
-            .request$(this.prompt(), this.isCustom)
+            .request$(this.prompt(), this.isCustom, this.modelType)
             .pipe(
                 tap(event => {
                     if (event.type === HttpEventType.DownloadProgress) {
