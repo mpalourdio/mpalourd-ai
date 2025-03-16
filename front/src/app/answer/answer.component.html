@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="col-xl-4 col-sm-12 mt-3">
-                <form class="row g-2">
+                <div class="row g-2">
                     <div class="col">
                         <select class="form-select" name="model" [(ngModel)]="modelType" id="model">
                             @for (model of models; track model.name) {
@@ -49,7 +49,7 @@
                                 (click)="clear()">Clear
                         </button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </form>
