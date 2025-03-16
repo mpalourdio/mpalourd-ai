@@ -9,6 +9,6 @@
 
 package com.mpalourdio.projects.mpalourd_ai.model
 
-data class ChatRequestBody(val prompt:String, val isCustom: Boolean, val modelType: ModelType) {
-}
+data class ChatRequestBody(val prompt: String, val isCustom: Boolean, val modelType: ModelType)
+
 data class ModelType(val name: String, val temperature: Double, val formatting: String?)
