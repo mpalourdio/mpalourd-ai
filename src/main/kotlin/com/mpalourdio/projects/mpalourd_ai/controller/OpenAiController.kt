@@ -54,7 +54,6 @@ class OpenAiController(
 
     init {
         log.info("Custom default system: \n${this.customDefaultSystem}")
-        log.info("Chat Model in use: ${this.openAiChatProperties.options.model}")
     }
 
     @GetMapping("/csrf")
@@ -64,7 +63,7 @@ class OpenAiController(
 
     @PostMapping("/chat", produces = [MediaType.TEXT_PLAIN_VALUE])
     fun chat(@RequestBody chatRequestBody: ChatRequestBody): Flux<String> {
-        log.info("Prompt (${chatRequestBody.isCustom}): ${chatRequestBody.prompt}, for session ${session.id}")
+        log.info("Prompt (${chatRequestBody.isCustom}): ${chatRequestBody.prompt}, for session ${session.id}. Using model: ${chatRequestBody.modelType.name}")
 
         val chatClient = when (chatRequestBody.isCustom) {
             true -> customChatClient
