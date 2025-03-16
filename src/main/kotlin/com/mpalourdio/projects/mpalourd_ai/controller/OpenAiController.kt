@@ -61,7 +61,7 @@ class OpenAiController(
         return csrfToken;
     }
 
-    @PostMapping(value = ["/chat"], produces = [MediaType.TEXT_PLAIN_VALUE])
+    @PostMapping("/chat", produces = [MediaType.TEXT_PLAIN_VALUE])
     fun chat(@RequestBody chatRequestBody: ChatRequestBody): Flux<String> {
         log.info("Prompt (${chatRequestBody.isCustom}): ${chatRequestBody.prompt}, for session ${session.id}")
 
