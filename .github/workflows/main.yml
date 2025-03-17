@@ -5,6 +5,10 @@ on: [ push, pull_request, workflow_dispatch ]
 jobs:
   build:
     runs-on: ubuntu-24.04-arm
+
+    permissions:
+      packages: write
+
     strategy:
       max-parallel: 4
       matrix:
@@ -12,7 +16,6 @@ jobs:
         node-version: [ 22.x ]
 
     steps:
-
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -33,32 +36,15 @@ jobs:
       - name: Docker image generation
         run: ./mvnw clean -Pnative spring-boot:build-image
 
-      - name: Backup image and move it to tmp folder
-        run: mkdir imagebackup && docker save -o imagebackup/mpalourdai.tar docker.io/library/mpalourd-ai:0.0.1-SNAPSHOT
-
-      - name: Upload GitHub Pages artifact
+      - name: Login to GitHub Container Registry
         if: github.ref == 'refs/heads/main'
-        uses: actions/upload-pages-artifact@v3
+        uses: docker/login-action@v3
         with:
-          path: 'imagebackup'
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-
-    permissions:
-      pages: write
-      id-token: write
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Push image GitHub Container Registry
+        if: github.ref == 'refs/heads/main'
+        run: |
+          docker push ghcr.io/${{ github.repository }}:latest
