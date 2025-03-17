@@ -1,14 +1,6 @@
 name: CI
 
-on:
-  pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
-      - closed
-  push:
-  workflow_dispatch:
+on: [ push, pull_request, workflow_dispatch ]
 
 jobs:
   build:
@@ -20,6 +12,7 @@ jobs:
         node-version: [ 22.x ]
 
     steps:
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -44,7 +37,7 @@ jobs:
         run: mkdir imagebackup && docker save -o imagebackup/mpalourdai.tar docker.io/library/mpalourd-ai:0.0.1-SNAPSHOT
 
       - name: Upload GitHub Pages artifact
-        if: github.event.pull_request.merged == true
+        if: github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3
         with:
           path: 'imagebackup'
@@ -52,7 +45,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
+    if: github.ref == 'refs/heads/main'
 
     permissions:
       pages: write
