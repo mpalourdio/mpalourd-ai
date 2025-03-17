@@ -17,7 +17,7 @@ docker run -e SPRING_AI_OPENAI_CHAT_OPTIONS_MODEL=gpt-4o-mini \
   -e SPRING_AI_OPENAI_API_KEY=$SPRING_AI_OPENAI_API_KEY \
   -e MPALOURDAI_DEFAULTSYSTEMFILEPATH=/container/defaultsystem.txt \
   -v /host/defaultsystem.txt:/container/defaultsystem.txt \
-  -p 8080:8080 mpalourd-ai:X.X.X`
+  -p 8080:8080 ghcr.io/mpalourdio/mpalourd-ai:latest
 ```
 # Image ready to test ?
 
