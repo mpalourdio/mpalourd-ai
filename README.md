@@ -21,7 +21,7 @@ docker run -e SPRING_AI_OPENAI_CHAT_OPTIONS_MODEL=gpt-4o-mini \
 ```
 # Image ready to test ?
 
-Just grab [this image generated from GitHub actions](https://mpalourdio.github.io/mpalourd-ai/mpalourdai.tar).
+`docker pull ghcr.io/mpalourdio/mpalourd-ai:latest`.
 
 # Failed to create the main Isolate. (code 24) ?
 
