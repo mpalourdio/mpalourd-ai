@@ -52,13 +52,19 @@ export class AnswerComponent implements AfterViewInit {
                     this.answer.update(answer => `${answer}${chatResponse.text}`);
                     this.scroller.scrollToAnchor("scroll-anchor");
                 }))
-            .subscribe();
+            .subscribe({
+                error: this.handleError()
+            });
     }
 
     ngAfterViewInit(): void {
         this.promtFieldFocus();
         this.updateQueryParamsOnPromptChange();
         this.updatePromptOnQueryParamsChange();
+    }
+
+    private handleError(): () => string {
+        return () => this.errorMessage = 'An arror has occured, please retry later.';
     }
 
     private updatePromptOnQueryParamsChange(): void {
@@ -84,7 +90,7 @@ export class AnswerComponent implements AfterViewInit {
         this.httpService
             .request$(this.prompt(), this.isCustom, this.modelType)
             .subscribe({
-                error: () => this.errorMessage = 'An arror has occured, please retry later.'
+                error: this.handleError()
             });
     }
 

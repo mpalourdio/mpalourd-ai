@@ -27,6 +27,7 @@ export class SseService {
         this.eventSource.onerror = (error): void => {
             this.sseDataSubject$.error(error);
             this.eventSource.close();
+            this.connectToSSE();
         };
     }
 }
