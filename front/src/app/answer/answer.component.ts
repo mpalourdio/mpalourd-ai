@@ -48,9 +48,9 @@ export class AnswerComponent implements AfterViewInit {
             .sseDataObservable$
             .pipe(
                 map(event => JSON.parse(event) as ChatResponse),
-                filter((chatResponse: ChatResponse) => chatResponse.result.metadata.finishReason !== 'STOP'),
+                filter((chatResponse: ChatResponse) => chatResponse.metadata.finishReason !== 'STOP'),
                 tap(chatResponse => {
-                    this.answer.update(answer => `${answer}${chatResponse.result.output.text}`);
+                    this.answer.update(answer => `${answer}${chatResponse.text}`);
                     this.scroller.scrollToAnchor("scroll-anchor");
                 }))
             .subscribe();

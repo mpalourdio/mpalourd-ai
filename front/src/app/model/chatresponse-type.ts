@@ -8,61 +8,15 @@
  */
 
 export interface ChatResponse {
-    metadata: ChatResponseMetadata;
-    results:  Result[];
-    result:   Result;
+    metadata: Metadata
+    text: string
 }
 
-export interface ChatResponseMetadata {
-    id:             string;
-    model:          string;
-    rateLimit:      RateLimit;
-    usage:          Usage;
-    promptMetadata: unknown[];
-    empty:          boolean;
-}
-
-export interface RateLimit {
-    requestsLimit:     number;
-    requestsRemaining: number;
-    requestsReset:     string;
-    tokensLimit:       number;
-    tokensRemaining:   number;
-    tokensReset:       string;
-}
-
-export interface Usage {
-    completionTokens: number;
-    promptTokens:     number;
-    generationTokens: number;
-    totalTokens:      number;
-}
-
-
-export interface Result {
-    metadata: ResultMetadata;
-    output:   Output;
-}
-
-export interface ResultMetadata {
-    finishReason:   string;
-    contentFilters: unknown[];
-    empty:          boolean;
-}
-
-export interface Output {
-    messageType: string;
-    metadata:    OutputMetadata;
-    toolCalls:   unknown[];
-    media:       unknown[];
-    text:        string;
-}
-
-export interface OutputMetadata {
-    refusal:      string;
-    finishReason: string;
-    index:        number;
-    id:           string;
-    role:         string;
-    messageType:  string;
+export interface Metadata {
+    finishReason: string
+    refusal: string
+    index: number
+    role: string
+    id: string
+    messageType: string
 }
