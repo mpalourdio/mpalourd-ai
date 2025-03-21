@@ -7,7 +7,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { AfterViewInit, Component, ElementRef, model, signal, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, model, OnInit, signal, ViewChild } from '@angular/core';
 import { HttpService } from '../http.service';
 import { FormsModule } from '@angular/forms';
 import { NgIf, ViewportScroller } from '@angular/common';
@@ -28,7 +28,7 @@ import { MarkdownComponent } from "ngx-markdown";
     templateUrl: './answer.component.html',
     styleUrl: './answer.component.scss'
 })
-export class AnswerComponent implements AfterViewInit {
+export class AnswerComponent implements AfterViewInit, OnInit {
 
     @ViewChild('promptField') promptField!: ElementRef;
     prompt = model<string | null>();
@@ -43,7 +43,9 @@ export class AnswerComponent implements AfterViewInit {
                 private route: ActivatedRoute,
                 private scroller: ViewportScroller,
                 private sseService: SseService) {
+    }
 
+    ngOnInit(): void {
         this.sseService
             .sseDataObservable$
             .pipe(
