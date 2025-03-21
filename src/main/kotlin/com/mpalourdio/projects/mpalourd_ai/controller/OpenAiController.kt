@@ -14,22 +14,24 @@ import jakarta.servlet.http.HttpSession
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.ai.chat.client.ChatClient
-import org.springframework.ai.chat.client.advisor.AbstractChatMemoryAdvisor.CHAT_MEMORY_CONVERSATION_ID_KEY
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor
 import org.springframework.ai.chat.memory.InMemoryChatMemory
-import org.springframework.ai.chat.prompt.ChatOptions
 import org.springframework.http.MediaType
+import org.springframework.http.codec.ServerSentEvent
 import org.springframework.security.web.csrf.CsrfToken
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Flux
 import java.io.File
+import kotlin.time.Duration.Companion.seconds
+import kotlin.time.toJavaDuration
 
 @RestController
 @RequestMapping("/api/openai")
 class OpenAiController(
     chatClientBuilder: ChatClient.Builder,
     aiConfigurationProperties: AiConfigurationProperties,
-    private val session: HttpSession
+    private val session: HttpSession,
+    private val reactiveChatProcessorHandler: ReactiveChatProcessorHandler,
 ) {
     private final val customDefaultSystem: String =
         File(aiConfigurationProperties.defaultSystemFilePath).readText(Charsets.UTF_8)
@@ -59,8 +61,27 @@ class OpenAiController(
         return csrfToken;
     }
 
-    @PostMapping("/chat", produces = [MediaType.TEXT_PLAIN_VALUE])
-    fun chat(@RequestBody chatRequestBody: ChatRequestBody): Flux<String> {
+    @GetMapping("/chat", produces = [MediaType.TEXT_EVENT_STREAM_VALUE])
+    fun answer(): Flux<ServerSentEvent<ChatLightResponse>> {
+        return Flux.merge(
+            reactiveChatProcessorHandler.responseSink.asFlux()
+                .map { sequence: ChatLightResponse ->
+                    ServerSentEvent.builder<ChatLightResponse>()
+                        .event("message")
+                        .data(sequence)
+                        .build()
+                },
+            Flux.interval(15.seconds.toJavaDuration())
+                .map { _ ->
+                    ServerSentEvent.builder<ChatLightResponse>()
+                        .comment("keep alive")
+                        .build()
+                }
+        )
+    }
+
+    @PostMapping("/chat")
+    fun chat(@RequestBody chatRequestBody: ChatRequestBody) {
         val concatPrompt = chatRequestBody.modelType.formatting.orEmpty() + chatRequestBody.prompt
 
         log.info(
@@ -73,15 +94,6 @@ class OpenAiController(
             false -> boringChatClient
         }
 
-        return chatClient.prompt(concatPrompt)
-            .options(
-                ChatOptions.builder()
-                    .model(chatRequestBody.modelType.name)
-                    .temperature(chatRequestBody.modelType.temperature)
-                    .build()
-            )
-            .advisors { a -> a.param(CHAT_MEMORY_CONVERSATION_ID_KEY, session.id) }
-            .stream()
-            .content()
+        reactiveChatProcessorHandler.query(chatClient, concatPrompt, chatRequestBody, session)
     }
 }
