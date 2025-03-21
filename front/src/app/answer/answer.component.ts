@@ -78,7 +78,7 @@ export class AnswerComponent implements AfterViewInit {
                 tap(partialText => {
                     const chatResponsesText: string = partialText
                         .replaceAll('data:', '')
-                        .split('\n')
+                        .split('\n\n')
                         .filter(r => r !== '')
                         .map(message => JSON.parse(message))
                         .map((c: ChatResponse) => c.text)
