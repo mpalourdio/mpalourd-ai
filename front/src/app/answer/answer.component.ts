@@ -7,16 +7,16 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { AfterViewInit, Component, ElementRef, model, OnInit, signal, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, model, signal, ViewChild } from '@angular/core';
 import { HttpService } from '../http.service';
 import { FormsModule } from '@angular/forms';
 import { NgIf, ViewportScroller } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { modelTypes } from '../model/model-type';
-import { SseService } from "./sse.service";
-import { map, tap } from "rxjs";
-import { ChatResponse } from "../model/chatresponse-type";
+import { filter, map, tap } from "rxjs";
 import { MarkdownComponent } from "ngx-markdown";
+import { HttpDownloadProgressEvent, HttpEventType } from "@angular/common/http";
+import { ChatResponse } from "../model/chatresponse-type";
 
 @Component({
     selector: 'app-answer',
@@ -28,7 +28,7 @@ import { MarkdownComponent } from "ngx-markdown";
     templateUrl: './answer.component.html',
     styleUrl: './answer.component.scss'
 })
-export class AnswerComponent implements AfterViewInit, OnInit {
+export class AnswerComponent implements AfterViewInit {
 
     @ViewChild('promptField') promptField!: ElementRef;
     prompt = model<string | null>();
@@ -41,32 +41,13 @@ export class AnswerComponent implements AfterViewInit, OnInit {
     constructor(private httpService: HttpService,
                 private router: Router,
                 private route: ActivatedRoute,
-                private scroller: ViewportScroller,
-                private sseService: SseService) {
-    }
-
-    ngOnInit(): void {
-        this.sseService
-            .sseDataObservable$
-            .pipe(
-                map(event => JSON.parse(event) as ChatResponse),
-                tap(chatResponse => {
-                    this.answer.update(answer => `${answer}${chatResponse.text}`);
-                    this.scroller.scrollToAnchor("scroll-anchor");
-                }))
-            .subscribe({
-                error: this.handleError()
-            });
+                private scroller: ViewportScroller) {
     }
 
     ngAfterViewInit(): void {
         this.promtFieldFocus();
         this.updateQueryParamsOnPromptChange();
         this.updatePromptOnQueryParamsChange();
-    }
-
-    private handleError(): () => string {
-        return () => this.errorMessage = 'An arror has occured, please retry later.';
     }
 
     private updatePromptOnQueryParamsChange(): void {
@@ -91,8 +72,23 @@ export class AnswerComponent implements AfterViewInit, OnInit {
 
         this.httpService
             .request$(this.prompt(), this.isCustom, this.modelType)
+            .pipe(
+                filter(event => event.type === HttpEventType.DownloadProgress),
+                map(event => (event as HttpDownloadProgressEvent).partialText!),
+                tap(partialText => {
+                    const chatResponsesText: string = partialText
+                        .replaceAll('data:', '')
+                        .split('\n')
+                        .filter(r => r !== '')
+                        .map(message => JSON.parse(message))
+                        .map((c: ChatResponse) => c.text)
+                        .join('');
+                    this.answer.set(chatResponsesText);
+                    this.scroller.scrollToAnchor("scroll-anchor");
+                })
+            )
             .subscribe({
-                error: this.handleError()
+                error: () => this.errorMessage = 'An arror has occured, please retry later.'
             });
     }
 

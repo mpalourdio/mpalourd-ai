@@ -6,19 +6,18 @@ import org.springframework.ai.chat.client.ChatClient
 import org.springframework.ai.chat.client.advisor.AbstractChatMemoryAdvisor.CHAT_MEMORY_CONVERSATION_ID_KEY
 import org.springframework.ai.chat.prompt.ChatOptions
 import org.springframework.stereotype.Service
-import reactor.core.publisher.Sinks
+import reactor.core.publisher.Flux
 
 @Service
 class ReactiveChatProcessorHandler {
-    val responseSink: Sinks.Many<ChatLightResponse> = Sinks.many().multicast().onBackpressureBuffer();
 
-    fun query(
+    fun streamResponse(
         chatClient: ChatClient,
         prompt: String,
         chatRequestBody: ChatRequestBody,
         session: HttpSession
-    ) {
-        chatClient.prompt(prompt)
+    ): Flux<ChatLightResponse> {
+        return chatClient.prompt(prompt)
             .options(
                 ChatOptions.builder()
                     .model(chatRequestBody.modelType.name)
@@ -30,8 +29,6 @@ class ReactiveChatProcessorHandler {
             .chatResponse()
             .filter { c -> c.result.metadata.finishReason != "STOP" }
             .map { c -> ChatLightResponse(c.result.output.text) }
-            .doOnNext { l -> responseSink.tryEmitNext(l) }
-            .subscribe()
     }
 }
 

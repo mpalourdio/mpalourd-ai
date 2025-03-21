@@ -17,13 +17,10 @@ import org.springframework.ai.chat.client.ChatClient
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor
 import org.springframework.ai.chat.memory.InMemoryChatMemory
 import org.springframework.http.MediaType
-import org.springframework.http.codec.ServerSentEvent
 import org.springframework.security.web.csrf.CsrfToken
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Flux
 import java.io.File
-import kotlin.time.Duration.Companion.seconds
-import kotlin.time.toJavaDuration
 
 @RestController
 @RequestMapping("/api/openai")
@@ -61,27 +58,8 @@ class OpenAiController(
         return csrfToken;
     }
 
-    @GetMapping("/chat", produces = [MediaType.TEXT_EVENT_STREAM_VALUE])
-    fun answer(): Flux<ServerSentEvent<ChatLightResponse>> {
-        return Flux.merge(
-            reactiveChatProcessorHandler.responseSink.asFlux()
-                .map { sequence: ChatLightResponse ->
-                    ServerSentEvent.builder<ChatLightResponse>()
-                        .event("message")
-                        .data(sequence)
-                        .build()
-                },
-            Flux.interval(15.seconds.toJavaDuration())
-                .map { _ ->
-                    ServerSentEvent.builder<ChatLightResponse>()
-                        .comment("keep alive")
-                        .build()
-                }
-        )
-    }
-
-    @PostMapping("/chat")
-    fun chat(@RequestBody chatRequestBody: ChatRequestBody) {
+    @PostMapping("/chat", produces = [MediaType.TEXT_EVENT_STREAM_VALUE])
+    fun chat(@RequestBody chatRequestBody: ChatRequestBody): Flux<ChatLightResponse> {
         val concatPrompt = chatRequestBody.modelType.formatting.orEmpty() + chatRequestBody.prompt
 
         log.info(
@@ -94,6 +72,6 @@ class OpenAiController(
             false -> boringChatClient
         }
 
-        reactiveChatProcessorHandler.query(chatClient, concatPrompt, chatRequestBody, session)
+        return reactiveChatProcessorHandler.streamResponse(chatClient, concatPrompt, chatRequestBody, session)
     }
 }
