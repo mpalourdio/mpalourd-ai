@@ -23,6 +23,8 @@ import org.springframework.security.web.csrf.CsrfToken
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Flux
 import java.io.File
+import kotlin.time.Duration.Companion.seconds
+import kotlin.time.toJavaDuration
 
 @RestController
 @RequestMapping("/api/openai")
@@ -62,13 +64,21 @@ class OpenAiController(
 
     @GetMapping("/chat", produces = [MediaType.TEXT_EVENT_STREAM_VALUE])
     fun answer(): Flux<ServerSentEvent<AssistantMessage>> {
-        return reactiveChatProcessorHandler.responseSink.asFlux()
-            .map { sequence: AssistantMessage ->
-                ServerSentEvent.builder<AssistantMessage>()
-                    .event("message")
-                    .data(sequence)
-                    .build()
-            }
+        return Flux.merge(
+            reactiveChatProcessorHandler.responseSink.asFlux()
+                .map { sequence: AssistantMessage ->
+                    ServerSentEvent.builder<AssistantMessage>()
+                        .event("message")
+                        .data(sequence)
+                        .build()
+                },
+            Flux.interval(15.seconds.toJavaDuration())
+                .map { _ ->
+                    ServerSentEvent.builder<AssistantMessage>()
+                        .comment("keep alive")
+                        .build()
+                }
+        )
     }
 
     @PostMapping("/chat")
