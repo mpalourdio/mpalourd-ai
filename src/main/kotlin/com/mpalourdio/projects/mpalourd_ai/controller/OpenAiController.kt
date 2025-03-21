@@ -16,7 +16,6 @@ import org.slf4j.LoggerFactory
 import org.springframework.ai.chat.client.ChatClient
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor
 import org.springframework.ai.chat.memory.InMemoryChatMemory
-import org.springframework.ai.chat.messages.AssistantMessage
 import org.springframework.http.MediaType
 import org.springframework.http.codec.ServerSentEvent
 import org.springframework.security.web.csrf.CsrfToken
@@ -63,18 +62,18 @@ class OpenAiController(
     }
 
     @GetMapping("/chat", produces = [MediaType.TEXT_EVENT_STREAM_VALUE])
-    fun answer(): Flux<ServerSentEvent<AssistantMessage>> {
+    fun answer(): Flux<ServerSentEvent<ChatLightResponse>> {
         return Flux.merge(
             reactiveChatProcessorHandler.responseSink.asFlux()
-                .map { sequence: AssistantMessage ->
-                    ServerSentEvent.builder<AssistantMessage>()
+                .map { sequence: ChatLightResponse ->
+                    ServerSentEvent.builder<ChatLightResponse>()
                         .event("message")
                         .data(sequence)
                         .build()
                 },
             Flux.interval(15.seconds.toJavaDuration())
                 .map { _ ->
-                    ServerSentEvent.builder<AssistantMessage>()
+                    ServerSentEvent.builder<ChatLightResponse>()
                         .comment("keep alive")
                         .build()
                 }

@@ -14,7 +14,7 @@ import { NgIf, ViewportScroller } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { modelTypes } from '../model/model-type';
 import { SseService } from "./sse.service";
-import { filter, map, tap } from "rxjs";
+import { map, tap } from "rxjs";
 import { ChatResponse } from "../model/chatresponse-type";
 import { MarkdownComponent } from "ngx-markdown";
 
@@ -48,7 +48,6 @@ export class AnswerComponent implements AfterViewInit {
             .sseDataObservable$
             .pipe(
                 map(event => JSON.parse(event) as ChatResponse),
-                filter((chatResponse: ChatResponse) => chatResponse.metadata.finishReason !== 'STOP'),
                 tap(chatResponse => {
                     this.answer.update(answer => `${answer}${chatResponse.text}`);
                     this.scroller.scrollToAnchor("scroll-anchor");

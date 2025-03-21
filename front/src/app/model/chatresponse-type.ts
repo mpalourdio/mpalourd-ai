@@ -8,15 +8,5 @@
  */
 
 export interface ChatResponse {
-    metadata: Metadata
     text: string
-}
-
-export interface Metadata {
-    finishReason: string
-    refusal: string
-    index: number
-    role: string
-    id: string
-    messageType: string
 }
