@@ -10,12 +10,13 @@
 import { AfterViewInit, Component, ElementRef, model, signal, ViewChild } from '@angular/core';
 import { HttpService } from '../http.service';
 import { FormsModule } from '@angular/forms';
-import { MarkdownComponent } from 'ngx-markdown';
 import { NgIf, ViewportScroller } from '@angular/common';
-import { ActivatedRoute, Router } from "@angular/router";
-import { HttpDownloadProgressEvent, HttpEventType } from "@angular/common/http";
-import { tap } from "rxjs";
-import { modelTypes } from "../model/model-type";
+import { ActivatedRoute, Router } from '@angular/router';
+import { modelTypes } from '../model/model-type';
+import { SseService } from "./sse.service";
+import { filter, map, tap } from "rxjs";
+import { ChatResponse } from "../model/chatresponse-type";
+import { MarkdownComponent } from "ngx-markdown";
 
 @Component({
     selector: 'app-answer',
@@ -29,7 +30,7 @@ import { modelTypes } from "../model/model-type";
 })
 export class AnswerComponent implements AfterViewInit {
 
-    @ViewChild("promptField") promptField!: ElementRef;
+    @ViewChild('promptField') promptField!: ElementRef;
     prompt = model<string | null>();
     answer = signal<string>('');
     errorMessage = '';
@@ -40,7 +41,19 @@ export class AnswerComponent implements AfterViewInit {
     constructor(private httpService: HttpService,
                 private router: Router,
                 private route: ActivatedRoute,
-                private scroller: ViewportScroller) {
+                private scroller: ViewportScroller,
+                private sseService: SseService) {
+
+        this.sseService
+            .sseDataObservable$
+            .pipe(
+                map(event => JSON.parse(event) as ChatResponse),
+                filter((chatResponse: ChatResponse) => chatResponse.result.metadata.finishReason !== 'STOP'),
+                tap(chatResponse => {
+                    this.answer.update(answer => `${answer}${chatResponse.result.output.text}`);
+                    this.scroller.scrollToAnchor("scroll-anchor");
+                }))
+            .subscribe();
     }
 
     ngAfterViewInit(): void {
@@ -71,14 +84,6 @@ export class AnswerComponent implements AfterViewInit {
 
         this.httpService
             .request$(this.prompt(), this.isCustom, this.modelType)
-            .pipe(
-                tap(event => {
-                    if (event.type === HttpEventType.DownloadProgress) {
-                        this.answer.set((event as HttpDownloadProgressEvent).partialText!);
-                        this.scroller.scrollToAnchor("scroll-anchor");
-                    }
-                })
-            )
             .subscribe({
                 error: () => this.errorMessage = 'An arror has occured, please retry later.'
             });
