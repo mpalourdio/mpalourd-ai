@@ -14,9 +14,7 @@ import { provideHttpClient } from "@angular/common/http";
 import { provideHttpClientTesting } from "@angular/common/http/testing";
 import { provideRouter } from '@angular/router';
 
-//TODO: Fix this test with firefox
-//An error was thrown in afterAll
-xdescribe('AnswerComponent', () => {
+describe('AnswerComponent', () => {
     let component: AnswerComponent;
     let fixture: ComponentFixture<AnswerComponent>;
 
