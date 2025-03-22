@@ -38,7 +38,6 @@ class BaseHrefHandler(private val serverProperties: ServerProperties) {
         } catch (e: IOException) {
             throw FrontControllerException("Unable to perform $FRONT_CONTROLLER tranformation", e)
         }
-
     }
 
     private fun buildBaseHref(): String {

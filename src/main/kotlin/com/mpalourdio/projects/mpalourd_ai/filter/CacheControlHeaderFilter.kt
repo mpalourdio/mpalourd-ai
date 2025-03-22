@@ -17,7 +17,7 @@ class CacheControlHeaderFilter : GenericFilterBean() {
 
     override fun doFilter(request: ServletRequest?, response: ServletResponse?, chain: FilterChain?) {
         val httpResponse = response as HttpServletResponse
-        log.debug("Cache-Control header added for '{}'",(request as HttpServletRequest).requestURI)
+        log.debug("Cache-Control header added for '{}'", (request as HttpServletRequest).requestURI)
         httpResponse.setHeader("Cache-Control", "public, max-age=31536000, immutable")
         chain?.doFilter(request, response)
     }

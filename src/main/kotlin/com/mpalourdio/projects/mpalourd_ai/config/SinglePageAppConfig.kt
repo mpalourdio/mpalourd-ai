@@ -9,8 +9,8 @@
 
 package com.mpalourdio.projects.mpalourd_ai.config
 
-import com.mpalourdio.projects.mpalourd_ai.frontcontroller.FRONT_CONTROLLER
 import com.mpalourdio.projects.mpalourd_ai.frontcontroller.BaseHrefHandler
+import com.mpalourdio.projects.mpalourd_ai.frontcontroller.FRONT_CONTROLLER
 import com.mpalourdio.projects.mpalourd_ai.frontcontroller.URL_SEPARATOR
 import org.springframework.boot.autoconfigure.web.WebProperties
 import org.springframework.context.ApplicationContext
@@ -69,7 +69,6 @@ class SinglePageAppConfig(
 
             //we are in the case of an angular route here, we rewrite to index.html
             return if (resourceExistsAndIsReadable(location.createRelative(FRONT_CONTROLLER))) frontControllerResource else null
-
         }
 
         private fun resourceExistsAndIsReadable(resource: Resource): Boolean = resource.exists() && resource.isReadable
