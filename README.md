@@ -13,7 +13,8 @@ Don't forget to export the `SPRING_AI_OPENAI_API_KEY` environment variable.
 - Build the image : `mvn clean -Pnative spring-boot:build-image`.
 - Run the image :
 ```bash
-docker run -e SPRING_AI_OPENAI_API_KEY=$SPRING_AI_OPENAI_API_KEY \
+docker run \
+  -e SPRING_AI_OPENAI_API_KEY=$SPRING_AI_OPENAI_API_KEY \
   -e MPALOURDAI_DEFAULTSYSTEMFILEPATH=/container/defaultsystem.txt \
   -v /host/defaultsystem.txt:/container/defaultsystem.txt \
   -p 8080:8080 ghcr.io/mpalourdio/mpalourd-ai:latest
