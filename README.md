@@ -3,10 +3,10 @@
 
 # Introduction
 
-`Spring Boot` + `kotlin`/ `angular` application that leverages `Spring-AI` with `OpenAi`.
+`Spring Boot (kotlin)` + `angular` application that leverages `Spring-AI` with `OpenAi`.
 `Github actions` produce a `linux/arm64` ready docker image that can run on a Raspberry Pi for example.
 
-Don't forget to export the `SPRING_AI_OPENAI_API_KEY` environment variable.  
+Don't forget to export the `SPRING_AI_OPENAI_API_KEY` environment variable on your host system.  
 
 # Steps
 
