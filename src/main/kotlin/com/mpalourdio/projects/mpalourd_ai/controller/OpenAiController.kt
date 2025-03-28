@@ -9,13 +9,18 @@
 package com.mpalourdio.projects.mpalourd_ai.controller
 
 import com.mpalourdio.projects.mpalourd_ai.config.AiConfigurationProperties
+import com.mpalourdio.projects.mpalourd_ai.external.ExternalApiHandler
 import com.mpalourdio.projects.mpalourd_ai.model.ChatRequestBody
 import jakarta.servlet.http.HttpSession
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.ai.chat.client.ChatClient
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor
+import org.springframework.ai.chat.client.advisor.QuestionAnswerAdvisor
+import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor
 import org.springframework.ai.chat.memory.InMemoryChatMemory
+import org.springframework.ai.vectorstore.SearchRequest
+import org.springframework.ai.vectorstore.pgvector.PgVectorStore
 import org.springframework.http.MediaType
 import org.springframework.security.web.csrf.CsrfToken
 import org.springframework.web.bind.annotation.*
@@ -27,8 +32,10 @@ import java.io.File
 class OpenAiController(
     chatClientBuilder: ChatClient.Builder,
     aiConfigurationProperties: AiConfigurationProperties,
+    vectorStore: PgVectorStore,
     private val session: HttpSession,
     private val reactiveChatProcessorHandler: ReactiveChatProcessorHandler,
+    private val externalApiHandler: ExternalApiHandler,
 ) {
     private final val customDefaultSystem: String =
         File(aiConfigurationProperties.defaultSystemFilePath).readText(Charsets.UTF_8)
@@ -37,12 +44,26 @@ class OpenAiController(
 
     private final val customChatClient = chatClientBuilder.clone()
         .defaultSystem(customDefaultSystem)
-        .defaultAdvisors(messageChatMemoryAdvisor)
+        .defaultAdvisors(
+            messageChatMemoryAdvisor,
+            SimpleLoggerAdvisor(),
+            QuestionAnswerAdvisor(
+                vectorStore,
+                SearchRequest
+                    .builder()
+                    .topK(50)
+                    .similarityThreshold(0.75)
+                    .build()
+            )
+        )
         .build()
 
     private final val boringChatClient = chatClientBuilder.clone()
         .defaultSystem("You are the mpalourdio corp. chatbot")
-        .defaultAdvisors(messageChatMemoryAdvisor)
+        .defaultAdvisors(
+            SimpleLoggerAdvisor(),
+            messageChatMemoryAdvisor
+        )
         .build()
 
     companion object {
@@ -56,6 +77,12 @@ class OpenAiController(
     @GetMapping("/csrf")
     fun csrf(csrfToken: CsrfToken): CsrfToken {
         return csrfToken;
+    }
+
+    @GetMapping("/refresh", produces = [MediaType.TEXT_PLAIN_VALUE])
+    fun refresh(): String {
+        this.externalApiHandler.refresh()
+        return "OK"
     }
 
     @PostMapping("/chat", produces = [MediaType.TEXT_EVENT_STREAM_VALUE])
