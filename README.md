@@ -14,10 +14,12 @@ Don't forget to export the `SPRING_AI_OPENAI_API_KEY` environment variable on yo
 - Run the image :
 ```bash
 docker run \
+  --network="host" \
   -e SPRING_AI_OPENAI_API_KEY=$SPRING_AI_OPENAI_API_KEY \
+  -e EXTERNAL_API_URL=https://xxxxxx \
   -e MPALOURDAI_DEFAULTSYSTEMFILEPATH=/container/defaultsystem.txt \
   -v /host/defaultsystem.txt:/container/defaultsystem.txt \
-  -p 8080:8080 ghcr.io/mpalourdio/mpalourd-ai:latest
+  -p 8081:8081 ghcr.io/mpalourdio/mpalourd-ai:latest
 ```
 # Image ready to test ?
 
@@ -26,3 +28,16 @@ docker run \
 # Failed to create the main Isolate. (code 24) ?
 
 Follow [these instructions](https://pimylifeup.com/raspberry-pi-page-size/) for Raspberry PI 5.
+
+# PGVector database
+
+```bash
+$ docker run -it --rm -d \
+    --name pgvector \
+    -e POSTGRES_PASSWORD=postgres \
+    -e POSTGRES_DB=pgvector \
+    -p 5432:5432 \
+    -e PGDATA=/var/lib/postgresql/data/pgdata \
+    -v ~/pgmount/pgvector:/var/lib/postgresql/data \
+     pgvector/pgvector:pg16
+```

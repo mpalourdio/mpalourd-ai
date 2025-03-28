@@ -16,7 +16,7 @@
                            id="prompt"
                            #promptField
                            autocomplete="off"
-                           placeholder="Does Björk fart sometimes?"
+                           placeholder="Select the checkbox to search through vector database"
                            [(ngModel)]="prompt">
                     <div class="input-group-text">
                         <input type="checkbox"
@@ -30,9 +30,10 @@
             <div class="col-xl-4 col-sm-12 mt-3">
                 <div class="row g-2">
                     <div class="col">
-                        <select class="form-select" name="model" [(ngModel)]="modelType" id="model">
+                        <select class="form-select" name="model" [(ngModel)]="modelType" id="model"
+                                [disabled]="isCustom">
                             @for (model of models; track model.name) {
-                                <option [ngValue]="model">{{ model.name }}</option>
+                                <option [ngValue]="isCustom ? modelType : model">{{ model.name }}</option>
                             }
                         </select>
                     </div>
@@ -41,7 +42,7 @@
                                 class="btn btn-success"
                                 (click)="request()"
                                 [disabled]="!prompt()">Go!
-                            <i [class]="{'bi-emoji-smile-upside-down-fill': isCustom,'bi-emoji-smile-fill': !isCustom}"
+                            <i [class]="{'bi-music-note-list': isCustom,'bi-emoji-smile-fill': !isCustom}"
                                class="bi fs-6 ms-2"></i>
                         </button>&ngsp;
                         <button type="button"
