@@ -18,7 +18,10 @@ import org.springframework.scheduling.annotation.EnableScheduling
 
 @SpringBootApplication
 @EnableScheduling
-@EnableConfigurationProperties(AiConfigurationProperties::class, ExternalApiConfigurationProperties::class)
+@EnableConfigurationProperties(
+    AiConfigurationProperties::class,
+    ExternalApiConfigurationProperties::class,
+)
 class MpalourdAiApplication
 
 fun main(args: Array<String>) {
