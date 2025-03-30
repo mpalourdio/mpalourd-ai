@@ -26,9 +26,9 @@ import org.springframework.stereotype.Service
 
 @Service
 class ExternalApiHandler(
-    val externalApiConfigurationProperties: ExternalApiConfigurationProperties,
+    private val externalApiConfigurationProperties: ExternalApiConfigurationProperties,
     private val vectorStore: PgVectorStore,
-    ) {
+) {
 
     companion object {
         private val log: Logger = LoggerFactory.getLogger(this::class.java)
@@ -39,35 +39,16 @@ class ExternalApiHandler(
         log.info("========================================================")
         log.info("Beginning to refresh vector store with external API data")
 
-        // populate DB with new data
         val extractedResults = fetchAndExtractResults()
         val flattenTreeAsByteArray = getAsByteArray(extractedResults)
-
-        val jsonReader = JsonReader(
-            ByteArrayResource(flattenTreeAsByteArray),
-            ExternalApiMetadataGenerator(),
-            "artist", "album"
-        )
-        val documents: List<Document> = jsonReader.get()
-
-        log.info("Cleaning database")
-        // delete the DB before refreshing
-        val expression: Filter.Expression = FilterExpressionBuilder()
-            .not(
-                FilterExpressionBuilder()
-                    .eq("artist", "delete the DB before refreshing")
-            )
-            .build()
-        this.vectorStore.delete(expression)
-
-        log.info("Population database with new results")
-        this.vectorStore.add(documents)
+        val documents: List<Document> = getDocumentsList(flattenTreeAsByteArray)
+        cleanAndPopulateDB(documents)
 
         log.info("Finished refreshing vector store with external API data")
         log.info("========================================================")
     }
 
-    private fun fetchAndExtractResults(): List<Tree>? {
+    private fun fetchAndExtractResults(): List<Tree> {
         log.info("Fetching external API to populate vector store")
         val apiResult = RestTemplateBuilder()
             .build()
@@ -76,34 +57,63 @@ class ExternalApiHandler(
                 Array<Tree>::class.java
             )
         // we only get the first element of the JSON array because the last array is useless
-        // the first object of this first array is useless too (/media/xxxxxx/4To/XXXX)
-        return apiResult?.get(0)?.contents
+        // the first object of this first array is useless too (/media/xxxxxx/XXXX/XXXX)
+        return apiResult!![0].contents!!
     }
 
-    private fun getAsByteArray(treeOuput: List<Tree>?): ByteArray {
+    private fun getAsByteArray(treeOuput: List<Tree>): ByteArray {
         val flattenTree = flattenTreeOutput(treeOuput)
         return ObjectMapper().writeValueAsString(flattenTree).encodeToByteArray()
     }
 
-    private fun flattenTreeOutput(trees: List<Tree>?): List<FlattenTree> {
+    private fun flattenTreeOutput(trees: List<Tree>): List<FlattenTree> {
         val flattenTrees = mutableListOf<FlattenTree>()
-        trees?.forEach { tree ->
-            crawlTreeOutput(tree, flattenTrees)
-        }
+        trees.forEach { crawlTreeOutput(it, flattenTrees) }
 
         return flattenTrees
     }
 
     private fun crawlTreeOutput(tree: Tree, flattenTrees: MutableList<FlattenTree>) {
-        tree.contents?.forEach { subTree ->
-            if (subTree.contents != null) {
-                crawlTreeOutput(subTree, flattenTrees)
-            } else {
-                val toSplit = subTree.name!!
-                val artist = toSplit.substringBeforeLast(" -")
-                val album = toSplit.substringAfterLast("- ", toSplit).replace(" [FLAC]", "")
-                flattenTrees.add(FlattenTree(artist, album))
+        tree.contents?.forEach {
+            when {
+                it.contents != null -> crawlTreeOutput(it, flattenTrees)
+                else -> {
+                    val toSplit = it.name!!
+                    val artist = toSplit.substringBeforeLast(" -")
+                    val album = toSplit.substringAfterLast("- ", toSplit).replace(" [FLAC]", "")
+                    flattenTrees.add(FlattenTree(artist, album))
+                }
             }
         }
+    }
+
+    private fun getDocumentsList(flattenTreeAsByteArray: ByteArray): List<Document> {
+        val jsonReader = JsonReader(
+            ByteArrayResource(flattenTreeAsByteArray),
+            ExternalApiMetadataGenerator(),
+            "artist", "album"
+        )
+
+        return jsonReader.get()
+    }
+
+    private fun populateDB(documents: List<Document>) {
+        log.info("Population database with new results")
+        this.vectorStore.add(documents)
+    }
+
+    private fun cleanupDB() {
+        log.info("Cleaning database")
+        // delete the DB before refreshing
+        val expression: Filter.Expression = FilterExpressionBuilder()
+            .not(FilterExpressionBuilder().eq("artist", "delete the DB before refreshing"))
+            .build()
+
+        this.vectorStore.delete(expression)
+    }
+
+    private fun cleanAndPopulateDB(documents: List<Document>) {
+        cleanupDB()
+        populateDB(documents)
     }
 }
