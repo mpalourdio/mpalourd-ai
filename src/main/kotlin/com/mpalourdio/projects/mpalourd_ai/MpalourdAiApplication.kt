@@ -10,12 +10,15 @@
 package com.mpalourdio.projects.mpalourd_ai
 
 import com.mpalourdio.projects.mpalourd_ai.config.AiConfigurationProperties
+import com.mpalourdio.projects.mpalourd_ai.external.ExternalApiConfigurationProperties
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.runApplication
+import org.springframework.scheduling.annotation.EnableScheduling
 
 @SpringBootApplication
-@EnableConfigurationProperties(AiConfigurationProperties::class)
+@EnableScheduling
+@EnableConfigurationProperties(AiConfigurationProperties::class, ExternalApiConfigurationProperties::class)
 class MpalourdAiApplication
 
 fun main(args: Array<String>) {
