@@ -28,6 +28,8 @@ docker run \
   --network=mpalourd-ai
   -e SPRING_AI_OPENAI_API_KEY=$SPRING_AI_OPENAI_API_KEY \
   -e EXTERNAL_API_URL=https://xxxxxx \
+  -e EXTERNAL_API_TOPK=50 \  #not mandatory, 50 by default
+  -e EXTERNAL_API_SIMILARITYTHRESHOLD=0.75 \  #not mandatory, 0.75 by default
   -e MPALOURDAI_DEFAULTSYSTEMFILEPATH=/container/defaultsystem.txt \
   -v /host/defaultsystem.txt:/container/defaultsystem.txt \
   -p 8080:8080 ghcr.io/mpalourdio/mpalourd-ai:latest
