@@ -9,6 +9,7 @@
 package com.mpalourdio.projects.mpalourd_ai.controller
 
 import com.mpalourdio.projects.mpalourd_ai.config.AiConfigurationProperties
+import com.mpalourdio.projects.mpalourd_ai.external.ExternalApiConfigurationProperties
 import com.mpalourdio.projects.mpalourd_ai.external.ExternalApiHandler
 import com.mpalourdio.projects.mpalourd_ai.model.ChatRequestBody
 import jakarta.servlet.http.HttpSession
@@ -32,6 +33,7 @@ import java.io.File
 class OpenAiController(
     chatClientBuilder: ChatClient.Builder,
     aiConfigurationProperties: AiConfigurationProperties,
+    externalApiConfigurationProperties: ExternalApiConfigurationProperties,
     vectorStore: PgVectorStore,
     private val session: HttpSession,
     private val reactiveChatProcessorHandler: ReactiveChatProcessorHandler,
@@ -51,8 +53,8 @@ class OpenAiController(
                 vectorStore,
                 SearchRequest
                     .builder()
-                    .topK(50)
-                    .similarityThreshold(0.75)
+                    .topK(externalApiConfigurationProperties.topK)
+                    .similarityThreshold(externalApiConfigurationProperties.similarityThreshold)
                     .build()
             )
         )

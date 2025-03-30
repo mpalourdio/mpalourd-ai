@@ -12,4 +12,9 @@ package com.mpalourdio.projects.mpalourd_ai.external
 import org.springframework.boot.context.properties.ConfigurationProperties
 
 @ConfigurationProperties("external.api")
-data class ExternalApiConfigurationProperties(val url: String, val cron: String)
+data class ExternalApiConfigurationProperties(
+    val url: String,
+    val cron: String,
+    val topK: Int = 50,
+    val similarityThreshold: Double = 0.75
+)
