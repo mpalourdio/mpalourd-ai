@@ -11,8 +11,8 @@ package com.mpalourdio.projects.mpalourd_ai.external
 
 import org.springframework.ai.reader.JsonMetadataGenerator
 
-class ExternalApiMetadataGenerator: JsonMetadataGenerator {
-    override fun generate(jsonMap: MutableMap<String, Any>?): MutableMap<String, Any> {
-        return jsonMap!!.toMutableMap()
+class ExternalApiMetadataGenerator : JsonMetadataGenerator {
+    override fun generate(jsonMap: MutableMap<String, Any>): MutableMap<String, Any> {
+        return jsonMap.toMutableMap()
     }
 }
