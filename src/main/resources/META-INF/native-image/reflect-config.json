@@ -1,13 +1,5 @@
 [
 {
-  "name":"org.springframework.ai.openai.OpenAiChatOptions",
-  "allDeclaredFields":true,
-  "allDeclaredClasses":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"getFrequencyPenalty","parameterTypes":[] }, {"name":"getLogitBias","parameterTypes":[] }, {"name":"getLogprobs","parameterTypes":[] }, {"name":"getMaxCompletionTokens","parameterTypes":[] }, {"name":"getMaxTokens","parameterTypes":[] }, {"name":"getMetadata","parameterTypes":[] }, {"name":"getModel","parameterTypes":[] }, {"name":"getN","parameterTypes":[] }, {"name":"getOutputAudio","parameterTypes":[] }, {"name":"getOutputModalities","parameterTypes":[] }, {"name":"getParallelToolCalls","parameterTypes":[] }, {"name":"getPresencePenalty","parameterTypes":[] }, {"name":"getReasoningEffort","parameterTypes":[] }, {"name":"getResponseFormat","parameterTypes":[] }, {"name":"getSeed","parameterTypes":[] }, {"name":"getStop","parameterTypes":[] }, {"name":"getStore","parameterTypes":[] }, {"name":"getStreamOptions","parameterTypes":[] }, {"name":"getStreamUsage","parameterTypes":[] }, {"name":"getTemperature","parameterTypes":[] }, {"name":"getToolChoice","parameterTypes":[] }, {"name":"getTools","parameterTypes":[] }, {"name":"getTopLogprobs","parameterTypes":[] }, {"name":"getTopP","parameterTypes":[] }, {"name":"getUser","parameterTypes":[] }, {"name":"setModel","parameterTypes":["java.lang.String"] }, {"name":"setTemperature","parameterTypes":["java.lang.Double"] }]
-},
-{
   "name":"com.mpalourdio.projects.mpalourd_ai.external.model.FlattenTree",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true,
