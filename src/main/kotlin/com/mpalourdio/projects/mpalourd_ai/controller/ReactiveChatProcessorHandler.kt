@@ -28,7 +28,7 @@ class ReactiveChatProcessorHandler {
             .stream()
             .chatResponse()
             .filter { c -> c.result.metadata.finishReason != "STOP" }
-            .map { c -> ChatLightResponse(c.result.output.text) }
+            .map { c -> ChatLightResponse(c.result.output.text!!) }
     }
 }
 

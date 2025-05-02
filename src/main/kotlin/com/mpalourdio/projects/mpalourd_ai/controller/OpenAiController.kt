@@ -19,7 +19,8 @@ import org.springframework.ai.chat.client.ChatClient
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor
 import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor
-import org.springframework.ai.chat.memory.jdbc.JdbcChatMemory
+import org.springframework.ai.chat.memory.MessageWindowChatMemory
+import org.springframework.ai.chat.memory.jdbc.JdbcChatMemoryRepository
 import org.springframework.ai.vectorstore.SearchRequest
 import org.springframework.ai.vectorstore.pgvector.PgVectorStore
 import org.springframework.http.MediaType
@@ -35,7 +36,7 @@ class OpenAiController(
     aiConfigurationProperties: AiConfigurationProperties,
     externalApiConfigurationProperties: ExternalApiConfigurationProperties,
     vectorStore: PgVectorStore,
-    jdbcChatMemory: JdbcChatMemory,
+    chatMemoryRepository: JdbcChatMemoryRepository,
     private val session: HttpSession,
     private val reactiveChatProcessorHandler: ReactiveChatProcessorHandler,
     private val externalApiHandler: ExternalApiHandler,
@@ -43,21 +44,27 @@ class OpenAiController(
     private final val customDefaultSystem: String =
         File(aiConfigurationProperties.defaultSystemFilePath).readText(Charsets.UTF_8)
 
-    private final val messageChatMemoryAdvisor = MessageChatMemoryAdvisor(jdbcChatMemory)
+    private final val messageChatMemoryAdvisor = MessageChatMemoryAdvisor(
+        MessageWindowChatMemory.builder()
+            .chatMemoryRepository(chatMemoryRepository)
+            .build()
+    )
 
     private final val customChatClient = chatClientBuilder.clone()
         .defaultSystem(customDefaultSystem)
         .defaultAdvisors(
             messageChatMemoryAdvisor,
             SimpleLoggerAdvisor(),
-            QuestionAnswerAdvisor(
-                vectorStore,
-                SearchRequest
-                    .builder()
-                    .topK(externalApiConfigurationProperties.topK)
-                    .similarityThreshold(externalApiConfigurationProperties.similarityThreshold)
-                    .build()
-            )
+            QuestionAnswerAdvisor
+                .builder(vectorStore)
+                .searchRequest(
+                    SearchRequest
+                        .builder()
+                        .topK(externalApiConfigurationProperties.topK)
+                        .similarityThreshold(externalApiConfigurationProperties.similarityThreshold)
+                        .build()
+                )
+                .build()
         )
         .build()
 
