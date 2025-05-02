@@ -15,16 +15,20 @@ export interface ModelType {
 
 export const modelTypes: ModelType[] = [
     {
-        name: 'gpt-4o-mini',
+        name: 'gpt-4.1-nano',
         temperature: 0.7
     },
     {
-        name: 'gpt-4o',
+        name: 'gpt-4.1-mini',
         temperature: 0.7
     },
     {
-        name: 'o3-mini',
+        name: 'o4-mini',
         temperature: 1.0,
         formatting: 'Formatting re-enabled '
+    },
+    {
+        name: 'gpt-4.1',
+        temperature: 0.7
     },
 ];
