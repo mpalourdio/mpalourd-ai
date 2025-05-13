@@ -3,7 +3,7 @@ package com.mpalourdio.projects.mpalourd_ai.controller
 import com.mpalourdio.projects.mpalourd_ai.model.ChatRequestBody
 import jakarta.servlet.http.HttpSession
 import org.springframework.ai.chat.client.ChatClient
-import org.springframework.ai.chat.client.advisor.AbstractChatMemoryAdvisor.CHAT_MEMORY_CONVERSATION_ID_KEY
+import org.springframework.ai.chat.memory.ChatMemory.CONVERSATION_ID
 import org.springframework.ai.chat.prompt.ChatOptions
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
@@ -24,7 +24,7 @@ class ReactiveChatProcessorHandler {
                     .temperature(chatRequestBody.modelType.temperature)
                     .build()
             )
-            .advisors { a -> a.param(CHAT_MEMORY_CONVERSATION_ID_KEY, session.id) }
+            .advisors { a -> a.param(CONVERSATION_ID, session.id) }
             .stream()
             .chatResponse()
             .filter { c -> c.result.metadata.finishReason != "STOP" }

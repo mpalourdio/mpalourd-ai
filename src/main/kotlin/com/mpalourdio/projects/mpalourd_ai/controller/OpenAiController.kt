@@ -20,7 +20,7 @@ import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor
 import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor
 import org.springframework.ai.chat.memory.MessageWindowChatMemory
-import org.springframework.ai.chat.memory.jdbc.JdbcChatMemoryRepository
+import org.springframework.ai.chat.memory.repository.jdbc.JdbcChatMemoryRepository
 import org.springframework.ai.vectorstore.SearchRequest
 import org.springframework.ai.vectorstore.pgvector.PgVectorStore
 import org.springframework.http.MediaType
@@ -44,11 +44,11 @@ class OpenAiController(
     private final val customDefaultSystem: String =
         File(aiConfigurationProperties.defaultSystemFilePath).readText(Charsets.UTF_8)
 
-    private final val messageChatMemoryAdvisor = MessageChatMemoryAdvisor(
+    private final val messageChatMemoryAdvisor = MessageChatMemoryAdvisor.builder(
         MessageWindowChatMemory.builder()
             .chatMemoryRepository(chatMemoryRepository)
-            .build()
-    )
+            .build())
+        .build()
 
     private final val customChatClient = chatClientBuilder.clone()
         .defaultSystem(customDefaultSystem)
