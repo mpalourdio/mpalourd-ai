@@ -13,10 +13,10 @@ import { FormsModule } from '@angular/forms';
 import { NgIf, ViewportScroller } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { modelTypes } from '../model/model-type';
-import { filter, map, tap } from "rxjs";
-import { MarkdownComponent } from "ngx-markdown";
-import { HttpDownloadProgressEvent, HttpEventType } from "@angular/common/http";
-import { ChatResponse } from "../model/chatresponse-type";
+import { filter, map, tap } from 'rxjs';
+import { MarkdownComponent } from 'ngx-markdown';
+import { HttpDownloadProgressEvent, HttpEventType } from '@angular/common/http';
+import { ChatResponse } from '../model/chatresponse-type';
 
 @Component({
     selector: 'app-answer',
@@ -37,6 +37,7 @@ export class AnswerComponent implements AfterViewInit {
     isCustom = false;
     models = modelTypes;
     modelType = modelTypes[0];
+    isStreaming = false;
 
     constructor(private httpService: HttpService,
                 private router: Router,
@@ -68,11 +69,13 @@ export class AnswerComponent implements AfterViewInit {
 
     request(): void {
         this.errorMessage = '';
+        this.isStreaming = true;
         this.answer.set('');
 
         this.httpService
             .request$(this.prompt(), this.isCustom, this.modelType)
             .pipe(
+                tap(event => this.isStreaming = event.type !== HttpEventType.Response),
                 filter(event => event.type === HttpEventType.DownloadProgress),
                 map(event => (event as HttpDownloadProgressEvent).partialText!),
                 tap(partialText => {
@@ -84,7 +87,7 @@ export class AnswerComponent implements AfterViewInit {
                         .map((c: ChatResponse) => c.text)
                         .join('');
                     this.answer.set(chatResponsesText);
-                    this.scroller.scrollToAnchor("scroll-anchor");
+                    this.scroller.scrollToAnchor('scroll-anchor');
                 })
             )
             .subscribe({
