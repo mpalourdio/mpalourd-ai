@@ -56,8 +56,8 @@ class ExternalApiHandler(
                 externalApiConfigurationProperties.url,
                 Array<Tree>::class.java
             )
-        // we only get the first element of the JSON array because the last array is useless
-        // the first object of this first array is useless too (/media/xxxxxx/XXXX/XXXX)
+        // we only get the first element of the JSON array because the last array is useless.
+        // the first object of this first array is useless too (/media/xxxxxx/XXXX/XXXX).
         return apiResult!![0].contents!!
     }
 

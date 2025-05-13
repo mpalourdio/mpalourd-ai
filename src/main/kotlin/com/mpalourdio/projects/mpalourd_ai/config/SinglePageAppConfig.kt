@@ -59,7 +59,7 @@ class SinglePageAppConfig(
             if (resourceExistsAndIsReadable(resource)) {
                 //if the asked resource is index.html itself, we serve it with the base-href rewritten
                 return if (resourcePath.endsWith(FRONT_CONTROLLER)) frontControllerResource else resource
-                //here we serve js, css, etc.
+                //here we serve .js, .css, etc.
             }
 
             //do not serve a Resource on an ignored path

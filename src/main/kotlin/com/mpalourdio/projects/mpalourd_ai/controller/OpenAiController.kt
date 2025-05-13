@@ -86,7 +86,7 @@ class OpenAiController(
 
     @GetMapping("/csrf")
     fun csrf(csrfToken: CsrfToken): CsrfToken {
-        return csrfToken;
+        return csrfToken
     }
 
     @GetMapping("/refresh", produces = [MediaType.TEXT_PLAIN_VALUE])
