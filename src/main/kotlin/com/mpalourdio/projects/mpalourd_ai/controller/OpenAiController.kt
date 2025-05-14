@@ -48,6 +48,9 @@ class OpenAiController(
         MessageWindowChatMemory.builder()
             .chatMemoryRepository(chatMemoryRepository)
             .build())
+        // TODO: Should not be necassary to set this
+        // But, it fails in native image with "Caused by: java.lang.IllegalArgumentException: scheduler cannot be null"
+        .scheduler(MessageChatMemoryAdvisor.DEFAULT_SCHEDULER)
         .build()
 
     private final val customChatClient = chatClientBuilder.clone()
