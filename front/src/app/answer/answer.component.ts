@@ -75,7 +75,6 @@ export class AnswerComponent implements AfterViewInit {
         this.httpService
             .request$(this.prompt(), this.isCustom, this.modelType)
             .pipe(
-                tap(event => this.isStreaming = event.type !== HttpEventType.Response),
                 filter(event => event.type === HttpEventType.DownloadProgress),
                 map(event => (event as HttpDownloadProgressEvent).partialText!),
                 tap(partialText => {
@@ -91,7 +90,11 @@ export class AnswerComponent implements AfterViewInit {
                 })
             )
             .subscribe({
-                error: () => this.errorMessage = 'An arror has occured, please retry later.'
+                error: () => {
+                    this.isStreaming = false;
+                    return this.errorMessage = 'An arror has occured, please retry later.';
+                },
+                complete: () => this.isStreaming = false
             });
     }
 
