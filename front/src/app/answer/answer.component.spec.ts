@@ -13,6 +13,7 @@ import { AnswerComponent } from './answer.component';
 import { provideHttpClient } from "@angular/common/http";
 import { provideHttpClientTesting } from "@angular/common/http/testing";
 import { provideRouter } from '@angular/router';
+import { provideExperimentalZonelessChangeDetection } from "@angular/core";
 
 describe('AnswerComponent', () => {
     let component: AnswerComponent;
@@ -25,6 +26,7 @@ describe('AnswerComponent', () => {
                 provideHttpClient(),
                 provideHttpClientTesting(),
                 provideRouter([]),
+                provideExperimentalZonelessChangeDetection(),
             ]
         })
             .compileComponents();
