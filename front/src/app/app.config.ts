@@ -7,7 +7,12 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { ApplicationConfig, inject, provideAppInitializer, provideZoneChangeDetection } from '@angular/core';
+import {
+    ApplicationConfig,
+    inject,
+    provideAppInitializer,
+    provideExperimentalZonelessChangeDetection
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { HttpClient, provideHttpClient, withFetch, withInterceptors } from "@angular/common/http";
@@ -17,7 +22,7 @@ import { pendingRequestsInterceptor$ } from "ng-http-loader";
 
 export const appConfig: ApplicationConfig = {
     providers: [
-        provideZoneChangeDetection({ eventCoalescing: true }),
+        provideExperimentalZonelessChangeDetection(),
         provideRouter(routes),
         provideHttpClient(
             withInterceptors([pendingRequestsInterceptor$]),
