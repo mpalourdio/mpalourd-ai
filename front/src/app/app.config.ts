@@ -11,7 +11,7 @@ import {
     ApplicationConfig,
     inject,
     provideAppInitializer,
-    provideExperimentalZonelessChangeDetection
+    provideZonelessChangeDetection
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
@@ -22,7 +22,7 @@ import { pendingRequestsInterceptor$ } from "ng-http-loader";
 
 export const appConfig: ApplicationConfig = {
     providers: [
-        provideExperimentalZonelessChangeDetection(),
+        provideZonelessChangeDetection(),
         provideRouter(routes),
         provideHttpClient(
             withInterceptors([pendingRequestsInterceptor$]),
