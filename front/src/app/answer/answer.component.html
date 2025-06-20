@@ -57,15 +57,18 @@
 
     @if (!!answer() || !!errorMessage) {
         <div class="pb-3">
-            <markdown
-                clipboard
-                lineNumbers
-                *ngIf="!!answer()"
-                [data]="answer()">
-            </markdown>
-            <div class="alert alert-danger" role="alert" *ngIf="!!errorMessage">
-                {{ errorMessage }}
-            </div>
+            @if (!!answer()) {
+                <markdown
+                    clipboard
+                    lineNumbers
+                    [data]="answer()">
+                </markdown>
+            }
+            @if (!!errorMessage) {
+                <div class="alert alert-danger" role="alert">
+                    {{ errorMessage }}
+                </div>
+            }
         </div>
         <div id="scroll-anchor"></div>
     }

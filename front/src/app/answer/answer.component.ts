@@ -10,7 +10,7 @@
 import { AfterViewInit, Component, ElementRef, model, signal, ViewChild } from '@angular/core';
 import { HttpService } from '../http.service';
 import { FormsModule } from '@angular/forms';
-import { NgIf, ViewportScroller } from '@angular/common';
+import { ViewportScroller } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { modelTypes } from '../model/model-type';
 import { filter, map, tap } from 'rxjs';
@@ -23,7 +23,6 @@ import { ChatResponse } from '../model/chatresponse-type';
     imports: [
         FormsModule,
         MarkdownComponent,
-        NgIf,
     ],
     templateUrl: './answer.component.html',
     styleUrl: './answer.component.scss'
