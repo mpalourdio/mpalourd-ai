@@ -20,8 +20,8 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository
 import org.springframework.security.web.csrf.CsrfTokenRequestHandler
 import org.springframework.security.web.csrf.XorCsrfTokenRequestAttributeHandler
 import org.springframework.security.web.header.HeaderWriterFilter
+import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher
 import org.springframework.security.web.util.matcher.AndRequestMatcher
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher
 import org.springframework.security.web.util.matcher.NegatedRequestMatcher
 
 @Configuration(proxyBeanMethods = false)
@@ -61,9 +61,9 @@ class WebSecurityConfig {
         http {
             securityMatcher(
                 AndRequestMatcher(
-                    NegatedRequestMatcher(antMatcher("/api/**")),
-                    NegatedRequestMatcher(antMatcher("/")),
-                    NegatedRequestMatcher(antMatcher("/index.html"))
+                    NegatedRequestMatcher(PathPatternRequestMatcher.withDefaults().matcher("/api/**")),
+                    NegatedRequestMatcher(PathPatternRequestMatcher.withDefaults().matcher("/")),
+                    NegatedRequestMatcher(PathPatternRequestMatcher.withDefaults().matcher("/index.html")),
                 )
             )
             addFilterAfter<HeaderWriterFilter>(CacheControlHeaderFilter())
