@@ -55,7 +55,7 @@
         </div>
     </form>
 
-    @if (!!answer() || !!errorMessage) {
+    @if (!!answer() || !!errorMessage()) {
         <div class="pb-3">
             @if (!!answer()) {
                 <markdown
@@ -64,9 +64,9 @@
                     [data]="answer()">
                 </markdown>
             }
-            @if (!!errorMessage) {
+            @if (!!errorMessage()) {
                 <div class="alert alert-danger" role="alert">
-                    {{ errorMessage }}
+                    {{ errorMessage()}}
                 </div>
             }
         </div>
