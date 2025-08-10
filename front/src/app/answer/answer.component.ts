@@ -32,11 +32,11 @@ export class AnswerComponent implements AfterViewInit {
     @ViewChild('promptField') promptField!: ElementRef;
     prompt = model<string | null>();
     answer = signal<string>('');
-    errorMessage = '';
+    errorMessage = signal<string>('');
     isCustom = false;
     models = modelTypes;
     modelType = modelTypes[0];
-    isStreaming = false;
+    isStreaming = signal<boolean>(false);
 
     constructor(private httpService: HttpService,
                 private router: Router,
@@ -67,8 +67,8 @@ export class AnswerComponent implements AfterViewInit {
     }
 
     request(): void {
-        this.errorMessage = '';
-        this.isStreaming = true;
+        this.errorMessage.set('');
+        this.isStreaming.set(true);
         this.answer.set('');
 
         this.httpService
@@ -90,15 +90,15 @@ export class AnswerComponent implements AfterViewInit {
             )
             .subscribe({
                 error: () => {
-                    this.isStreaming = false;
-                    return this.errorMessage = 'An arror has occured, please retry later.';
+                    this.isStreaming.set(false);
+                    this.errorMessage.set('An arror has occured, please retry later.');
                 },
-                complete: () => this.isStreaming = false
+                complete: () => this.isStreaming.set(false)
             });
     }
 
     clear(): void {
-        this.errorMessage = '';
+        this.errorMessage.set('');
         this.answer.set('');
         this.prompt.set(null);
         this.promtFieldFocus();

@@ -41,7 +41,7 @@
                         <button type="submit"
                                 class="btn btn-success"
                                 (click)="request()"
-                                [disabled]="!prompt() || isStreaming">Go!
+                                [disabled]="!prompt() || isStreaming()">Go!
                             <i [class]="{'bi-music-note-list': isCustom,'bi-emoji-smile-fill': !isCustom}"
                                class="bi fs-6 ms-2"></i>
                         </button>&ngsp;
@@ -55,7 +55,7 @@
         </div>
     </form>
 
-    @if (!!answer() || !!errorMessage) {
+    @if (!!answer() || !!errorMessage()) {
         <div class="pb-3">
             @if (!!answer()) {
                 <markdown
@@ -64,9 +64,9 @@
                     [data]="answer()">
                 </markdown>
             }
-            @if (!!errorMessage) {
+            @if (!!errorMessage()) {
                 <div class="alert alert-danger" role="alert">
-                    {{ errorMessage }}
+                    {{ errorMessage()}}
                 </div>
             }
         </div>
