@@ -36,7 +36,7 @@ export class AnswerComponent implements AfterViewInit {
     isCustom = false;
     models = modelTypes;
     modelType = modelTypes[0];
-    isStreaming = false;
+    isStreaming = signal<boolean>(false);
 
     constructor(private httpService: HttpService,
                 private router: Router,
@@ -68,7 +68,7 @@ export class AnswerComponent implements AfterViewInit {
 
     request(): void {
         this.errorMessage.set('');
-        this.isStreaming = true;
+        this.isStreaming.set(true);
         this.answer.set('');
 
         this.httpService
@@ -90,10 +90,10 @@ export class AnswerComponent implements AfterViewInit {
             )
             .subscribe({
                 error: () => {
-                    this.isStreaming = false;
+                    this.isStreaming.set(false);
                     this.errorMessage.set('An arror has occured, please retry later.');
                 },
-                complete: () => this.isStreaming = false
+                complete: () => this.isStreaming.set(false)
             });
     }
 
