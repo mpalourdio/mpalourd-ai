@@ -40,6 +40,10 @@
                         <configuration>
                             <image>
                                 <name>ghcr.io/mpalourdio/mpalourd-ai:latest</name>
+                                <env>
+                                    <!-- needed because docker logs xxx returns some ???? -->
+                                    <LC_ALL>en_US.UTF-8</LC_ALL>
+                                </env>
                             </image>
                         </configuration>
                         <executions>
