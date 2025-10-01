@@ -16,8 +16,8 @@
     <description>Sample application with Spring AI</description>
 
     <properties>
-        <java.version>21</java.version>
-        <kotlin.version>1.9.25</kotlin.version>
+        <java.version>21</java.version> <!-- 25 is not supported (yet) by kotlin-->
+        <kotlin.version>2.2.20</kotlin.version>
         <spring-ai.version>1.0.2</spring-ai.version>
 
         <!-- dependencies -->
@@ -145,6 +145,7 @@
                 <configuration>
                     <args>
                         <arg>-Xjsr305=strict</arg>
+                        <arg>-Xannotation-default-target=param-property</arg>
                     </args>
                     <compilerPlugins>
                         <plugin>spring</plugin>
