@@ -34,7 +34,7 @@ class ExternalApiHandler(
         private val log: Logger = LoggerFactory.getLogger(this::class.java)
     }
 
-    @Scheduled(cron = "\${external.api.cron}")
+    @Scheduled(cron = $$"${external.api.cron}")
     fun refresh() {
         log.info("========================================================")
         log.info("Beginning to refresh vector store with external API data")
