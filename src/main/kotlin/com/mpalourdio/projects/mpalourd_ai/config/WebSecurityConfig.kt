@@ -10,6 +10,7 @@
 package com.mpalourdio.projects.mpalourd_ai.config
 
 import com.mpalourdio.projects.mpalourd_ai.filter.CacheControlHeaderFilter
+import org.springframework.boot.web.server.Cookie
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.annotation.Order
@@ -31,6 +32,8 @@ class WebSecurityConfig {
     @Throws(Exception::class)
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain? {
         val tokenRepository = CookieCsrfTokenRepository.withHttpOnlyFalse()
+        tokenRepository.setCookieCustomizer { c -> c.secure(true).sameSite(Cookie.SameSite.STRICT.attributeValue()) }
+
         val delegate: XorCsrfTokenRequestAttributeHandler = getXorCsrfTokenRequestAttributeHandler()
         // Use only the handle() method of XorCsrfTokenRequestAttributeHandler and the
         // default implementation of resolveCsrfTokenValue() from CsrfTokenRequestHandler
