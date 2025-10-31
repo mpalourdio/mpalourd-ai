@@ -13,7 +13,7 @@ jobs:
       max-parallel: 4
       matrix:
         java-version: [ 25 ]
-        node-version: [ 22.x ]
+        node-version: [ 24.x ]
 
     steps:
       - name: Checkout
@@ -27,7 +27,7 @@ jobs:
           cache: 'maven'
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
