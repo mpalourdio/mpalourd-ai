@@ -19,7 +19,7 @@ import org.springframework.ai.reader.JsonReader
 import org.springframework.ai.vectorstore.filter.Filter
 import org.springframework.ai.vectorstore.filter.FilterExpressionBuilder
 import org.springframework.ai.vectorstore.pgvector.PgVectorStore
-import org.springframework.boot.web.client.RestTemplateBuilder
+import org.springframework.boot.restclient.RestTemplateBuilder
 import org.springframework.core.io.ByteArrayResource
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Service
