@@ -8,7 +8,7 @@ updates:
       - dependency-type: "direct"
     versioning-strategy: "lockfile-only"
 
-  - package-ecosystem: "maven"
+  - package-ecosystem: "gradle"
     directory: "/"
     schedule:
       interval: "weekly"

@@ -10,7 +10,7 @@ Don't forget to export the `SPRING_AI_OPENAI_API_KEY` environment variable on yo
 
 # Steps
 - Create a docker network: `docker network create mpalourd-ai`
-- Build the image: `mvn clean -Pnative spring-boot:build-image`.
+- Build the image: `./gradlew bootBuildImage`.
 - Run a Vector database
 ```bash
 $ docker run -it --rm -d \
