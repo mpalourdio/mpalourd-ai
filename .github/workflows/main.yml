@@ -24,7 +24,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: ${{ matrix.java-version }}
-          cache: 'maven'
+          cache: 'gradle'
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v6
@@ -34,7 +34,7 @@ jobs:
           cache-dependency-path: 'front'
 
       - name: Docker image generation
-        run: ./mvnw clean -Pnative spring-boot:build-image
+        run: ./gradlew bootBuildImage
 
       - name: Login to GitHub Container Registry
         if: github.ref == 'refs/heads/main'
