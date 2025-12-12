@@ -2,11 +2,7 @@ package com.mpalourdio.projects.mpalourd_ai.csrf
 
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
-import org.springframework.security.web.csrf.CsrfToken
-import org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler
-import org.springframework.security.web.csrf.CsrfTokenRequestHandler
-import org.springframework.security.web.csrf.CsrfTokenRequestResolver
-import org.springframework.security.web.csrf.XorCsrfTokenRequestAttributeHandler
+import org.springframework.security.web.csrf.*
 import org.springframework.util.StringUtils
 import java.util.function.Supplier
 
@@ -15,7 +11,7 @@ class SpaCsrfTokenRequestHandler : CsrfTokenRequestHandler {
     private val plain: CsrfTokenRequestResolver = CsrfTokenRequestAttributeHandler()
     private val xor: CsrfTokenRequestHandler = XorCsrfTokenRequestAttributeHandler()
 
-    override fun handle(request: HttpServletRequest?, response: HttpServletResponse?, csrfToken: Supplier<CsrfToken?>) {
+    override fun handle(request: HttpServletRequest, response: HttpServletResponse, csrfToken: Supplier<CsrfToken>) {
         /*
          * Always use XorCsrfTokenRequestAttributeHandler to provide BREACH protection of
          * the CsrfToken when it is rendered in the response body.
