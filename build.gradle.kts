@@ -1,6 +1,6 @@
 plugins {
-    kotlin("jvm") version "2.3.0-RC"
-    kotlin("plugin.spring") version "2.3.0-RC"
+    kotlin("jvm") version "2.3.0-RC2"
+    kotlin("plugin.spring") version "2.3.0-RC2"
     id("org.springframework.boot") version "4.0.0"
     id("io.spring.dependency-management") version "1.1.7"
     id("org.graalvm.buildtools.native") version "0.11.3"
@@ -20,7 +20,7 @@ repositories {
     mavenCentral()
 }
 
-extra["springAiVersion"] = "1.1.0"
+extra["springAiVersion"] = "2.0.0-M1"
 extra["commonsIOVersion"] = "2.21.0"
 
 dependencies {
