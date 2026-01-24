@@ -20,7 +20,7 @@ repositories {
     mavenCentral()
 }
 
-extra["springAiVersion"] = "2.0.0-M1"
+extra["springAiVersion"] = "2.0.0-M2"
 extra["commonsIOVersion"] = "2.21.0"
 
 dependencies {
