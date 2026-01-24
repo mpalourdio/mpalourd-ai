@@ -47,5 +47,10 @@
     "typescript": "~5.9.2",
     "typescript-eslint": "^8.33.1",
     "vitest": "^4.0.8"
+  },
+  "overrides": {
+    "mermaid": {
+      "lodash-es": "4.17.23"
+    }
   }
 }
