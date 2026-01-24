@@ -11,6 +11,7 @@ package com.mpalourdio.projects.mpalourd_ai.config
 
 import com.mpalourdio.projects.mpalourd_ai.csrf.SpaCsrfTokenRequestHandler
 import com.mpalourdio.projects.mpalourd_ai.filter.CacheControlHeaderFilter
+import com.mpalourdio.projects.mpalourd_ai.filter.XAccelBufferingHeaderFilter
 import org.springframework.boot.web.server.Cookie
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -33,6 +34,7 @@ class WebSecurityConfig {
         tokenRepository.setCookieCustomizer { c -> c.secure(true).sameSite(Cookie.SameSite.STRICT.attributeValue()) }
 
         http {
+            addFilterAfter<HeaderWriterFilter>(XAccelBufferingHeaderFilter())
             csrf {
                 csrfTokenRepository = tokenRepository
                 csrfTokenRequestHandler = SpaCsrfTokenRequestHandler()
