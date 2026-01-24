@@ -27,8 +27,8 @@ class ReactiveChatProcessorHandler {
             .advisors { a -> a.param(CONVERSATION_ID, session.id) }
             .stream()
             .chatResponse()
-            .filter { c -> c.result.metadata.finishReason != "STOP" }
-            .map { c -> ChatLightResponse(c.result.output.text!!) }
+            .filter { c -> c.result?.metadata?.finishReason != "STOP" }
+            .map { c -> ChatLightResponse(c.result?.output?.text!!) }
     }
 }
 
