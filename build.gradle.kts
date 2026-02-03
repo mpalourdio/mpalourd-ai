@@ -68,7 +68,7 @@ tasks.withType<Test> {
 }
 tasks.register<Exec>("npmInstall") {
     workingDir = file("front")
-    commandLine("npm", "install")
+    commandLine("npm", "ci")
 }
 
 tasks.register<Exec>("ngBuild") {
