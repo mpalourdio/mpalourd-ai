@@ -23,6 +23,11 @@ repositories {
 extra["springAiVersion"] = "2.0.0-M2"
 extra["commonsIOVersion"] = "2.21.0"
 
+//TODO remove when fixed in graalVM
+//enforce groovy 4 vs 5 because of https://github.com/oracle/graal/pull/13097
+ext["groovy.version"] = "4.0.30"
+
+
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-security")
