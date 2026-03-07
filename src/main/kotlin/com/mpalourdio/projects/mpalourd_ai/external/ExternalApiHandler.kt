@@ -21,7 +21,6 @@ import org.springframework.ai.vectorstore.filter.FilterExpressionBuilder
 import org.springframework.ai.vectorstore.pgvector.PgVectorStore
 import org.springframework.boot.restclient.RestTemplateBuilder
 import org.springframework.core.io.ByteArrayResource
-import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Service
 
 @Service
@@ -34,7 +33,10 @@ class ExternalApiHandler(
         private val log: Logger = LoggerFactory.getLogger(this::class.java)
     }
 
-    @Scheduled(cron = $$"${external.api.cron}")
+    /**
+     * disabled because money money
+     */
+    //@Scheduled(cron = $$"${external.api.cron}")
     fun refresh() {
         log.info("========================================================")
         log.info("Beginning to refresh vector store with external API data")

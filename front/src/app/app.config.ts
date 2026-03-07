@@ -25,7 +25,7 @@ export const appConfig: ApplicationConfig = {
         ),
         provideAppInitializer(() => {
             const http = inject(HttpClient);
-            return firstValueFrom(http.get("api/openai/csrf"));
+            return firstValueFrom(http.get("api/csrf"));
         }),
         provideMarkdown(),
     ]

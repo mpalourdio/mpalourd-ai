@@ -23,6 +23,11 @@ repositories {
 extra["springAiVersion"] = "2.0.0-M2"
 extra["commonsIOVersion"] = "2.21.0"
 
+//TODO remove when fixed in graalVM
+//enforce groovy 4 vs 5 because of https://github.com/oracle/graal/pull/13097
+ext["groovy.version"] = "4.0.30"
+
+
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-security")
@@ -33,6 +38,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
     implementation("org.springframework.ai:spring-ai-advisors-vector-store")
     implementation("org.springframework.ai:spring-ai-starter-model-openai")
+    implementation("org.springframework.ai:spring-ai-starter-model-anthropic")
     implementation("org.springframework.ai:spring-ai-starter-vector-store-pgvector")
     implementation("org.apache.commons:commons-lang3")
     implementation("commons-io:commons-io:${property("commonsIOVersion")}")
