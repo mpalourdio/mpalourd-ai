@@ -23,7 +23,7 @@ export class HttpService {
 
     request$(prompt: string | null | undefined, isCustom: boolean, modelType: ModelType): Observable<HttpEvent<string>> {
         return this.http.post(
-            'api/openai/chat',
+            `api/${modelType.provider}/chat`,
             { prompt, isCustom, modelType },
             { observe: 'events', responseType: 'text', reportProgress: true }
         ).pipe(

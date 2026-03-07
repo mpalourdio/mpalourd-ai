@@ -3,10 +3,10 @@
 
 # Introduction
 
-`Spring Boot (kotlin)` + `angular` application that leverages `Spring-AI` with `OpenAi`.
+`Spring Boot (kotlin)` + `angular` application that leverages `Spring-AI` with `OpenAi` and `Anthropic` APIs .
 `Github actions` produce a `linux/arm64` ready docker image that can run on a Raspberry Pi for example.
 
-Don't forget to export the `SPRING_AI_OPENAI_API_KEY` environment variable on your host system.  
+Don't forget to export the `SPRING_AI_OPENAI_API_KEY` and/or the `SPRING_AI_ANTHROPIC_API_KEY` environment variables on your host system.  
 
 # Steps
 - Create a docker network: `docker network create mpalourd-ai`
@@ -27,6 +27,7 @@ $ docker run -it --rm -d \
 docker run \
   --network=mpalourd-ai
   -e SPRING_AI_OPENAI_API_KEY=$SPRING_AI_OPENAI_API_KEY \
+  -e SPRING_AI_ANTHROPIC_API_KEY=$SPRING_AI_ANTHROPIC_API_KEY \
   -e EXTERNAL_API_URL=https://xxxxxx \
   -e EXTERNAL_API_TOPK=50 \  #not mandatory, 50 by default
   -e EXTERNAL_API_SIMILARITYTHRESHOLD=0.75 \  #not mandatory, 0.75 by default

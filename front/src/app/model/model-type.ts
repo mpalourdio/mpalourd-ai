@@ -11,24 +11,44 @@ export interface ModelType {
     name: string;
     temperature: number;
     formatting?: string;
+    provider: string;
 }
 
 export const modelTypes: ModelType[] = [
     {
+        name: 'claude-haiku-4-5',
+        temperature: 0.1,
+        provider: 'anthropic'
+    },
+    {
+        name: 'claude-sonnet-4-6',
+        temperature: 0.1,
+        provider: 'anthropic'
+    },
+    {
+        name: 'claude-opus-4-6',
+        temperature: 0.1,
+        provider: 'anthropic'
+    },
+    {
         name: 'gpt-4.1-nano',
-        temperature: 0.7
+        temperature: 0.7,
+        provider: 'openai'
     },
     {
         name: 'gpt-4.1-mini',
-        temperature: 0.7
+        temperature: 0.7,
+        provider: 'openai'
     },
     {
         name: 'o4-mini',
         temperature: 1.0,
-        formatting: 'Formatting re-enabled '
+        formatting: 'Formatting re-enabled ',
+        provider: 'openai'
     },
     {
         name: 'gpt-4.1',
-        temperature: 0.7
+        temperature: 0.7,
+        provider: 'openai'
     },
 ];
