@@ -43,3 +43,10 @@ docker run \
 # Failed to create the main Isolate. (code 24) ?
 
 Follow [these instructions](https://pimylifeup.com/raspberry-pi-page-size/) for Raspberry PI 5.
+
+# Running the tracing agent
+
+```bash
+./gradlew bootJar
+ java -Dspring.aot.enabled=true -jar -agentlib:native-image-agent=config-output-dir=/tmp/ai build/libs/mpalourd-ai-0.0.1-SNAPSHOT-plain.jar
+ ```
