@@ -16,13 +16,14 @@
                            id="prompt"
                            #promptField
                            autocomplete="off"
-                           placeholder="Select the checkbox to search through vector database"
+                           placeholder="(feature disabled) Select the checkbox to search through vector database"
                            [(ngModel)]="prompt">
                     <div class="input-group-text">
                         <input type="checkbox"
                                class="form-check-input mt-0"
                                id="custom"
                                name="custom"
+                               disabled="disabled"
                                [(ngModel)]="isCustom">
                     </div>
                 </div>

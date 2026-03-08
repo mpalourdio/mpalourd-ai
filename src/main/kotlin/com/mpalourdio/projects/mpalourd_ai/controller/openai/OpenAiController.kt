@@ -6,7 +6,8 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.mpalourdio.projects.mpalourd_ai.controller
+
+package com.mpalourdio.projects.mpalourd_ai.controller.openai
 
 import com.mpalourdio.projects.mpalourd_ai.config.AiConfigurationProperties
 import com.mpalourdio.projects.mpalourd_ai.external.ExternalApiConfigurationProperties
@@ -24,7 +25,6 @@ import org.springframework.ai.chat.memory.repository.jdbc.JdbcChatMemoryReposito
 import org.springframework.ai.vectorstore.SearchRequest
 import org.springframework.ai.vectorstore.pgvector.PgVectorStore
 import org.springframework.http.MediaType
-import org.springframework.security.web.csrf.CsrfToken
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Flux
 import java.io.File
@@ -32,13 +32,13 @@ import java.io.File
 @RestController
 @RequestMapping("/api/openai")
 class OpenAiController(
-    chatClientBuilder: ChatClient.Builder,
+    openAiChatClientBuilder: ChatClient.Builder,
     aiConfigurationProperties: AiConfigurationProperties,
     externalApiConfigurationProperties: ExternalApiConfigurationProperties,
     vectorStore: PgVectorStore,
     chatMemoryRepository: JdbcChatMemoryRepository,
     private val session: HttpSession,
-    private val reactiveChatProcessorHandler: ReactiveChatProcessorHandler,
+    private val openAiReactiveChatProcessorHandler: OpenAiReactiveChatProcessorHandler,
     private val externalApiHandler: ExternalApiHandler,
 ) {
     private final val customDefaultSystem: String =
@@ -53,7 +53,7 @@ class OpenAiController(
         .scheduler(MessageChatMemoryAdvisor.DEFAULT_SCHEDULER)
         .build()
 
-    private final val customChatClient = chatClientBuilder.clone()
+    private final val customChatClient = openAiChatClientBuilder.clone()
         .defaultSystem(customDefaultSystem)
         .defaultAdvisors(
             messageChatMemoryAdvisor,
@@ -71,7 +71,7 @@ class OpenAiController(
         )
         .build()
 
-    private final val boringChatClient = chatClientBuilder.clone()
+    private final val boringChatClient = openAiChatClientBuilder.clone()
         .defaultSystem("You are the mpalourdio corp. chatbot")
         .defaultAdvisors(
             SimpleLoggerAdvisor(),
@@ -85,11 +85,6 @@ class OpenAiController(
 
     init {
         log.info("Custom default system: \n${this.customDefaultSystem}")
-    }
-
-    @GetMapping("/csrf")
-    fun csrf(csrfToken: CsrfToken): CsrfToken {
-        return csrfToken
     }
 
     @GetMapping("/refresh", produces = [MediaType.TEXT_PLAIN_VALUE])
@@ -112,6 +107,6 @@ class OpenAiController(
             false -> boringChatClient
         }
 
-        return reactiveChatProcessorHandler.streamResponse(chatClient, concatPrompt, chatRequestBody, session)
+        return openAiReactiveChatProcessorHandler.streamResponse(chatClient, concatPrompt, chatRequestBody, session)
     }
 }
