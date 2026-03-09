@@ -18,6 +18,7 @@ import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor
 import org.springframework.ai.chat.memory.MessageWindowChatMemory
 import org.springframework.ai.chat.memory.repository.jdbc.JdbcChatMemoryRepository
+import org.springframework.ai.model.anthropic.autoconfigure.AnthropicChatProperties
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -30,6 +31,7 @@ import reactor.core.publisher.Flux
 class AnthropicController(
     anthropicChatClientBuilder: ChatClient.Builder,
     chatMemoryRepository: JdbcChatMemoryRepository,
+    anthropicChatProperties: AnthropicChatProperties,
     private val session: HttpSession,
     private val anthropicReactiveChatProcessorHandler: AnthropicReactiveChatProcessorHandler,
 ) {
@@ -44,7 +46,7 @@ class AnthropicController(
         .build()
 
     private final val chatClient = anthropicChatClientBuilder
-        .defaultSystem("You are the mpalourdio corp. chatbot")
+        .defaultSystem("Ensure you strictly answer less or equal to ${anthropicChatProperties.options.maxTokens} characters.")
         .defaultAdvisors(
             SimpleLoggerAdvisor(),
             messageChatMemoryAdvisor
@@ -57,12 +59,10 @@ class AnthropicController(
 
     @PostMapping("/chat", produces = [MediaType.TEXT_EVENT_STREAM_VALUE])
     fun chat(@RequestBody chatRequestBody: ChatRequestBody): Flux<AnthropicChatLightResponse> {
-        val concatPrompt = chatRequestBody.modelType.formatting.orEmpty() + chatRequestBody.prompt
-
         log.info(
-            "Prompt (${chatRequestBody.isCustom}): ${concatPrompt}, for session ${session.id}. " +
+            "Prompt (${chatRequestBody.isCustom}): ${chatRequestBody.prompt}, for session ${session.id}. " +
                     "Using model: ${chatRequestBody.modelType.name}, temperature: ${chatRequestBody.modelType.temperature}"
         )
-        return anthropicReactiveChatProcessorHandler.streamResponse(chatClient, concatPrompt, chatRequestBody, session)
+        return anthropicReactiveChatProcessorHandler.streamResponse(chatClient,  chatRequestBody.prompt, chatRequestBody, session)
     }
 }

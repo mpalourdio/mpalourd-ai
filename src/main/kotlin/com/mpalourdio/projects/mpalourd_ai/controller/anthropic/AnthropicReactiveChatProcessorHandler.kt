@@ -26,7 +26,8 @@ class AnthropicReactiveChatProcessorHandler {
         chatRequestBody: ChatRequestBody,
         session: HttpSession
     ): Flux<AnthropicChatLightResponse> {
-        return chatClient.prompt(prompt)
+        return chatClient
+            .prompt(prompt)
             .options(
                 ChatOptions.builder()
                     .model(chatRequestBody.modelType.name)
