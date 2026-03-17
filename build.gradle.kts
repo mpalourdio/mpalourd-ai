@@ -20,7 +20,7 @@ repositories {
     mavenCentral()
 }
 
-extra["springAiVersion"] = "2.0.0-M2"
+extra["springAiVersion"] = "2.0.0-M3"
 extra["commonsIOVersion"] = "2.21.0"
 
 //TODO remove when fixed in graalVM
