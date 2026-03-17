@@ -11,11 +11,14 @@ package com.mpalourdio.projects.mpalourd_ai.controller.anthropic
 
 import com.mpalourdio.projects.mpalourd_ai.model.ChatRequestBody
 import jakarta.servlet.http.HttpSession
+import org.springframework.ai.anthropic.AnthropicCacheOptions
+import org.springframework.ai.anthropic.AnthropicCacheStrategy
+import org.springframework.ai.anthropic.AnthropicChatOptions
 import org.springframework.ai.chat.client.ChatClient
 import org.springframework.ai.chat.memory.ChatMemory.CONVERSATION_ID
-import org.springframework.ai.chat.prompt.ChatOptions
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
+
 
 @Service
 class AnthropicReactiveChatProcessorHandler {
@@ -29,7 +32,12 @@ class AnthropicReactiveChatProcessorHandler {
         return chatClient
             .prompt(prompt)
             .options(
-                ChatOptions.builder()
+                AnthropicChatOptions.builder()
+                    .cacheOptions(
+                        AnthropicCacheOptions.builder()
+                            .strategy(AnthropicCacheStrategy.SYSTEM_ONLY)
+                            .build()
+                    )
                     .model(chatRequestBody.modelType.name)
                     .temperature(chatRequestBody.modelType.temperature)
                     .build()
