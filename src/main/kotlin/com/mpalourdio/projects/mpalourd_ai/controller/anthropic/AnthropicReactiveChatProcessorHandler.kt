@@ -9,6 +9,7 @@
 
 package com.mpalourdio.projects.mpalourd_ai.controller.anthropic
 
+import com.anthropic.models.messages.StopReason
 import com.mpalourdio.projects.mpalourd_ai.model.ChatRequestBody
 import jakarta.servlet.http.HttpSession
 import org.springframework.ai.anthropic.AnthropicCacheOptions
@@ -45,7 +46,7 @@ class AnthropicReactiveChatProcessorHandler {
             .advisors { a -> a.param(CONVERSATION_ID, session.id) }
             .stream()
             .chatResponse()
-            .filter { c -> c.metadata.get<String>("type") == "CONTENT_BLOCK_DELTA" }
+            .filter { c -> c.result?.metadata?.finishReason != StopReason.END_TURN.toString() }
             .map { c -> AnthropicChatLightResponse(c.result?.output?.text) }
     }
 }
