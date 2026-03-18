@@ -7,10 +7,6 @@
       "type": "boolean[]"
     },
     {
-      "type": "byte[]",
-      "jniAccessible": true
-    },
-    {
       "type": "ch.qos.logback.classic.BasicConfigurator",
       "methods": [
         {
@@ -186,25 +182,737 @@
       "type": "com.aayushatharva.brotli4j.Brotli4jLoader"
     },
     {
+      "type": "com.anthropic.core.Enum"
+    },
+    {
+      "type": "com.anthropic.core.JsonBoolean",
+      "methods": [
+        {
+          "name": "value",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.core.JsonBoolean$Companion"
+    },
+    {
+      "type": "com.anthropic.core.JsonField"
+    },
+    {
+      "type": "com.anthropic.core.JsonField$Deserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.core.JsonField$IsMissing",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.core.JsonField$Visitor"
+    },
+    {
+      "type": "com.anthropic.core.JsonMissing$Serializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.core.JsonString",
+      "methods": [
+        {
+          "name": "value",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.core.JsonString$Companion"
+    },
+    {
+      "type": "com.anthropic.core.JsonValue"
+    },
+    {
+      "type": "com.anthropic.core.JsonValue$Deserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.core.JsonValue$Visitor"
+    },
+    {
+      "type": "com.anthropic.core.KnownValue",
+      "fields": [
+        {
+          "name": "value"
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.core.KnownValue$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.CacheControlEphemeral",
+      "methods": [
+        {
+          "name": "_additionalProperties",
+          "parameterTypes": []
+        },
+        {
+          "name": "_ttl",
+          "parameterTypes": []
+        },
+        {
+          "name": "_type",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.CacheControlEphemeral$Builder"
+    },
+    {
+      "type": "com.anthropic.models.messages.CacheControlEphemeral$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.CacheControlEphemeral$Ttl",
+      "methods": [
+        {
+          "name": "_value",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.CacheControlEphemeral$Ttl$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.CacheControlEphemeral$Ttl$Known"
+    },
+    {
+      "type": "com.anthropic.models.messages.CacheControlEphemeral$Ttl$Value"
+    },
+    {
+      "type": "com.anthropic.models.messages.CacheCreation",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.CacheCreation$Builder"
+    },
+    {
+      "type": "com.anthropic.models.messages.CacheCreation$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.Container"
+    },
+    {
+      "type": "com.anthropic.models.messages.ContentBlock"
+    },
+    {
+      "type": "com.anthropic.models.messages.ContentBlock$Deserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.Message",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonValue",
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonValue",
+            "com.anthropic.core.JsonField",
+            "int",
+            "kotlin.jvm.internal.DefaultConstructorMarker"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.Message$Builder"
+    },
+    {
+      "type": "com.anthropic.models.messages.Message$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.MessageCreateParams"
+    },
+    {
+      "type": "com.anthropic.models.messages.MessageCreateParams$Body",
+      "methods": [
+        {
+          "name": "_additionalProperties",
+          "parameterTypes": []
+        },
+        {
+          "name": "_cacheControl",
+          "parameterTypes": []
+        },
+        {
+          "name": "_container",
+          "parameterTypes": []
+        },
+        {
+          "name": "_inferenceGeo",
+          "parameterTypes": []
+        },
+        {
+          "name": "_maxTokens",
+          "parameterTypes": []
+        },
+        {
+          "name": "_messages",
+          "parameterTypes": []
+        },
+        {
+          "name": "_metadata",
+          "parameterTypes": []
+        },
+        {
+          "name": "_model",
+          "parameterTypes": []
+        },
+        {
+          "name": "_outputConfig",
+          "parameterTypes": []
+        },
+        {
+          "name": "_serviceTier",
+          "parameterTypes": []
+        },
+        {
+          "name": "_stopSequences",
+          "parameterTypes": []
+        },
+        {
+          "name": "_system",
+          "parameterTypes": []
+        },
+        {
+          "name": "_temperature",
+          "parameterTypes": []
+        },
+        {
+          "name": "_thinking",
+          "parameterTypes": []
+        },
+        {
+          "name": "_toolChoice",
+          "parameterTypes": []
+        },
+        {
+          "name": "_tools",
+          "parameterTypes": []
+        },
+        {
+          "name": "_topK",
+          "parameterTypes": []
+        },
+        {
+          "name": "_topP",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.MessageCreateParams$Body$Builder"
+    },
+    {
+      "type": "com.anthropic.models.messages.MessageCreateParams$Body$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.MessageCreateParams$ServiceTier"
+    },
+    {
+      "type": "com.anthropic.models.messages.MessageCreateParams$System"
+    },
+    {
+      "type": "com.anthropic.models.messages.MessageCreateParams$System$Serializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.MessageDeltaUsage",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField",
+            "int",
+            "kotlin.jvm.internal.DefaultConstructorMarker"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.MessageDeltaUsage$Builder"
+    },
+    {
+      "type": "com.anthropic.models.messages.MessageDeltaUsage$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.MessageParam",
+      "methods": [
+        {
+          "name": "_additionalProperties",
+          "parameterTypes": []
+        },
+        {
+          "name": "_content",
+          "parameterTypes": []
+        },
+        {
+          "name": "_role",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.MessageParam$Builder"
+    },
+    {
+      "type": "com.anthropic.models.messages.MessageParam$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.MessageParam$Content"
+    },
+    {
+      "type": "com.anthropic.models.messages.MessageParam$Content$Serializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.MessageParam$Role",
+      "methods": [
+        {
+          "name": "_value",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.MessageParam$Role$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.MessageParam$Role$Known"
+    },
+    {
+      "type": "com.anthropic.models.messages.MessageParam$Role$Value"
+    },
+    {
+      "type": "com.anthropic.models.messages.Metadata"
+    },
+    {
+      "type": "com.anthropic.models.messages.Model",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "com.anthropic.core.JsonField"
+          ]
+        },
+        {
+          "name": "_value",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.Model$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.Model$Known"
+    },
+    {
+      "type": "com.anthropic.models.messages.Model$Value"
+    },
+    {
+      "type": "com.anthropic.models.messages.OutputConfig"
+    },
+    {
+      "type": "com.anthropic.models.messages.RawContentBlockDelta"
+    },
+    {
+      "type": "com.anthropic.models.messages.RawContentBlockDelta$Deserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.RawContentBlockDeltaEvent",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonValue"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.RawContentBlockDeltaEvent$Builder"
+    },
+    {
+      "type": "com.anthropic.models.messages.RawContentBlockDeltaEvent$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.RawContentBlockStartEvent",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonValue"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.RawContentBlockStartEvent$Builder"
+    },
+    {
+      "type": "com.anthropic.models.messages.RawContentBlockStartEvent$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.RawContentBlockStartEvent$ContentBlock"
+    },
+    {
+      "type": "com.anthropic.models.messages.RawContentBlockStartEvent$ContentBlock$Deserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.RawContentBlockStopEvent",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonValue"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.RawContentBlockStopEvent$Builder"
+    },
+    {
+      "type": "com.anthropic.models.messages.RawContentBlockStopEvent$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.RawMessageDeltaEvent",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonValue",
+            "com.anthropic.core.JsonField"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.RawMessageDeltaEvent$Builder"
+    },
+    {
+      "type": "com.anthropic.models.messages.RawMessageDeltaEvent$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.RawMessageDeltaEvent$Delta",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField",
+            "int",
+            "kotlin.jvm.internal.DefaultConstructorMarker"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.RawMessageDeltaEvent$Delta$Builder"
+    },
+    {
+      "type": "com.anthropic.models.messages.RawMessageDeltaEvent$Delta$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.RawMessageStartEvent",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonValue"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.RawMessageStartEvent$Builder"
+    },
+    {
+      "type": "com.anthropic.models.messages.RawMessageStartEvent$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.RawMessageStopEvent",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "com.anthropic.core.JsonValue"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.RawMessageStopEvent$Builder"
+    },
+    {
+      "type": "com.anthropic.models.messages.RawMessageStopEvent$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.RawMessageStreamEvent$Deserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.ServerToolUsage"
+    },
+    {
+      "type": "com.anthropic.models.messages.StopReason",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "com.anthropic.core.JsonField"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.StopReason$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.StopReason$Known"
+    },
+    {
+      "type": "com.anthropic.models.messages.StopReason$Value"
+    },
+    {
+      "type": "com.anthropic.models.messages.TextBlock",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonValue",
+            "int",
+            "kotlin.jvm.internal.DefaultConstructorMarker"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.TextBlock$Builder"
+    },
+    {
+      "type": "com.anthropic.models.messages.TextBlock$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.TextBlockParam",
+      "methods": [
+        {
+          "name": "_additionalProperties",
+          "parameterTypes": []
+        },
+        {
+          "name": "_cacheControl",
+          "parameterTypes": []
+        },
+        {
+          "name": "_citations",
+          "parameterTypes": []
+        },
+        {
+          "name": "_text",
+          "parameterTypes": []
+        },
+        {
+          "name": "_type",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.TextBlockParam$Builder"
+    },
+    {
+      "type": "com.anthropic.models.messages.TextBlockParam$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.TextCitation"
+    },
+    {
+      "type": "com.anthropic.models.messages.TextCitationParam"
+    },
+    {
+      "type": "com.anthropic.models.messages.TextDelta",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonValue"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.TextDelta$Builder"
+    },
+    {
+      "type": "com.anthropic.models.messages.TextDelta$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.ThinkingConfigParam"
+    },
+    {
+      "type": "com.anthropic.models.messages.ToolChoice"
+    },
+    {
+      "type": "com.anthropic.models.messages.ToolUnion"
+    },
+    {
+      "type": "com.anthropic.models.messages.Usage",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField",
+            "int",
+            "kotlin.jvm.internal.DefaultConstructorMarker"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.Usage$Builder"
+    },
+    {
+      "type": "com.anthropic.models.messages.Usage$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.Usage$ServiceTier",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "com.anthropic.core.JsonField"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.Usage$ServiceTier$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.Usage$ServiceTier$Known"
+    },
+    {
+      "type": "com.anthropic.models.messages.Usage$ServiceTier$Value"
+    },
+    {
       "type": "com.fasterxml.jackson.annotation.JacksonAnnotation"
-    },
-    {
-      "type": "com.fasterxml.jackson.annotation.JsonIgnore"
-    },
-    {
-      "type": "com.fasterxml.jackson.annotation.JsonIgnoreProperties"
     },
     {
       "type": "com.fasterxml.jackson.annotation.JsonInclude"
     },
     {
-      "type": "com.fasterxml.jackson.annotation.JsonProperty"
-    },
-    {
       "type": "com.fasterxml.jackson.core.JsonGenerator"
     },
     {
+      "type": "com.fasterxml.jackson.core.type.TypeReference"
+    },
+    {
       "type": "com.fasterxml.jackson.databind.ObjectMapper"
+    },
+    {
+      "type": "com.fasterxml.jackson.databind.annotation.JsonDeserialize"
+    },
+    {
+      "type": "com.fasterxml.jackson.databind.annotation.JsonSerialize"
     },
     {
       "type": "com.fasterxml.jackson.databind.deser.BeanDeserializerModifier[]"
@@ -249,43 +957,10 @@
       "type": "com.fasterxml.jackson.dataformat.yaml.YAMLFactory"
     },
     {
-      "type": "com.fasterxml.jackson.datatype.jdk8.Jdk8Module"
-    },
-    {
-      "type": "com.fasterxml.jackson.datatype.jsr310.JavaTimeModule",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.fasterxml.jackson.module.kotlin.KotlinModule",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.fasterxml.jackson.module.kotlin.KotlinModule$Builder"
-    },
-    {
-      "type": "com.fasterxml.jackson.module.paramnames.ParameterNamesModule"
-    },
-    {
-      "type": "com.github.luben.zstd.Zstd"
-    },
-    {
       "type": "com.google.gson.Gson"
     },
     {
       "type": "com.google.protobuf.Message"
-    },
-    {
-      "type": "com.jcraft.jzlib.JZlib"
     },
     {
       "type": "com.mpalourdio.projects.mpalourd_ai.MpalourdAiApplication"
@@ -378,15 +1053,7 @@
       "type": "com.mpalourdio.projects.mpalourd_ai.config.WebSecurityConfig"
     },
     {
-      "type": "com.mpalourdio.projects.mpalourd_ai.controller.CsrfController",
-      "methods": [
-        {
-          "name": "csrf",
-          "parameterTypes": [
-            "org.springframework.security.web.csrf.CsrfToken"
-          ]
-        }
-      ]
+      "type": "com.mpalourdio.projects.mpalourd_ai.controller.CsrfController"
     },
     {
       "type": "com.mpalourdio.projects.mpalourd_ai.controller.anthropic.AnthropicChatLightResponse",
@@ -535,7 +1202,7 @@
       ]
     },
     {
-      "type": "com.sun.crypto.provider.HKDFKeyDerivation$HKDFSHA256",
+      "type": "com.sun.crypto.provider.HKDFKeyDerivation$HKDFSHA384",
       "methods": [
         {
           "name": "<init>",
@@ -547,6 +1214,15 @@
     },
     {
       "type": "com.sun.crypto.provider.HmacCore$HmacSHA256",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.crypto.provider.HmacCore$HmacSHA384",
       "methods": [
         {
           "name": "<init>",
@@ -651,38 +1327,14 @@
       "type": "io.micrometer.observation.contextpropagation.ObservationThreadLocalAccessor"
     },
     {
-      "type": "io.micrometer.tracing.Tracer"
-    },
-    {
       "type": "io.netty.buffer.AbstractByteBufAllocator"
-    },
-    {
-      "type": "io.netty.buffer.AdaptivePoolingAllocator$Magazine"
     },
     {
       "type": "io.netty.buffer.ByteBuf"
     },
     {
-      "type": "io.netty.channel.AbstractChannelHandlerContext"
-    },
-    {
       "type": "io.netty.channel.ChannelException",
       "jniAccessible": true
-    },
-    {
-      "type": "io.netty.channel.ChannelOutboundBuffer"
-    },
-    {
-      "type": "io.netty.channel.DefaultChannelConfig"
-    },
-    {
-      "type": "io.netty.channel.DefaultChannelPipeline"
-    },
-    {
-      "type": "io.netty.channel.DefaultChannelPipeline$HeadContext"
-    },
-    {
-      "type": "io.netty.channel.DefaultChannelPipeline$TailContext"
     },
     {
       "type": "io.netty.channel.DefaultFileRegion",
@@ -821,272 +1473,10 @@
       "type": "io.netty.channel.uring.IoUring"
     },
     {
-      "type": "io.netty.handler.codec.compression.JdkZlibDecoder"
-    },
-    {
-      "type": "io.netty.handler.codec.dns.DatagramDnsQueryEncoder"
-    },
-    {
-      "type": "io.netty.handler.codec.http.HttpClientCodec"
-    },
-    {
-      "type": "io.netty.handler.codec.http.HttpContentDecoder$ByteBufForwarder"
-    },
-    {
-      "type": "io.netty.handler.codec.http.HttpContentDecompressor"
-    },
-    {
-      "type": "io.netty.handler.codec.quic.BoringSSL",
-      "jniAccessible": true
-    },
-    {
-      "type": "io.netty.handler.codec.quic.BoringSSLCertificateCallback"
-    },
-    {
-      "type": "io.netty.handler.codec.quic.BoringSSLCertificateCallbackTask",
-      "jniAccessible": true,
-      "fields": [
-        {
-          "name": "chain"
-        },
-        {
-          "name": "key"
-        }
-      ],
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "long",
-            "byte[]",
-            "byte[][]",
-            "java.lang.String[]",
-            "io.netty.handler.codec.quic.BoringSSLCertificateCallback"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "io.netty.handler.codec.quic.BoringSSLCertificateVerifyCallback"
-    },
-    {
-      "type": "io.netty.handler.codec.quic.BoringSSLCertificateVerifyCallbackTask",
-      "jniAccessible": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "long",
-            "byte[][]",
-            "java.lang.String",
-            "io.netty.handler.codec.quic.BoringSSLCertificateVerifyCallback"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "io.netty.handler.codec.quic.BoringSSLHandshakeCompleteCallback",
-      "jniAccessible": true,
-      "methods": [
-        {
-          "name": "handshakeComplete",
-          "parameterTypes": [
-            "long",
-            "byte[]",
-            "java.lang.String",
-            "java.lang.String",
-            "byte[]",
-            "byte[][]",
-            "long",
-            "long",
-            "byte[]",
-            "boolean"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "io.netty.handler.codec.quic.BoringSSLKeylogCallback",
-      "jniAccessible": true,
-      "methods": [
-        {
-          "name": "logKey",
-          "parameterTypes": [
-            "long",
-            "java.lang.String"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "io.netty.handler.codec.quic.BoringSSLNativeStaticallyReferencedJniMethods",
-      "jniAccessible": true
-    },
-    {
-      "type": "io.netty.handler.codec.quic.BoringSSLPrivateKeyMethodDecryptTask",
-      "jniAccessible": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "long",
-            "byte[]",
-            "io.netty.handler.codec.quic.BoringSSLPrivateKeyMethod"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "io.netty.handler.codec.quic.BoringSSLPrivateKeyMethodSignTask",
-      "jniAccessible": true,
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "long",
-            "int",
-            "byte[]",
-            "io.netty.handler.codec.quic.BoringSSLPrivateKeyMethod"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "io.netty.handler.codec.quic.BoringSSLPrivateKeyMethodTask",
-      "jniAccessible": true,
-      "fields": [
-        {
-          "name": "resultBytes"
-        }
-      ]
-    },
-    {
-      "type": "io.netty.handler.codec.quic.BoringSSLSessionCallback",
-      "jniAccessible": true,
-      "methods": [
-        {
-          "name": "newSession",
-          "parameterTypes": [
-            "long",
-            "long",
-            "long",
-            "byte[]",
-            "boolean",
-            "byte[]"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "io.netty.handler.codec.quic.BoringSSLSessionTicketCallback",
-      "jniAccessible": true,
-      "methods": [
-        {
-          "name": "findSessionTicket",
-          "parameterTypes": [
-            "byte[]"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "io.netty.handler.codec.quic.BoringSSLTask",
-      "jniAccessible": true,
-      "fields": [
-        {
-          "name": "complete"
-        },
-        {
-          "name": "returnValue"
-        }
-      ],
-      "methods": [
-        {
-          "name": "destroy",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "io.netty.handler.codec.quic.BoringSSLTlsextServernameCallback",
-      "jniAccessible": true,
-      "methods": [
-        {
-          "name": "selectCtx",
-          "parameterTypes": [
-            "long",
-            "java.lang.String"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "io.netty.handler.codec.quic.Quiche",
-      "jniAccessible": true
-    },
-    {
-      "type": "io.netty.handler.codec.quic.QuicheLogger",
-      "jniAccessible": true,
-      "methods": [
-        {
-          "name": "log",
-          "parameterTypes": [
-            "java.lang.String"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "io.netty.handler.codec.quic.QuicheNativeStaticallyReferencedJniMethods",
-      "jniAccessible": true
-    },
-    {
-      "type": "io.netty.handler.ssl.SslHandler"
-    },
-    {
-      "type": "io.netty.internal.tcnative.SSLContext"
-    },
-    {
       "type": "io.netty.resolver.dns.Cache$Entries"
     },
     {
-      "type": "io.netty.resolver.dns.DnsNameResolver$2"
-    },
-    {
-      "type": "io.netty.resolver.dns.DnsNameResolver$3"
-    },
-    {
-      "type": "io.netty.resolver.dns.DnsNameResolver$DnsResponseHandler"
-    },
-    {
-      "type": "io.netty.util.DefaultAttributeMap"
-    },
-    {
-      "type": "io.netty.util.DefaultAttributeMap$DefaultAttribute"
-    },
-    {
-      "type": "io.netty.util.Recycler$DefaultHandle"
-    },
-    {
-      "type": "io.netty.util.ReferenceCountUtil"
-    },
-    {
-      "type": "io.netty.util.ResourceLeakDetector$DefaultResourceLeak"
-    },
-    {
-      "type": "io.netty.util.concurrent.ConcurrentSkipListIntObjMultimap"
-    },
-    {
-      "type": "io.netty.util.concurrent.ConcurrentSkipListIntObjMultimap$Index"
-    },
-    {
-      "type": "io.netty.util.concurrent.ConcurrentSkipListIntObjMultimap$Node"
-    },
-    {
       "type": "io.netty.util.concurrent.DefaultPromise"
-    },
-    {
-      "type": "io.netty.util.concurrent.MpscIntQueue$MpscAtomicIntegerArrayQueue"
     },
     {
       "type": "io.netty.util.concurrent.SingleThreadEventExecutor"
@@ -1124,12 +1514,6 @@
     },
     {
       "type": "io.netty.util.internal.shaded.org.jctools.queues.atomic.BaseMpscLinkedAtomicArrayQueueProducerFields"
-    },
-    {
-      "type": "io.netty.util.internal.shaded.org.jctools.queues.atomic.MpmcAtomicArrayQueueConsumerIndexField"
-    },
-    {
-      "type": "io.netty.util.internal.shaded.org.jctools.queues.atomic.MpmcAtomicArrayQueueProducerIndexField"
     },
     {
       "type": "io.reactivex.rxjava3.core.Flowable"
@@ -1249,12 +1633,6 @@
           "parameterTypes": [
             "java.lang.String"
           ]
-        },
-        {
-          "name": "valueOf",
-          "parameterTypes": [
-            "boolean"
-          ]
         }
       ]
     },
@@ -1266,10 +1644,6 @@
       "methods": [
         {
           "name": "getModule",
-          "parameterTypes": []
-        },
-        {
-          "name": "getRecordComponents",
           "parameterTypes": []
         },
         {
@@ -1300,50 +1674,13 @@
       "type": "java.lang.Comparable[]"
     },
     {
-      "type": "java.lang.Deprecated",
-      "methods": [
-        {
-          "name": "forRemoval",
-          "parameterTypes": []
-        },
-        {
-          "name": "since",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
       "type": "java.lang.Double"
     },
     {
-      "type": "java.lang.FunctionalInterface"
-    },
-    {
-      "type": "java.lang.Integer",
-      "jniAccessible": true,
-      "methods": [
-        {
-          "name": "valueOf",
-          "parameterTypes": [
-            "int"
-          ]
-        }
-      ]
+      "type": "java.lang.Integer"
     },
     {
       "type": "java.lang.Iterable"
-    },
-    {
-      "type": "java.lang.Long",
-      "jniAccessible": true,
-      "methods": [
-        {
-          "name": "valueOf",
-          "parameterTypes": [
-            "long"
-          ]
-        }
-      ]
     },
     {
       "type": "java.lang.Module",
@@ -1358,8 +1695,7 @@
       "type": "java.lang.Number"
     },
     {
-      "type": "java.lang.Object",
-      "jniAccessible": true
+      "type": "java.lang.Object"
     },
     {
       "type": "java.lang.Object[]"
@@ -1367,19 +1703,6 @@
     {
       "type": "java.lang.OutOfMemoryError",
       "jniAccessible": true
-    },
-    {
-      "type": "java.lang.ProcessHandle",
-      "methods": [
-        {
-          "name": "current",
-          "parameterTypes": []
-        },
-        {
-          "name": "pid",
-          "parameterTypes": []
-        }
-      ]
     },
     {
       "type": "java.lang.Record"
@@ -1400,8 +1723,7 @@
       ]
     },
     {
-      "type": "java.lang.String",
-      "jniAccessible": true
+      "type": "java.lang.String"
     },
     {
       "type": "java.lang.String[]"
@@ -1451,27 +1773,6 @@
     },
     {
       "type": "java.lang.annotation.Annotation[]"
-    },
-    {
-      "type": "java.lang.annotation.Documented"
-    },
-    {
-      "type": "java.lang.annotation.Retention",
-      "methods": [
-        {
-          "name": "value",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "java.lang.annotation.Target",
-      "methods": [
-        {
-          "name": "value",
-          "parameterTypes": []
-        }
-      ]
     },
     {
       "type": "java.lang.constant.Constable"
@@ -1556,15 +1857,6 @@
       "type": "java.lang.invoke.TypeDescriptor$OfField"
     },
     {
-      "type": "java.lang.invoke.VarHandle",
-      "methods": [
-        {
-          "name": "acquireFence",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
       "type": "java.lang.management.ManagementFactory",
       "methods": [
         {
@@ -1583,31 +1875,26 @@
       ]
     },
     {
+      "type": "java.lang.ref.Cleaner",
+      "methods": [
+        {
+          "name": "create",
+          "parameterTypes": []
+        },
+        {
+          "name": "register",
+          "parameterTypes": [
+            "java.lang.Object",
+            "java.lang.Runnable"
+          ]
+        }
+      ]
+    },
+    {
       "type": "java.lang.reflect.AnnotatedElement"
     },
     {
-      "type": "java.lang.reflect.Executable",
-      "methods": [
-        {
-          "name": "getParameters",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
       "type": "java.lang.reflect.GenericDeclaration"
-    },
-    {
-      "type": "java.lang.reflect.Method"
-    },
-    {
-      "type": "java.lang.reflect.Parameter",
-      "methods": [
-        {
-          "name": "getName",
-          "parameterTypes": []
-        }
-      ]
     },
     {
       "type": "java.lang.reflect.ParameterizedType",
@@ -1618,23 +1905,6 @@
         },
         {
           "name": "getRawType",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "java.lang.reflect.RecordComponent",
-      "methods": [
-        {
-          "name": "getAccessor",
-          "parameterTypes": []
-        },
-        {
-          "name": "getName",
-          "parameterTypes": []
-        },
-        {
-          "name": "getType",
           "parameterTypes": []
         }
       ]
@@ -1665,36 +1935,6 @@
       ]
     },
     {
-      "type": "java.net.Inet4Address",
-      "jniAccessible": true
-    },
-    {
-      "type": "java.net.Inet6Address",
-      "jniAccessible": true,
-      "methods": [
-        {
-          "name": "getByAddress",
-          "parameterTypes": [
-            "java.lang.String",
-            "byte[]",
-            "int"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "java.net.InetAddress",
-      "jniAccessible": true,
-      "methods": [
-        {
-          "name": "getByAddress",
-          "parameterTypes": [
-            "byte[]"
-          ]
-        }
-      ]
-    },
-    {
       "type": "java.net.InetSocketAddress",
       "jniAccessible": true,
       "methods": [
@@ -1702,13 +1942,6 @@
           "name": "<init>",
           "parameterTypes": [
             "java.lang.String",
-            "int"
-          ]
-        },
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "java.net.InetAddress",
             "int"
           ]
         }
@@ -1981,6 +2214,12 @@
       "type": "java.util.Collections$UnmodifiableCollection"
     },
     {
+      "type": "java.util.Collections$UnmodifiableList"
+    },
+    {
+      "type": "java.util.Collections$UnmodifiableRandomAccessList"
+    },
+    {
       "type": "java.util.Collections$UnmodifiableSet"
     },
     {
@@ -2011,7 +2250,7 @@
       "type": "java.util.Map"
     },
     {
-      "type": "java.util.Map.Entry"
+      "type": "java.util.Optional"
     },
     {
       "type": "java.util.RandomAccess"
@@ -2044,9 +2283,6 @@
       "type": "java.util.function.Consumer"
     },
     {
-      "type": "java.util.function.Supplier"
-    },
-    {
       "type": "java.util.logging.LogManager"
     },
     {
@@ -2065,41 +2301,7 @@
       "type": "javax.naming.InitialContext"
     },
     {
-      "type": "javax.net.ssl.SSLEngine",
-      "methods": [
-        {
-          "name": "getApplicationProtocol",
-          "parameterTypes": []
-        },
-        {
-          "name": "getHandshakeApplicationProtocol",
-          "parameterTypes": []
-        },
-        {
-          "name": "getHandshakeApplicationProtocolSelector",
-          "parameterTypes": []
-        },
-        {
-          "name": "setHandshakeApplicationProtocolSelector",
-          "parameterTypes": [
-            "java.util.function.BiFunction"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "javax.net.ssl.SSLParameters",
-      "methods": [
-        {
-          "name": "setApplicationProtocols",
-          "parameterTypes": [
-            "java.lang.String[]"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "javax.net.ssl.X509ExtendedTrustManager"
+      "type": "javax.net.ssl.SSLParameters"
     },
     {
       "type": "javax.security.auth.Subject"
@@ -2136,6 +2338,9 @@
     },
     {
       "type": "kotlin.Double"
+    },
+    {
+      "type": "kotlin.Function1"
     },
     {
       "type": "kotlin.Int"
@@ -2181,6 +2386,12 @@
       ]
     },
     {
+      "type": "kotlin.Nothing"
+    },
+    {
+      "type": "kotlin.Number"
+    },
+    {
       "type": "kotlin.ReplaceWith"
     },
     {
@@ -2202,40 +2413,13 @@
       "type": "kotlin.annotation.Target"
     },
     {
-      "type": "kotlin.collections.Collection"
-    },
-    {
-      "type": "kotlin.collections.Iterable"
-    },
-    {
       "type": "kotlin.collections.List"
     },
     {
       "type": "kotlin.collections.Map"
     },
     {
-      "type": "kotlin.collections.Map.Entry"
-    },
-    {
-      "type": "kotlin.collections.MutableCollection"
-    },
-    {
-      "type": "kotlin.collections.MutableIterable"
-    },
-    {
-      "type": "kotlin.collections.MutableList"
-    },
-    {
       "type": "kotlin.collections.MutableMap"
-    },
-    {
-      "type": "kotlin.collections.MutableMap.MutableEntry"
-    },
-    {
-      "type": "kotlin.collections.MutableSet"
-    },
-    {
-      "type": "kotlin.collections.Set"
     },
     {
       "type": "kotlin.coroutines.Continuation"
@@ -2438,6 +2622,9 @@
       "type": "org.apache.hc.client5.http.impl.classic.HttpClients"
     },
     {
+      "type": "org.apache.hc.core5.reactive.ReactiveDataConsumer"
+    },
+    {
       "type": "org.apache.jasper.servlet.JspServlet"
     },
     {
@@ -2468,6 +2655,9 @@
     },
     {
       "type": "org.apache.tomcat.websocket.server.WsFilter"
+    },
+    {
+      "type": "org.brotli.dec.BrotliInputStream"
     },
     {
       "type": "org.crac.Core"
@@ -2521,13 +2711,21 @@
       "type": "org.reactivestreams.Publisher"
     },
     {
-      "type": "org.slf4j.Logger"
-    },
-    {
       "type": "org.slf4j.bridge.SLF4JBridgeHandler"
     },
     {
       "type": "org.slf4j.helpers.Log4jLoggerFactory"
+    },
+    {
+      "type": "org.springframework.ai.anthropic.AbstractAnthropicOptions",
+      "methods": [
+        {
+          "name": "setApiKey",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
     },
     {
       "type": "org.springframework.ai.anthropic.AnthropicChatModel"
@@ -2536,513 +2734,12 @@
       "type": "org.springframework.ai.anthropic.AnthropicChatOptions",
       "methods": [
         {
-          "name": "<init>",
-          "parameterTypes": []
-        },
-        {
-          "name": "getMaxTokens",
-          "parameterTypes": []
-        },
-        {
-          "name": "getMetadata",
-          "parameterTypes": []
-        },
-        {
-          "name": "getModel",
-          "parameterTypes": []
-        },
-        {
-          "name": "getOutputFormat",
-          "parameterTypes": []
-        },
-        {
-          "name": "getStopSequences",
-          "parameterTypes": []
-        },
-        {
-          "name": "getTemperature",
-          "parameterTypes": []
-        },
-        {
-          "name": "getThinking",
-          "parameterTypes": []
-        },
-        {
-          "name": "getToolChoice",
-          "parameterTypes": []
-        },
-        {
-          "name": "getTopK",
-          "parameterTypes": []
-        },
-        {
-          "name": "getTopP",
-          "parameterTypes": []
-        },
-        {
           "name": "setMaxTokens",
           "parameterTypes": [
             "java.lang.Integer"
           ]
-        },
-        {
-          "name": "setModel",
-          "parameterTypes": [
-            "java.lang.String"
-          ]
-        },
-        {
-          "name": "setTemperature",
-          "parameterTypes": [
-            "java.lang.Double"
-          ]
         }
       ]
-    },
-    {
-      "type": "org.springframework.ai.anthropic.AnthropicChatOptions$Builder"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$AnthropicMessage",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "java.util.List",
-            "org.springframework.ai.anthropic.api.AnthropicApi$Role"
-          ]
-        },
-        {
-          "name": "content",
-          "parameterTypes": []
-        },
-        {
-          "name": "role",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$ChatCompletionRequest",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "java.lang.String",
-            "java.util.List",
-            "java.lang.Object",
-            "java.lang.Integer",
-            "org.springframework.ai.anthropic.api.AnthropicApi$ChatCompletionRequest$Metadata",
-            "java.util.List",
-            "java.lang.Boolean",
-            "java.lang.Double",
-            "java.lang.Double",
-            "java.lang.Integer",
-            "java.util.List",
-            "org.springframework.ai.anthropic.api.AnthropicApi$ToolChoice",
-            "org.springframework.ai.anthropic.api.AnthropicApi$ChatCompletionRequest$ThinkingConfig",
-            "org.springframework.ai.anthropic.api.AnthropicApi$ChatCompletionRequest$OutputFormat",
-            "org.springframework.ai.anthropic.api.AnthropicApi$SkillContainer"
-          ]
-        },
-        {
-          "name": "container",
-          "parameterTypes": []
-        },
-        {
-          "name": "maxTokens",
-          "parameterTypes": []
-        },
-        {
-          "name": "messages",
-          "parameterTypes": []
-        },
-        {
-          "name": "metadata",
-          "parameterTypes": []
-        },
-        {
-          "name": "model",
-          "parameterTypes": []
-        },
-        {
-          "name": "outputFormat",
-          "parameterTypes": []
-        },
-        {
-          "name": "stopSequences",
-          "parameterTypes": []
-        },
-        {
-          "name": "stream",
-          "parameterTypes": []
-        },
-        {
-          "name": "system",
-          "parameterTypes": []
-        },
-        {
-          "name": "temperature",
-          "parameterTypes": []
-        },
-        {
-          "name": "thinking",
-          "parameterTypes": []
-        },
-        {
-          "name": "toolChoice",
-          "parameterTypes": []
-        },
-        {
-          "name": "tools",
-          "parameterTypes": []
-        },
-        {
-          "name": "topK",
-          "parameterTypes": []
-        },
-        {
-          "name": "topP",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$ChatCompletionRequest$CacheControl"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$ChatCompletionRequest$Metadata"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$ChatCompletionRequest$OutputFormat"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$ChatCompletionRequest$ThinkingConfig"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$ChatCompletionRequestBuilder"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$ChatCompletionResponse",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "java.lang.String",
-            "java.lang.String",
-            "org.springframework.ai.anthropic.api.AnthropicApi$Role",
-            "java.util.List",
-            "java.lang.String",
-            "java.lang.String",
-            "java.lang.String",
-            "org.springframework.ai.anthropic.api.AnthropicApi$Usage",
-            "org.springframework.ai.anthropic.api.AnthropicApi$ChatCompletionResponse$Container"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$ChatCompletionResponse$Container"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$ContentBlock",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "org.springframework.ai.anthropic.api.AnthropicApi$ContentBlock$Type",
-            "org.springframework.ai.anthropic.api.AnthropicApi$ContentBlock$Source",
-            "java.lang.String",
-            "java.lang.Integer",
-            "java.lang.String",
-            "java.lang.String",
-            "java.util.Map",
-            "java.lang.String",
-            "java.lang.Object",
-            "java.lang.String",
-            "java.lang.String",
-            "java.lang.String",
-            "org.springframework.ai.anthropic.api.AnthropicApi$ChatCompletionRequest$CacheControl",
-            "java.lang.String",
-            "java.lang.String",
-            "java.lang.Object",
-            "java.lang.String",
-            "java.lang.String"
-          ]
-        },
-        {
-          "name": "cacheControl",
-          "parameterTypes": []
-        },
-        {
-          "name": "citations",
-          "parameterTypes": []
-        },
-        {
-          "name": "content",
-          "parameterTypes": []
-        },
-        {
-          "name": "context",
-          "parameterTypes": []
-        },
-        {
-          "name": "data",
-          "parameterTypes": []
-        },
-        {
-          "name": "fileId",
-          "parameterTypes": []
-        },
-        {
-          "name": "filename",
-          "parameterTypes": []
-        },
-        {
-          "name": "id",
-          "parameterTypes": []
-        },
-        {
-          "name": "index",
-          "parameterTypes": []
-        },
-        {
-          "name": "input",
-          "parameterTypes": []
-        },
-        {
-          "name": "name",
-          "parameterTypes": []
-        },
-        {
-          "name": "signature",
-          "parameterTypes": []
-        },
-        {
-          "name": "source",
-          "parameterTypes": []
-        },
-        {
-          "name": "text",
-          "parameterTypes": []
-        },
-        {
-          "name": "thinking",
-          "parameterTypes": []
-        },
-        {
-          "name": "title",
-          "parameterTypes": []
-        },
-        {
-          "name": "toolUseId",
-          "parameterTypes": []
-        },
-        {
-          "name": "type",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$ContentBlock$ContentBlockBuilder"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$ContentBlock$Source"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$ContentBlock$Type"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$ContentBlockDeltaEvent",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "org.springframework.ai.anthropic.api.AnthropicApi$EventType",
-            "java.lang.Integer",
-            "org.springframework.ai.anthropic.api.AnthropicApi$ContentBlockDeltaEvent$ContentBlockDeltaBody"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$ContentBlockDeltaEvent$ContentBlockDeltaBody"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$ContentBlockDeltaEvent$ContentBlockDeltaText",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "java.lang.String",
-            "java.lang.String"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$ContentBlockStartEvent",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "org.springframework.ai.anthropic.api.AnthropicApi$EventType",
-            "java.lang.Integer",
-            "org.springframework.ai.anthropic.api.AnthropicApi$ContentBlockStartEvent$ContentBlockBody"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$ContentBlockStartEvent$ContentBlockBody"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$ContentBlockStartEvent$ContentBlockText",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "java.lang.String",
-            "java.lang.String"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$ContentBlockStopEvent",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "org.springframework.ai.anthropic.api.AnthropicApi$EventType",
-            "java.lang.Integer"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$EventType"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$MessageDeltaEvent",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "org.springframework.ai.anthropic.api.AnthropicApi$EventType",
-            "org.springframework.ai.anthropic.api.AnthropicApi$MessageDeltaEvent$MessageDelta",
-            "org.springframework.ai.anthropic.api.AnthropicApi$MessageDeltaEvent$MessageDeltaUsage"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$MessageDeltaEvent$MessageDelta",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "java.lang.String",
-            "java.lang.String"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$MessageDeltaEvent$MessageDeltaUsage",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "java.lang.Integer"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$MessageStartEvent",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "org.springframework.ai.anthropic.api.AnthropicApi$EventType",
-            "org.springframework.ai.anthropic.api.AnthropicApi$ChatCompletionResponse"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$MessageStopEvent",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "org.springframework.ai.anthropic.api.AnthropicApi$EventType"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$PingEvent",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "org.springframework.ai.anthropic.api.AnthropicApi$EventType"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$Role"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$Skill"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$SkillContainer"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$SkillContainer$SkillContainerBuilder"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$SkillType"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$StreamEvent"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$ThinkingType"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$Tool"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$ToolChoice"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicApi$Usage",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "java.lang.Integer",
-            "java.lang.Integer",
-            "java.lang.Integer",
-            "java.lang.Integer"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.AnthropicCacheOptions"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.api.CitationDocument"
     },
     {
       "type": "org.springframework.ai.audio.transcription.TranscriptionModel"
@@ -3108,9 +2805,6 @@
       ]
     },
     {
-      "type": "org.springframework.ai.chat.messages.AssistantMessage$Builder"
-    },
-    {
       "type": "org.springframework.ai.chat.messages.AssistantMessage$ToolCall"
     },
     {
@@ -3149,9 +2843,6 @@
           "parameterTypes": []
         }
       ]
-    },
-    {
-      "type": "org.springframework.ai.chat.metadata.ChatResponseMetadata$Builder"
     },
     {
       "type": "org.springframework.ai.chat.metadata.DefaultChatGenerationMetadata",
@@ -3229,9 +2920,6 @@
       ]
     },
     {
-      "type": "org.springframework.ai.chat.model.ChatResponse$Builder"
-    },
-    {
       "type": "org.springframework.ai.chat.model.Generation",
       "methods": [
         {
@@ -3243,9 +2931,6 @@
           "parameterTypes": []
         }
       ]
-    },
-    {
-      "type": "org.springframework.ai.chat.model.MessageAggregator"
     },
     {
       "type": "org.springframework.ai.chat.model.MessageAggregator$DefaultUsage",
@@ -3275,47 +2960,7 @@
       "type": "org.springframework.ai.chat.prompt.ChatOptions"
     },
     {
-      "type": "org.springframework.ai.chat.prompt.DefaultChatOptions",
-      "methods": [
-        {
-          "name": "getFrequencyPenalty",
-          "parameterTypes": []
-        },
-        {
-          "name": "getMaxTokens",
-          "parameterTypes": []
-        },
-        {
-          "name": "getModel",
-          "parameterTypes": []
-        },
-        {
-          "name": "getPresencePenalty",
-          "parameterTypes": []
-        },
-        {
-          "name": "getStopSequences",
-          "parameterTypes": []
-        },
-        {
-          "name": "getTemperature",
-          "parameterTypes": []
-        },
-        {
-          "name": "getTopK",
-          "parameterTypes": []
-        },
-        {
-          "name": "getTopP",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
       "type": "org.springframework.ai.content.Content"
-    },
-    {
-      "type": "org.springframework.ai.content.Media"
     },
     {
       "type": "org.springframework.ai.content.MediaContent"
@@ -3333,23 +2978,7 @@
       "type": "org.springframework.ai.embedding.BatchingStrategy"
     },
     {
-      "type": "org.springframework.ai.embedding.DefaultEmbeddingOptions",
-      "methods": [
-        {
-          "name": "getDimensions",
-          "parameterTypes": []
-        },
-        {
-          "name": "getModel",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
       "type": "org.springframework.ai.embedding.EmbeddingModel"
-    },
-    {
-      "type": "org.springframework.ai.embedding.EmbeddingOptions"
     },
     {
       "type": "org.springframework.ai.embedding.TokenCountBatchingStrategy"
@@ -3370,9 +2999,6 @@
       "type": "org.springframework.ai.model.Model"
     },
     {
-      "type": "org.springframework.ai.model.ModelOptions"
-    },
-    {
       "type": "org.springframework.ai.model.ModelResponse"
     },
     {
@@ -3391,21 +3017,16 @@
       "type": "org.springframework.ai.model.anthropic.autoconfigure.AnthropicChatAutoConfiguration"
     },
     {
-      "type": "org.springframework.ai.model.anthropic.autoconfigure.AnthropicChatProperties"
-    },
-    {
-      "type": "org.springframework.ai.model.anthropic.autoconfigure.AnthropicConnectionProperties",
+      "type": "org.springframework.ai.model.anthropic.autoconfigure.AnthropicChatProperties",
       "methods": [
         {
-          "name": "setApiKey",
-          "parameterTypes": [
-            "java.lang.String"
-          ]
+          "name": "getOptions",
+          "parameterTypes": []
         }
       ]
     },
     {
-      "type": "org.springframework.ai.model.anthropic.autoconfigure.StringToToolChoiceConverter"
+      "type": "org.springframework.ai.model.anthropic.autoconfigure.AnthropicConnectionProperties"
     },
     {
       "type": "org.springframework.ai.model.chat.memory.autoconfigure.ChatMemoryAutoConfiguration"
@@ -3524,15 +3145,6 @@
       "type": "org.springframework.ai.openai.OpenAiEmbeddingModel"
     },
     {
-      "type": "org.springframework.ai.openai.OpenAiEmbeddingOptions",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
       "type": "org.springframework.ai.openai.OpenAiImageModel"
     },
     {
@@ -3542,31 +3154,6 @@
       "type": "org.springframework.ai.openai.api.OpenAiApi"
     },
     {
-      "type": "org.springframework.ai.openai.api.OpenAiApi$EmbeddingRequest",
-      "methods": [
-        {
-          "name": "dimensions",
-          "parameterTypes": []
-        },
-        {
-          "name": "encodingFormat",
-          "parameterTypes": []
-        },
-        {
-          "name": "input",
-          "parameterTypes": []
-        },
-        {
-          "name": "model",
-          "parameterTypes": []
-        },
-        {
-          "name": "user",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
       "type": "org.springframework.ai.retry.autoconfigure.SpringAiRetryAutoConfiguration"
     },
     {
@@ -3574,9 +3161,6 @@
     },
     {
       "type": "org.springframework.ai.retry.autoconfigure.SpringAiRetryProperties"
-    },
-    {
-      "type": "org.springframework.ai.tool.ToolCallback"
     },
     {
       "type": "org.springframework.ai.tool.execution.DefaultToolExecutionExceptionProcessor"
@@ -4094,9 +3678,6 @@
       "type": "org.springframework.boot.context.properties.ConfigurationProperties"
     },
     {
-      "type": "org.springframework.boot.context.properties.ConfigurationPropertiesBinding"
-    },
-    {
       "type": "org.springframework.boot.context.properties.ConfigurationPropertiesSource"
     },
     {
@@ -4133,7 +3714,7 @@
       "type": "org.springframework.boot.http.client.HttpClientSettings"
     },
     {
-      "type": "org.springframework.boot.http.client.ReactorClientHttpRequestFactoryBuilder"
+      "type": "org.springframework.boot.http.client.HttpComponentsClientHttpRequestFactoryBuilder"
     },
     {
       "type": "org.springframework.boot.http.client.autoconfigure.HttpClientAutoConfiguration"
@@ -5119,9 +4700,6 @@
       "type": "org.springframework.core.convert.ConversionService"
     },
     {
-      "type": "org.springframework.core.convert.converter.Converter"
-    },
-    {
       "type": "org.springframework.core.convert.converter.ConverterRegistry"
     },
     {
@@ -5213,9 +4791,6 @@
     },
     {
       "type": "org.springframework.jdbc.support.JdbcTransactionManager"
-    },
-    {
-      "type": "org.springframework.lang.Nullable"
     },
     {
       "type": "org.springframework.messaging.MessagingException"
@@ -5458,29 +5033,6 @@
     },
     {
       "type": "org.springframework.security.web.csrf.CsrfFilter"
-    },
-    {
-      "type": "org.springframework.security.web.csrf.CsrfToken",
-      "methods": [
-        {
-          "name": "getHeaderName",
-          "parameterTypes": []
-        },
-        {
-          "name": "getParameterName",
-          "parameterTypes": []
-        },
-        {
-          "name": "getToken",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler"
-    },
-    {
-      "type": "org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler$SupplierCsrfToken"
     },
     {
       "type": "org.springframework.security.web.header.HeaderWriterFilter"
@@ -5926,12 +5478,6 @@
       "type": "org.springframework.web.servlet.view.AbstractCachingViewResolver"
     },
     {
-      "type": "org.springframework.web.servlet.view.AbstractUrlBasedView"
-    },
-    {
-      "type": "org.springframework.web.servlet.view.AbstractView"
-    },
-    {
       "type": "org.springframework.web.servlet.view.BeanNameViewResolver"
     },
     {
@@ -5939,9 +5485,6 @@
     },
     {
       "type": "org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator"
-    },
-    {
-      "type": "org.springframework.web.servlet.view.InternalResourceView"
     },
     {
       "type": "org.springframework.web.servlet.view.InternalResourceViewResolver"
@@ -5968,46 +5511,25 @@
       "type": "reactor.core.publisher.Flux"
     },
     {
-      "type": "reactor.core.publisher.FluxBufferPredicate$BufferPredicateSubscriber"
+      "type": "reactor.core.publisher.FluxCreate$BaseSink"
     },
     {
-      "type": "reactor.core.publisher.FluxConcatArray$ConcatArraySubscriber"
+      "type": "reactor.core.publisher.FluxCreate$BufferAsyncSink"
     },
     {
-      "type": "reactor.core.publisher.FluxConcatIterable$ConcatIterableSubscriber"
-    },
-    {
-      "type": "reactor.core.publisher.FluxConcatMapNoPrefetch$FluxConcatMapNoPrefetchSubscriber"
+      "type": "reactor.core.publisher.FluxCreate$SerializedFluxSink"
     },
     {
       "type": "reactor.core.publisher.FluxDoFinally$DoFinallySubscriber"
     },
     {
-      "type": "reactor.core.publisher.FluxFirstWithSignal$RaceCoordinator"
-    },
-    {
-      "type": "reactor.core.publisher.FluxFlatMap$FlatMapInner"
-    },
-    {
       "type": "reactor.core.publisher.FluxFlatMap$FlatMapMain"
-    },
-    {
-      "type": "reactor.core.publisher.FluxFlattenIterable$FlattenIterableSubscriber"
     },
     {
       "type": "reactor.core.publisher.FluxOnErrorReturn$ReturnSubscriber"
     },
     {
-      "type": "reactor.core.publisher.FluxPublish$PubSubInner"
-    },
-    {
-      "type": "reactor.core.publisher.FluxPublish$PublishSubscriber"
-    },
-    {
       "type": "reactor.core.publisher.FluxPublishOn$PublishOnConditionalSubscriber"
-    },
-    {
-      "type": "reactor.core.publisher.FluxRetryWhen$RetryWhenMainSubscriber"
     },
     {
       "type": "reactor.core.publisher.FluxSubscribeOnValue$ScheduledScalar"
@@ -6019,34 +5541,13 @@
       "type": "reactor.core.publisher.FluxTimeout$TimeoutTimeoutSubscriber"
     },
     {
-      "type": "reactor.core.publisher.FluxWindowPredicate$WindowFlux"
-    },
-    {
-      "type": "reactor.core.publisher.FluxWindowPredicate$WindowPredicateMain"
-    },
-    {
-      "type": "reactor.core.publisher.LambdaMonoSubscriber"
-    },
-    {
       "type": "reactor.core.publisher.MonoCacheTime"
-    },
-    {
-      "type": "reactor.core.publisher.MonoCreate$DefaultMonoSink"
     },
     {
       "type": "reactor.core.publisher.MonoDelay$MonoDelayRunnable"
     },
     {
-      "type": "reactor.core.publisher.MonoFlatMap$FlatMapMain"
-    },
-    {
       "type": "reactor.core.publisher.MonoFlatMapMany$FlatMapManyMain"
-    },
-    {
-      "type": "reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain"
-    },
-    {
-      "type": "reactor.core.publisher.MonoNext$NextSubscriber"
     },
     {
       "type": "reactor.core.publisher.MonoWhen$WhenCoordinator"
@@ -6055,28 +5556,7 @@
       "type": "reactor.core.publisher.MonoWhen$WhenInner"
     },
     {
-      "type": "reactor.core.publisher.Operators$BaseFluxToMonoOperator"
-    },
-    {
-      "type": "reactor.core.publisher.Operators$DeferredSubscription"
-    },
-    {
-      "type": "reactor.core.publisher.Operators$MonoInnerProducerBase"
-    },
-    {
       "type": "reactor.core.publisher.Operators$MultiSubscriptionSubscriber"
-    },
-    {
-      "type": "reactor.core.publisher.Operators$ScalarSubscription"
-    },
-    {
-      "type": "reactor.core.publisher.SinkEmptyMulticast"
-    },
-    {
-      "type": "reactor.core.publisher.SinkManyEmitterProcessor"
-    },
-    {
-      "type": "reactor.core.publisher.SinksSpecs$AbstractSerializedSink"
     },
     {
       "type": "reactor.core.publisher.StrictSubscriber"
@@ -6102,55 +5582,10 @@
       "type": "reactor.core.scheduler.SchedulerTask"
     },
     {
-      "type": "reactor.netty.channel.ChannelOperations"
-    },
-    {
-      "type": "reactor.netty.channel.ChannelOperationsHandler"
-    },
-    {
-      "type": "reactor.netty.channel.FluxReceive"
-    },
-    {
-      "type": "reactor.netty.channel.MonoSendMany$SendManyInner"
-    },
-    {
       "type": "reactor.netty.contextpropagation.ChannelContextAccessor"
     },
     {
-      "type": "reactor.netty.http.Cookies"
-    },
-    {
-      "type": "reactor.netty.http.HttpOperations"
-    },
-    {
       "type": "reactor.netty.http.client.HttpClient"
-    },
-    {
-      "type": "reactor.netty.internal.shaded.reactor.pool.AbstractPool$AbstractPooledRef"
-    },
-    {
-      "type": "reactor.netty.internal.shaded.reactor.pool.AbstractPool$Borrower"
-    },
-    {
-      "type": "reactor.netty.internal.shaded.reactor.pool.AllocationStrategies$SizeBasedAllocationStrategy"
-    },
-    {
-      "type": "reactor.netty.internal.shaded.reactor.pool.SimpleDequePool"
-    },
-    {
-      "type": "reactor.netty.internal.shaded.reactor.pool.SimpleDequePool$QueuePoolRecyclerInner"
-    },
-    {
-      "type": "reactor.netty.resources.DefaultPooledConnectionProvider$PooledConnectionAllocator$PooledConnectionInitializer"
-    },
-    {
-      "type": "reactor.netty.tcp.SslProvider$SslReadHandler"
-    },
-    {
-      "type": "reactor.netty.transport.TransportConfig$TransportChannelInitializer"
-    },
-    {
-      "type": "reactor.netty.transport.TransportConnector$MonoChannelPromise"
     },
     {
       "type": "reactor.tools.agent.ReactorDebugAgent"
@@ -6241,24 +5676,6 @@
     },
     {
       "type": "sun.security.provider.DSA$SHA256withDSA",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "sun.security.provider.JavaKeyStore$DualFormatJKS",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "sun.security.provider.JavaKeyStore$JKS",
       "methods": [
         {
           "name": "<init>",
@@ -6378,6 +5795,24 @@
     },
     {
       "type": "sun.security.rsa.RSASignature$SHA224withRSA",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.ssl.KeyManagerFactoryImpl$SunX509",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.ssl.SSLContextImpl$DefaultSSLContext",
       "methods": [
         {
           "name": "<init>",
@@ -6648,13 +6083,6 @@
     {
       "type": {
         "proxy": [
-          "org.springframework.beans.factory.annotation.Qualifier"
-        ]
-      }
-    },
-    {
-      "type": {
-        "proxy": [
           "org.springframework.boot.context.properties.ConfigurationProperties"
         ]
       }
@@ -6739,22 +6167,10 @@
   ],
   "resources": [
     {
-      "glob": "META-INF/native/libnetty_quiche42_linux_x86_64.so"
-    },
-    {
       "glob": "META-INF/native/libnetty_transport_native_epoll_x86_64.so"
     },
     {
-      "glob": "META-INF/resources/chunk-AOOWMTWX.js"
-    },
-    {
-      "glob": "META-INF/resources/chunk-MFAMQDNL.js"
-    },
-    {
       "glob": "META-INF/resources/index.html"
-    },
-    {
-      "glob": "META-INF/resources/main-2AVO4GDI.js"
     },
     {
       "glob": "META-INF/services/ch.qos.logback.classic.spi.Configurator"
@@ -7096,6 +6512,9 @@
       "glob": "org/apache/coyote/http11/filters/LocalStrings_fr_FR.properties"
     },
     {
+      "glob": "org/apache/hc/client5/version.properties"
+    },
+    {
       "glob": "org/apache/naming/LocalStrings.properties"
     },
     {
@@ -7219,6 +6638,9 @@
       "glob": "org/postgresql/driverconfig.properties"
     },
     {
+      "glob": "org/publicsuffix/list/effective_tld_names.dat"
+    },
+    {
       "glob": "org/springframework/ai/chat/memory/repository/jdbc/schema-postgresql.sql"
     },
     {
@@ -7231,28 +6653,10 @@
       "glob": "org/springframework/http/codec/CodecConfigurer.properties"
     },
     {
-      "glob": "public/chunk-AOOWMTWX.js"
-    },
-    {
-      "glob": "public/chunk-MFAMQDNL.js"
-    },
-    {
       "glob": "public/index.html"
     },
     {
-      "glob": "public/main-2AVO4GDI.js"
-    },
-    {
-      "glob": "resources/chunk-AOOWMTWX.js"
-    },
-    {
-      "glob": "resources/chunk-MFAMQDNL.js"
-    },
-    {
       "glob": "resources/index.html"
-    },
-    {
-      "glob": "resources/main-2AVO4GDI.js"
     },
     {
       "glob": "schema-all.sql"
@@ -7264,16 +6668,7 @@
       "glob": "spring.properties"
     },
     {
-      "glob": "static/chunk-AOOWMTWX.js"
-    },
-    {
-      "glob": "static/chunk-MFAMQDNL.js"
-    },
-    {
       "glob": "static/index.html"
-    },
-    {
-      "glob": "static/main-2AVO4GDI.js"
     },
     {
       "module": "java.base",
@@ -7286,10 +6681,6 @@
     {
       "module": "java.base",
       "glob": "sun/net/idn/uidna.spp"
-    },
-    {
-      "module": "jdk.jfr",
-      "glob": "jdk/jfr/internal/types/metadata.bin"
     },
     {
       "bundle": "jakarta.servlet.LocalStrings"
