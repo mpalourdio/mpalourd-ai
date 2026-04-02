@@ -359,6 +359,13 @@
             "int",
             "kotlin.jvm.internal.DefaultConstructorMarker"
           ]
+        },
+        {
+          "name": "putAdditionalProperty",
+          "parameterTypes": [
+            "java.lang.String",
+            "com.anthropic.core.JsonValue"
+          ]
         }
       ]
     },
@@ -685,6 +692,13 @@
             "com.anthropic.core.JsonField",
             "int",
             "kotlin.jvm.internal.DefaultConstructorMarker"
+          ]
+        },
+        {
+          "name": "putAdditionalProperty",
+          "parameterTypes": [
+            "java.lang.String",
+            "com.anthropic.core.JsonValue"
           ]
         }
       ]
@@ -1053,7 +1067,15 @@
       "type": "com.mpalourdio.projects.mpalourd_ai.config.WebSecurityConfig"
     },
     {
-      "type": "com.mpalourdio.projects.mpalourd_ai.controller.CsrfController"
+      "type": "com.mpalourdio.projects.mpalourd_ai.controller.CsrfController",
+      "methods": [
+        {
+          "name": "csrf",
+          "parameterTypes": [
+            "org.springframework.security.web.csrf.CsrfToken"
+          ]
+        }
+      ]
     },
     {
       "type": "com.mpalourdio.projects.mpalourd_ai.controller.anthropic.AnthropicChatLightResponse",
@@ -1683,6 +1705,9 @@
       "type": "java.lang.Iterable"
     },
     {
+      "type": "java.lang.Long"
+    },
+    {
       "type": "java.lang.Module",
       "methods": [
         {
@@ -1811,6 +1836,12 @@
         {
           "name": "asByteBuffer",
           "parameterTypes": []
+        },
+        {
+          "name": "ofBuffer",
+          "parameterTypes": [
+            "java.nio.Buffer"
+          ]
         }
       ]
     },
@@ -1911,15 +1942,6 @@
     },
     {
       "type": "java.lang.reflect.Type"
-    },
-    {
-      "type": "java.lang.reflect.TypeVariable",
-      "methods": [
-        {
-          "name": "getBounds",
-          "parameterTypes": []
-        }
-      ]
     },
     {
       "type": "java.lang.reflect.WildcardType",
@@ -2332,6 +2354,9 @@
     },
     {
       "type": "kotlin.Boolean"
+    },
+    {
+      "type": "kotlin.Cloneable"
     },
     {
       "type": "kotlin.Deprecated"
@@ -4064,18 +4089,6 @@
       "type": "org.springframework.boot.reactor.autoconfigure.ReactorProperties"
     },
     {
-      "type": "org.springframework.boot.reactor.netty.NettyReactiveWebServerFactory"
-    },
-    {
-      "type": "org.springframework.boot.reactor.netty.autoconfigure.NettyReactiveWebServerAutoConfiguration"
-    },
-    {
-      "type": "org.springframework.boot.reactor.netty.autoconfigure.NettyReactiveWebServerFactoryCustomizer"
-    },
-    {
-      "type": "org.springframework.boot.reactor.netty.autoconfigure.NettyServerProperties"
-    },
-    {
       "type": "org.springframework.boot.reactor.netty.autoconfigure.ReactorNettyConfigurations$ReactorResourceFactoryConfiguration"
     },
     {
@@ -4415,12 +4428,6 @@
       ]
     },
     {
-      "type": "org.springframework.boot.web.server.autoconfigure.reactive.ReactiveWebServerConfiguration"
-    },
-    {
-      "type": "org.springframework.boot.web.server.autoconfigure.reactive.ReactiveWebServerFactoryCustomizer"
-    },
-    {
       "type": "org.springframework.boot.web.server.autoconfigure.servlet.ServletWebServerConfiguration"
     },
     {
@@ -4434,15 +4441,6 @@
           "parameterTypes": []
         }
       ]
-    },
-    {
-      "type": "org.springframework.boot.web.server.reactive.AbstractReactiveWebServerFactory"
-    },
-    {
-      "type": "org.springframework.boot.web.server.reactive.ConfigurableReactiveWebServerFactory"
-    },
-    {
-      "type": "org.springframework.boot.web.server.reactive.ReactiveWebServerFactory"
     },
     {
       "type": "org.springframework.boot.web.server.reactive.context.ReactiveWebServerApplicationContextFactory",
@@ -5035,6 +5033,26 @@
       "type": "org.springframework.security.web.csrf.CsrfFilter"
     },
     {
+      "type": "org.springframework.security.web.csrf.CsrfToken",
+      "methods": [
+        {
+          "name": "getHeaderName",
+          "parameterTypes": []
+        },
+        {
+          "name": "getParameterName",
+          "parameterTypes": []
+        },
+        {
+          "name": "getToken",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler$SupplierCsrfToken"
+    },
+    {
       "type": "org.springframework.security.web.header.HeaderWriterFilter"
     },
     {
@@ -5478,6 +5496,12 @@
       "type": "org.springframework.web.servlet.view.AbstractCachingViewResolver"
     },
     {
+      "type": "org.springframework.web.servlet.view.AbstractUrlBasedView"
+    },
+    {
+      "type": "org.springframework.web.servlet.view.AbstractView"
+    },
+    {
       "type": "org.springframework.web.servlet.view.BeanNameViewResolver"
     },
     {
@@ -5485,6 +5509,9 @@
     },
     {
       "type": "org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator"
+    },
+    {
+      "type": "org.springframework.web.servlet.view.InternalResourceView"
     },
     {
       "type": "org.springframework.web.servlet.view.InternalResourceViewResolver"
@@ -6170,7 +6197,16 @@
       "glob": "META-INF/native/libnetty_transport_native_epoll_x86_64.so"
     },
     {
+      "glob": "META-INF/resources/chunk-F6YMPWFQ.js"
+    },
+    {
+      "glob": "META-INF/resources/chunk-SW2SS4WL.js"
+    },
+    {
       "glob": "META-INF/resources/index.html"
+    },
+    {
+      "glob": "META-INF/resources/main-ZACGN3J3.js"
     },
     {
       "glob": "META-INF/services/ch.qos.logback.classic.spi.Configurator"
@@ -6653,10 +6689,28 @@
       "glob": "org/springframework/http/codec/CodecConfigurer.properties"
     },
     {
+      "glob": "public/chunk-F6YMPWFQ.js"
+    },
+    {
+      "glob": "public/chunk-SW2SS4WL.js"
+    },
+    {
       "glob": "public/index.html"
     },
     {
+      "glob": "public/main-ZACGN3J3.js"
+    },
+    {
+      "glob": "resources/chunk-F6YMPWFQ.js"
+    },
+    {
+      "glob": "resources/chunk-SW2SS4WL.js"
+    },
+    {
       "glob": "resources/index.html"
+    },
+    {
+      "glob": "resources/main-ZACGN3J3.js"
     },
     {
       "glob": "schema-all.sql"
@@ -6668,7 +6722,16 @@
       "glob": "spring.properties"
     },
     {
+      "glob": "static/chunk-F6YMPWFQ.js"
+    },
+    {
+      "glob": "static/chunk-SW2SS4WL.js"
+    },
+    {
       "glob": "static/index.html"
+    },
+    {
+      "glob": "static/main-ZACGN3J3.js"
     },
     {
       "module": "java.base",
