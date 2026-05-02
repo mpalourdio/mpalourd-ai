@@ -41,7 +41,6 @@ class AnthropicReactiveChatProcessorHandler {
                     )
                     .model(chatRequestBody.modelType.name)
                     .temperature(chatRequestBody.modelType.temperature)
-                    .build()
             )
             .advisors { a -> a.param(CONVERSATION_ID, session.id) }
             .stream()
