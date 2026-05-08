@@ -899,9 +899,6 @@
       "type": "com.fasterxml.jackson.annotation.JacksonAnnotation"
     },
     {
-      "type": "com.fasterxml.jackson.annotation.JsonInclude"
-    },
-    {
       "type": "com.fasterxml.jackson.core.JsonGenerator"
     },
     {
@@ -1133,7 +1130,7 @@
           "name": "<init>",
           "parameterTypes": [
             "java.lang.String",
-            "double",
+            "java.lang.Double",
             "java.lang.String"
           ]
         }
@@ -2483,29 +2480,7 @@
       "type": "org.slf4j.helpers.Log4jLoggerFactory"
     },
     {
-      "type": "org.springframework.ai.anthropic.AbstractAnthropicOptions",
-      "methods": [
-        {
-          "name": "setApiKey",
-          "parameterTypes": [
-            "java.lang.String"
-          ]
-        }
-      ]
-    },
-    {
       "type": "org.springframework.ai.anthropic.AnthropicChatModel"
-    },
-    {
-      "type": "org.springframework.ai.anthropic.AnthropicChatOptions",
-      "methods": [
-        {
-          "name": "setMaxTokens",
-          "parameterTypes": [
-            "java.lang.Integer"
-          ]
-        }
-      ]
     },
     {
       "type": "org.springframework.ai.audio.transcription.TranscriptionModel"
@@ -2733,9 +2708,6 @@
       "type": "org.springframework.ai.chat.model.StreamingChatModel"
     },
     {
-      "type": "org.springframework.ai.chat.prompt.ChatOptions"
-    },
-    {
       "type": "org.springframework.ai.content.Content"
     },
     {
@@ -2796,13 +2768,23 @@
       "type": "org.springframework.ai.model.anthropic.autoconfigure.AnthropicChatProperties",
       "methods": [
         {
-          "name": "getOptions",
-          "parameterTypes": []
+          "name": "setMaxTokens",
+          "parameterTypes": [
+            "java.lang.Integer"
+          ]
         }
       ]
     },
     {
-      "type": "org.springframework.ai.model.anthropic.autoconfigure.AnthropicConnectionProperties"
+      "type": "org.springframework.ai.model.anthropic.autoconfigure.AnthropicConnectionProperties",
+      "methods": [
+        {
+          "name": "setApiKey",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
     },
     {
       "type": "org.springframework.ai.model.chat.memory.autoconfigure.ChatMemoryAutoConfiguration"
@@ -2838,6 +2820,17 @@
       "type": "org.springframework.ai.model.image.observation.autoconfigure.ImageObservationProperties"
     },
     {
+      "type": "org.springframework.ai.model.openai.autoconfigure.AbstractOpenAiProperties",
+      "methods": [
+        {
+          "name": "setApiKey",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
       "type": "org.springframework.ai.model.openai.autoconfigure.OpenAiAudioSpeechAutoConfiguration"
     },
     {
@@ -2856,7 +2849,7 @@
       "type": "org.springframework.ai.model.openai.autoconfigure.OpenAiChatProperties"
     },
     {
-      "type": "org.springframework.ai.model.openai.autoconfigure.OpenAiConnectionProperties"
+      "type": "org.springframework.ai.model.openai.autoconfigure.OpenAiCommonProperties"
     },
     {
       "type": "org.springframework.ai.model.openai.autoconfigure.OpenAiEmbeddingAutoConfiguration"
@@ -2880,12 +2873,6 @@
       "type": "org.springframework.ai.model.tool.DefaultToolCallingManager"
     },
     {
-      "type": "org.springframework.ai.model.tool.StructuredOutputChatOptions"
-    },
-    {
-      "type": "org.springframework.ai.model.tool.ToolCallingChatOptions"
-    },
-    {
       "type": "org.springframework.ai.model.tool.ToolCallingManager"
     },
     {
@@ -2896,17 +2883,6 @@
     },
     {
       "type": "org.springframework.ai.moderation.ModerationModel"
-    },
-    {
-      "type": "org.springframework.ai.openai.AbstractOpenAiOptions",
-      "methods": [
-        {
-          "name": "setApiKey",
-          "parameterTypes": [
-            "java.lang.String"
-          ]
-        }
-      ]
     },
     {
       "type": "org.springframework.ai.openai.OpenAiAudioSpeechModel"
@@ -3452,6 +3428,9 @@
     },
     {
       "type": "org.springframework.boot.context.properties.ConfigurationPropertiesSource"
+    },
+    {
+      "type": "org.springframework.boot.context.properties.DeprecatedConfigurationProperty"
     },
     {
       "type": "org.springframework.boot.context.properties.EnableConfigurationProperties"
@@ -5848,16 +5827,16 @@
   ],
   "resources": [
     {
-      "glob": "META-INF/resources/chunk-CJZ3UM6Q.js"
+      "glob": "META-INF/resources/chunk-PYUGOD5B.js"
     },
     {
-      "glob": "META-INF/resources/chunk-P4FL4Q7Y.js"
+      "glob": "META-INF/resources/chunk-Z34GJHE6.js"
     },
     {
       "glob": "META-INF/resources/index.html"
     },
     {
-      "glob": "META-INF/resources/main-ER5OGFHR.js"
+      "glob": "META-INF/resources/main-532CNSYV.js"
     },
     {
       "glob": "META-INF/services/ch.qos.logback.classic.spi.Configurator"
@@ -6331,28 +6310,28 @@
       "glob": "org/springframework/boot/transaction/autoconfigure/TransactionAutoConfiguration$EnableTransactionManagementConfiguration$CglibAutoProxyConfiguration.class"
     },
     {
-      "glob": "public/chunk-CJZ3UM6Q.js"
+      "glob": "public/chunk-PYUGOD5B.js"
     },
     {
-      "glob": "public/chunk-P4FL4Q7Y.js"
+      "glob": "public/chunk-Z34GJHE6.js"
     },
     {
       "glob": "public/index.html"
     },
     {
-      "glob": "public/main-ER5OGFHR.js"
+      "glob": "public/main-532CNSYV.js"
     },
     {
-      "glob": "resources/chunk-CJZ3UM6Q.js"
+      "glob": "resources/chunk-PYUGOD5B.js"
     },
     {
-      "glob": "resources/chunk-P4FL4Q7Y.js"
+      "glob": "resources/chunk-Z34GJHE6.js"
     },
     {
       "glob": "resources/index.html"
     },
     {
-      "glob": "resources/main-ER5OGFHR.js"
+      "glob": "resources/main-532CNSYV.js"
     },
     {
       "glob": "schema-all.sql"
@@ -6364,16 +6343,16 @@
       "glob": "spring.properties"
     },
     {
-      "glob": "static/chunk-CJZ3UM6Q.js"
+      "glob": "static/chunk-PYUGOD5B.js"
     },
     {
-      "glob": "static/chunk-P4FL4Q7Y.js"
+      "glob": "static/chunk-Z34GJHE6.js"
     },
     {
       "glob": "static/index.html"
     },
     {
-      "glob": "static/main-ER5OGFHR.js"
+      "glob": "static/main-532CNSYV.js"
     },
     {
       "module": "java.base",

@@ -46,7 +46,7 @@ class AnthropicController(
         .build()
 
     private final val chatClient = anthropicChatClientBuilder
-        .defaultSystem("Ensure you strictly answer less or equal to ${anthropicChatProperties.options.maxTokens} characters.")
+        .defaultSystem("Ensure you strictly answer less or equal to ${anthropicChatProperties.maxTokens} characters.")
         .defaultAdvisors(
             SimpleLoggerAdvisor(),
             messageChatMemoryAdvisor
