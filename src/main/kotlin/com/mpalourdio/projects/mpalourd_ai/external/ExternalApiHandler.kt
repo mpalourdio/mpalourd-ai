@@ -22,6 +22,7 @@ import org.springframework.ai.vectorstore.pgvector.PgVectorStore
 import org.springframework.boot.restclient.RestTemplateBuilder
 import org.springframework.core.io.ByteArrayResource
 import org.springframework.stereotype.Service
+import org.springframework.web.client.getForObject
 
 @Service
 class ExternalApiHandler(
@@ -54,9 +55,8 @@ class ExternalApiHandler(
         log.info("Fetching external API to populate vector store")
         val apiResult = RestTemplateBuilder()
             .build()
-            .getForObject(
-                externalApiConfigurationProperties.url,
-                Array<Tree>::class.java
+            .getForObject<Array<Tree>>(
+                externalApiConfigurationProperties.url
             )
         // we only get the first element of the JSON array because the last array is useless.
         // the first object of this first array is useless too (/media/xxxxxx/XXXX/XXXX).
