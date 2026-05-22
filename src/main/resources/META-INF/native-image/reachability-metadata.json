@@ -2903,15 +2903,6 @@
       "type": "org.springframework.ai.openai.OpenAiModerationModel"
     },
     {
-      "type": "org.springframework.ai.retry.autoconfigure.SpringAiRetryAutoConfiguration"
-    },
-    {
-      "type": "org.springframework.ai.retry.autoconfigure.SpringAiRetryAutoConfiguration$2"
-    },
-    {
-      "type": "org.springframework.ai.retry.autoconfigure.SpringAiRetryProperties"
-    },
-    {
       "type": "org.springframework.ai.tool.execution.DefaultToolExecutionExceptionProcessor"
     },
     {
@@ -4218,6 +4209,24 @@
       "type": "org.springframework.boot.web.servlet.ServletRegistrationBean"
     },
     {
+      "type": "org.springframework.boot.webclient.WebClientCustomizer"
+    },
+    {
+      "type": "org.springframework.boot.webclient.autoconfigure.AutoConfiguredWebClientSsl"
+    },
+    {
+      "type": "org.springframework.boot.webclient.autoconfigure.WebClientAutoConfiguration"
+    },
+    {
+      "type": "org.springframework.boot.webclient.autoconfigure.WebClientAutoConfiguration$WebClientCodecsConfiguration"
+    },
+    {
+      "type": "org.springframework.boot.webclient.autoconfigure.WebClientCodecCustomizer"
+    },
+    {
+      "type": "org.springframework.boot.webclient.autoconfigure.WebClientSsl"
+    },
+    {
       "type": "org.springframework.boot.webflux.WebFluxWebApplicationTypeDeducer",
       "methods": [
         {
@@ -4417,12 +4426,6 @@
     },
     {
       "type": "org.springframework.core.env.EnvironmentCapable"
-    },
-    {
-      "type": "org.springframework.core.retry.RetryOperations"
-    },
-    {
-      "type": "org.springframework.core.retry.RetryTemplate"
     },
     {
       "type": "org.springframework.core.task.AsyncTaskExecutor"
@@ -4877,9 +4880,6 @@
     },
     {
       "type": "org.springframework.web.bind.annotation.RestController"
-    },
-    {
-      "type": "org.springframework.web.client.ResponseErrorHandler"
     },
     {
       "type": "org.springframework.web.client.RestClientException"
@@ -5827,16 +5827,16 @@
   ],
   "resources": [
     {
-      "glob": "META-INF/resources/chunk-PYUGOD5B.js"
+      "glob": "META-INF/resources/chunk-H3E2F2U2.js"
     },
     {
-      "glob": "META-INF/resources/chunk-Z34GJHE6.js"
+      "glob": "META-INF/resources/chunk-JACT55OQ.js"
     },
     {
       "glob": "META-INF/resources/index.html"
     },
     {
-      "glob": "META-INF/resources/main-532CNSYV.js"
+      "glob": "META-INF/resources/main-7UIFVJ5U.js"
     },
     {
       "glob": "META-INF/services/ch.qos.logback.classic.spi.Configurator"
@@ -6310,28 +6310,28 @@
       "glob": "org/springframework/boot/transaction/autoconfigure/TransactionAutoConfiguration$EnableTransactionManagementConfiguration$CglibAutoProxyConfiguration.class"
     },
     {
-      "glob": "public/chunk-PYUGOD5B.js"
+      "glob": "public/chunk-H3E2F2U2.js"
     },
     {
-      "glob": "public/chunk-Z34GJHE6.js"
+      "glob": "public/chunk-JACT55OQ.js"
     },
     {
       "glob": "public/index.html"
     },
     {
-      "glob": "public/main-532CNSYV.js"
+      "glob": "public/main-7UIFVJ5U.js"
     },
     {
-      "glob": "resources/chunk-PYUGOD5B.js"
+      "glob": "resources/chunk-H3E2F2U2.js"
     },
     {
-      "glob": "resources/chunk-Z34GJHE6.js"
+      "glob": "resources/chunk-JACT55OQ.js"
     },
     {
       "glob": "resources/index.html"
     },
     {
-      "glob": "resources/main-532CNSYV.js"
+      "glob": "resources/main-7UIFVJ5U.js"
     },
     {
       "glob": "schema-all.sql"
@@ -6343,16 +6343,16 @@
       "glob": "spring.properties"
     },
     {
-      "glob": "static/chunk-PYUGOD5B.js"
+      "glob": "static/chunk-H3E2F2U2.js"
     },
     {
-      "glob": "static/chunk-Z34GJHE6.js"
+      "glob": "static/chunk-JACT55OQ.js"
     },
     {
       "glob": "static/index.html"
     },
     {
-      "glob": "static/main-532CNSYV.js"
+      "glob": "static/main-7UIFVJ5U.js"
     },
     {
       "module": "java.base",
