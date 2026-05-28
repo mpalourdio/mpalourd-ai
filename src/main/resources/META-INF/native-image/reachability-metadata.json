@@ -481,6 +481,13 @@
             "int",
             "kotlin.jvm.internal.DefaultConstructorMarker"
           ]
+        },
+        {
+          "name": "putAdditionalProperty",
+          "parameterTypes": [
+            "java.lang.String",
+            "com.anthropic.core.JsonValue"
+          ]
         }
       ]
     },
@@ -1649,9 +1656,6 @@
       "type": "java.lang.ClassValue"
     },
     {
-      "type": "java.lang.Comparable"
-    },
-    {
       "type": "java.lang.Comparable[]"
     },
     {
@@ -1668,9 +1672,6 @@
     },
     {
       "type": "java.lang.Module"
-    },
-    {
-      "type": "java.lang.Number"
     },
     {
       "type": "java.lang.Object"
@@ -1745,9 +1746,6 @@
     },
     {
       "type": "java.lang.constant.Constable[]"
-    },
-    {
-      "type": "java.lang.constant.ConstantDesc"
     },
     {
       "type": "java.lang.constant.ConstantDesc[]"
@@ -5827,16 +5825,7 @@
   ],
   "resources": [
     {
-      "glob": "META-INF/resources/chunk-H3E2F2U2.js"
-    },
-    {
-      "glob": "META-INF/resources/chunk-JACT55OQ.js"
-    },
-    {
       "glob": "META-INF/resources/index.html"
-    },
-    {
-      "glob": "META-INF/resources/main-7UIFVJ5U.js"
     },
     {
       "glob": "META-INF/services/ch.qos.logback.classic.spi.Configurator"
@@ -6310,28 +6299,10 @@
       "glob": "org/springframework/boot/transaction/autoconfigure/TransactionAutoConfiguration$EnableTransactionManagementConfiguration$CglibAutoProxyConfiguration.class"
     },
     {
-      "glob": "public/chunk-H3E2F2U2.js"
-    },
-    {
-      "glob": "public/chunk-JACT55OQ.js"
-    },
-    {
       "glob": "public/index.html"
     },
     {
-      "glob": "public/main-7UIFVJ5U.js"
-    },
-    {
-      "glob": "resources/chunk-H3E2F2U2.js"
-    },
-    {
-      "glob": "resources/chunk-JACT55OQ.js"
-    },
-    {
       "glob": "resources/index.html"
-    },
-    {
-      "glob": "resources/main-7UIFVJ5U.js"
     },
     {
       "glob": "schema-all.sql"
@@ -6343,16 +6314,7 @@
       "glob": "spring.properties"
     },
     {
-      "glob": "static/chunk-H3E2F2U2.js"
-    },
-    {
-      "glob": "static/chunk-JACT55OQ.js"
-    },
-    {
       "glob": "static/index.html"
-    },
-    {
-      "glob": "static/main-7UIFVJ5U.js"
     },
     {
       "module": "java.base",
