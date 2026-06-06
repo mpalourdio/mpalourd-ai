@@ -478,15 +478,9 @@
             "com.anthropic.core.JsonField",
             "com.anthropic.core.JsonField",
             "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField",
             "int",
             "kotlin.jvm.internal.DefaultConstructorMarker"
-          ]
-        },
-        {
-          "name": "putAdditionalProperty",
-          "parameterTypes": [
-            "java.lang.String",
-            "com.anthropic.core.JsonValue"
           ]
         }
       ]
@@ -579,6 +573,23 @@
     },
     {
       "type": "com.anthropic.models.messages.OutputConfig"
+    },
+    {
+      "type": "com.anthropic.models.messages.OutputTokensDetails",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "com.anthropic.core.JsonField"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.OutputTokensDetails$Builder"
+    },
+    {
+      "type": "com.anthropic.models.messages.OutputTokensDetails$Companion"
     },
     {
       "type": "com.anthropic.models.messages.RawContentBlockDelta"
@@ -870,6 +881,7 @@
             "com.anthropic.core.JsonField",
             "com.anthropic.core.JsonField",
             "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField",
             "int",
             "kotlin.jvm.internal.DefaultConstructorMarker"
           ]
@@ -1053,15 +1065,7 @@
       "type": "com.mpalourdio.projects.mpalourd_ai.config.WebSecurityConfig"
     },
     {
-      "type": "com.mpalourdio.projects.mpalourd_ai.controller.CsrfController",
-      "methods": [
-        {
-          "name": "csrf",
-          "parameterTypes": [
-            "org.springframework.security.web.csrf.CsrfToken"
-          ]
-        }
-      ]
+      "type": "com.mpalourdio.projects.mpalourd_ai.controller.CsrfController"
     },
     {
       "type": "com.mpalourdio.projects.mpalourd_ai.controller.anthropic.AnthropicChatLightResponse",
@@ -1656,6 +1660,9 @@
       "type": "java.lang.ClassValue"
     },
     {
+      "type": "java.lang.Comparable"
+    },
+    {
       "type": "java.lang.Comparable[]"
     },
     {
@@ -1672,6 +1679,9 @@
     },
     {
       "type": "java.lang.Module"
+    },
+    {
+      "type": "java.lang.Number"
     },
     {
       "type": "java.lang.Object"
@@ -1746,6 +1756,9 @@
     },
     {
       "type": "java.lang.constant.Constable[]"
+    },
+    {
+      "type": "java.lang.constant.ConstantDesc"
     },
     {
       "type": "java.lang.constant.ConstantDesc[]"
@@ -1977,9 +1990,6 @@
       "type": "java.time.Duration"
     },
     {
-      "type": "java.util.AbstractCollection"
-    },
-    {
       "type": "java.util.ArrayList",
       "serializable": true
     },
@@ -1996,9 +2006,6 @@
       "type": "java.util.Collections$UnmodifiableRandomAccessList"
     },
     {
-      "type": "java.util.Collections$UnmodifiableSet"
-    },
-    {
       "type": "java.util.Enumeration"
     },
     {
@@ -2006,18 +2013,6 @@
     },
     {
       "type": "java.util.HashSet"
-    },
-    {
-      "type": "java.util.ImmutableCollections$AbstractImmutableCollection"
-    },
-    {
-      "type": "java.util.ImmutableCollections$AbstractImmutableList"
-    },
-    {
-      "type": "java.util.ImmutableCollections$List12"
-    },
-    {
-      "type": "java.util.ImmutableCollections$ListN"
     },
     {
       "type": "java.util.List"
@@ -2287,6 +2282,9 @@
       "type": "long[]"
     },
     {
+      "type": "okhttp3.Request"
+    },
+    {
       "type": "org.aopalliance.aop.Advice"
     },
     {
@@ -2514,205 +2512,10 @@
       "type": "org.springframework.ai.chat.memory.repository.jdbc.JdbcChatMemoryRepository"
     },
     {
-      "type": "org.springframework.ai.chat.messages.AbstractMessage",
-      "methods": [
-        {
-          "name": "getMessageType",
-          "parameterTypes": []
-        },
-        {
-          "name": "getMetadata",
-          "parameterTypes": []
-        },
-        {
-          "name": "getText",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.ai.chat.messages.AssistantMessage",
-      "methods": [
-        {
-          "name": "getMedia",
-          "parameterTypes": []
-        },
-        {
-          "name": "getToolCalls",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.ai.chat.messages.AssistantMessage$ToolCall"
-    },
-    {
-      "type": "org.springframework.ai.chat.messages.AssistantMessage$ToolCall[]"
-    },
-    {
-      "type": "org.springframework.ai.chat.messages.Message"
-    },
-    {
-      "type": "org.springframework.ai.chat.messages.MessageType"
-    },
-    {
-      "type": "org.springframework.ai.chat.metadata.ChatGenerationMetadata"
-    },
-    {
-      "type": "org.springframework.ai.chat.metadata.ChatResponseMetadata",
-      "methods": [
-        {
-          "name": "getId",
-          "parameterTypes": []
-        },
-        {
-          "name": "getModel",
-          "parameterTypes": []
-        },
-        {
-          "name": "getPromptMetadata",
-          "parameterTypes": []
-        },
-        {
-          "name": "getRateLimit",
-          "parameterTypes": []
-        },
-        {
-          "name": "getUsage",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.ai.chat.metadata.DefaultChatGenerationMetadata",
-      "methods": [
-        {
-          "name": "getContentFilters",
-          "parameterTypes": []
-        },
-        {
-          "name": "getFinishReason",
-          "parameterTypes": []
-        },
-        {
-          "name": "isEmpty",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.ai.chat.metadata.EmptyRateLimit",
-      "methods": [
-        {
-          "name": "getRequestsLimit",
-          "parameterTypes": []
-        },
-        {
-          "name": "getRequestsRemaining",
-          "parameterTypes": []
-        },
-        {
-          "name": "getRequestsReset",
-          "parameterTypes": []
-        },
-        {
-          "name": "getTokensLimit",
-          "parameterTypes": []
-        },
-        {
-          "name": "getTokensRemaining",
-          "parameterTypes": []
-        },
-        {
-          "name": "getTokensReset",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.ai.chat.metadata.PromptMetadata"
-    },
-    {
-      "type": "org.springframework.ai.chat.metadata.RateLimit"
-    },
-    {
-      "type": "org.springframework.ai.chat.metadata.Usage",
-      "methods": [
-        {
-          "name": "getCacheReadInputTokens",
-          "parameterTypes": []
-        },
-        {
-          "name": "getCacheWriteInputTokens",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
       "type": "org.springframework.ai.chat.model.ChatModel"
     },
     {
-      "type": "org.springframework.ai.chat.model.ChatResponse",
-      "methods": [
-        {
-          "name": "getMetadata",
-          "parameterTypes": []
-        },
-        {
-          "name": "getResult",
-          "parameterTypes": []
-        },
-        {
-          "name": "getResults",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.ai.chat.model.Generation",
-      "methods": [
-        {
-          "name": "getMetadata",
-          "parameterTypes": []
-        },
-        {
-          "name": "getOutput",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.ai.chat.model.MessageAggregator$DefaultUsage",
-      "methods": [
-        {
-          "name": "getCompletionTokens",
-          "parameterTypes": []
-        },
-        {
-          "name": "getNativeUsage",
-          "parameterTypes": []
-        },
-        {
-          "name": "getPromptTokens",
-          "parameterTypes": []
-        },
-        {
-          "name": "getTotalTokens",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
       "type": "org.springframework.ai.chat.model.StreamingChatModel"
-    },
-    {
-      "type": "org.springframework.ai.content.Content"
-    },
-    {
-      "type": "org.springframework.ai.content.MediaContent"
-    },
-    {
-      "type": "org.springframework.ai.content.Media[]"
     },
     {
       "type": "org.springframework.ai.document.DocumentWriter"
@@ -2733,28 +2536,7 @@
       "type": "org.springframework.ai.image.ImageModel"
     },
     {
-      "type": "org.springframework.ai.model.AbstractResponseMetadata",
-      "methods": [
-        {
-          "name": "isEmpty",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
       "type": "org.springframework.ai.model.Model"
-    },
-    {
-      "type": "org.springframework.ai.model.ModelResponse"
-    },
-    {
-      "type": "org.springframework.ai.model.ModelResult"
-    },
-    {
-      "type": "org.springframework.ai.model.ResponseMetadata"
-    },
-    {
-      "type": "org.springframework.ai.model.ResultMetadata"
     },
     {
       "type": "org.springframework.ai.model.StreamingModel"
@@ -4719,26 +4501,6 @@
       "type": "org.springframework.security.web.csrf.CsrfFilter"
     },
     {
-      "type": "org.springframework.security.web.csrf.CsrfToken",
-      "methods": [
-        {
-          "name": "getHeaderName",
-          "parameterTypes": []
-        },
-        {
-          "name": "getParameterName",
-          "parameterTypes": []
-        },
-        {
-          "name": "getToken",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler$SupplierCsrfToken"
-    },
-    {
       "type": "org.springframework.security.web.header.HeaderWriterFilter"
     },
     {
@@ -5167,12 +4929,6 @@
       "type": "org.springframework.web.servlet.view.AbstractCachingViewResolver"
     },
     {
-      "type": "org.springframework.web.servlet.view.AbstractUrlBasedView"
-    },
-    {
-      "type": "org.springframework.web.servlet.view.AbstractView"
-    },
-    {
       "type": "org.springframework.web.servlet.view.BeanNameViewResolver"
     },
     {
@@ -5180,9 +4936,6 @@
     },
     {
       "type": "org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator"
-    },
-    {
-      "type": "org.springframework.web.servlet.view.InternalResourceView"
     },
     {
       "type": "org.springframework.web.servlet.view.InternalResourceViewResolver"
@@ -5203,31 +4956,22 @@
       "type": "org.webjars.WebJarVersionLocator"
     },
     {
-      "type": "reactor.core.publisher.FlatMapTracker"
-    },
-    {
       "type": "reactor.core.publisher.Flux"
-    },
-    {
-      "type": "reactor.core.publisher.FluxCreate$BaseSink"
-    },
-    {
-      "type": "reactor.core.publisher.FluxCreate$BufferAsyncSink"
-    },
-    {
-      "type": "reactor.core.publisher.FluxCreate$SerializedFluxSink"
     },
     {
       "type": "reactor.core.publisher.FluxDoFinally$DoFinallySubscriber"
     },
     {
-      "type": "reactor.core.publisher.FluxFlatMap$FlatMapMain"
+      "type": "reactor.core.publisher.FluxIterable$IterableSubscription"
     },
     {
       "type": "reactor.core.publisher.FluxOnErrorReturn$ReturnSubscriber"
     },
     {
       "type": "reactor.core.publisher.FluxPublishOn$PublishOnConditionalSubscriber"
+    },
+    {
+      "type": "reactor.core.publisher.FluxSubscribeOn$SubscribeOnSubscriber"
     },
     {
       "type": "reactor.core.publisher.FluxSubscribeOnValue$ScheduledScalar"
@@ -5237,6 +4981,9 @@
     },
     {
       "type": "reactor.core.publisher.FluxTimeout$TimeoutTimeoutSubscriber"
+    },
+    {
+      "type": "reactor.core.publisher.MonoCompletionStage$MonoCompletionStageSubscription"
     },
     {
       "type": "reactor.core.publisher.MonoDelay$MonoDelayRunnable"
@@ -5296,9 +5043,6 @@
     },
     {
       "type": "reactor.util.concurrent.SpscArrayQueueProducer"
-    },
-    {
-      "type": "reactor.util.concurrent.SpscLinkedArrayQueue"
     },
     {
       "type": "reactor.util.context.ReactorContextAccessor"
@@ -5760,16 +5504,6 @@
         "proxy": [
           "org.springframework.web.bind.annotation.RequestMapping"
         ]
-      }
-    },
-    {
-      "type": {
-        "lambda": {
-          "declaringClass": "org.springframework.ai.chat.metadata.PromptMetadata",
-          "interfaces": [
-            "org.springframework.ai.chat.metadata.PromptMetadata"
-          ]
-        }
       }
     },
     {
