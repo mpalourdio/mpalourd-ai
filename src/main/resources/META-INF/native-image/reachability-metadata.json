@@ -1065,7 +1065,15 @@
       "type": "com.mpalourdio.projects.mpalourd_ai.config.WebSecurityConfig"
     },
     {
-      "type": "com.mpalourdio.projects.mpalourd_ai.controller.CsrfController"
+      "type": "com.mpalourdio.projects.mpalourd_ai.controller.CsrfController",
+      "methods": [
+        {
+          "name": "csrf",
+          "parameterTypes": [
+            "org.springframework.security.web.csrf.CsrfToken"
+          ]
+        }
+      ]
     },
     {
       "type": "com.mpalourdio.projects.mpalourd_ai.controller.anthropic.AnthropicChatLightResponse",
@@ -2226,44 +2234,6 @@
       "type": "kotlin.reflect.jvm.internal.impl.load.java.JavaIncompatibilityRulesOverridabilityCondition"
     },
     {
-      "type": "kotlin.reflect.jvm.internal.impl.resolve.scopes.DescriptorKindFilter",
-      "fields": [
-        {
-          "name": "ALL"
-        },
-        {
-          "name": "CALLABLES"
-        },
-        {
-          "name": "CLASSIFIERS"
-        },
-        {
-          "name": "Companion"
-        },
-        {
-          "name": "FUNCTIONS"
-        },
-        {
-          "name": "NON_SINGLETON_CLASSIFIERS"
-        },
-        {
-          "name": "PACKAGES"
-        },
-        {
-          "name": "SINGLETON_CLASSIFIERS"
-        },
-        {
-          "name": "TYPE_ALIASES"
-        },
-        {
-          "name": "VALUES"
-        },
-        {
-          "name": "VARIABLES"
-        }
-      ]
-    },
-    {
       "type": "kotlinx.coroutines.reactor.MonoKt"
     },
     {
@@ -2989,6 +2959,9 @@
       "type": "org.springframework.boot.autoconfigure.ssl.SslPropertiesBundleRegistrar"
     },
     {
+      "type": "org.springframework.boot.autoconfigure.task.DefaultTaskSchedulerConfiguration"
+    },
+    {
       "type": "org.springframework.boot.autoconfigure.task.ScheduledBeanLazyInitializationExcludeFilter"
     },
     {
@@ -3011,6 +2984,9 @@
     },
     {
       "type": "org.springframework.boot.autoconfigure.task.TaskExecutorConfigurations$TaskExecutorConfiguration"
+    },
+    {
+      "type": "org.springframework.boot.autoconfigure.task.TaskExecutorConfigurations$TaskExecutorContextPropagationConfiguration"
     },
     {
       "type": "org.springframework.boot.autoconfigure.task.TaskExecutorConfigurations$ThreadPoolTaskExecutorBuilderConfiguration"
@@ -3384,13 +3360,19 @@
       "type": "org.springframework.boot.jackson.autoconfigure.JacksonAutoConfiguration"
     },
     {
+      "type": "org.springframework.boot.jackson.autoconfigure.JacksonAutoConfiguration$AbstractFactoryBuilderCustomizer"
+    },
+    {
       "type": "org.springframework.boot.jackson.autoconfigure.JacksonAutoConfiguration$AbstractMapperBuilderCustomizer"
     },
     {
-      "type": "org.springframework.boot.jackson.autoconfigure.JacksonAutoConfiguration$JacksonJsonMapperBuilderCustomizerConfiguration"
+      "type": "org.springframework.boot.jackson.autoconfigure.JacksonAutoConfiguration$JacksonJsonCustomizerConfiguration"
     },
     {
-      "type": "org.springframework.boot.jackson.autoconfigure.JacksonAutoConfiguration$JacksonJsonMapperBuilderCustomizerConfiguration$StandardJsonMapperBuilderCustomizer"
+      "type": "org.springframework.boot.jackson.autoconfigure.JacksonAutoConfiguration$JacksonJsonCustomizerConfiguration$StandardJsonFactoryBuilderCustomizer"
+    },
+    {
+      "type": "org.springframework.boot.jackson.autoconfigure.JacksonAutoConfiguration$JacksonJsonCustomizerConfiguration$StandardJsonMapperBuilderCustomizer"
     },
     {
       "type": "org.springframework.boot.jackson.autoconfigure.JacksonAutoConfiguration$JacksonMixinConfiguration"
@@ -3412,6 +3394,9 @@
     },
     {
       "type": "org.springframework.boot.jackson.autoconfigure.JacksonProperties"
+    },
+    {
+      "type": "org.springframework.boot.jackson.autoconfigure.JsonFactoryBuilderCustomizer"
     },
     {
       "type": "org.springframework.boot.jackson.autoconfigure.JsonMapperBuilderCustomizer"
@@ -4474,6 +4459,9 @@
       "type": "org.springframework.security.web.access.intercept.RequestMatcherDelegatingAuthorizationManager"
     },
     {
+      "type": "org.springframework.security.web.authentication.AnonymousAuthenticationFilter"
+    },
+    {
       "type": "org.springframework.security.web.authentication.logout.LogoutFilter"
     },
     {
@@ -4499,6 +4487,26 @@
     },
     {
       "type": "org.springframework.security.web.csrf.CsrfFilter"
+    },
+    {
+      "type": "org.springframework.security.web.csrf.CsrfToken",
+      "methods": [
+        {
+          "name": "getHeaderName",
+          "parameterTypes": []
+        },
+        {
+          "name": "getParameterName",
+          "parameterTypes": []
+        },
+        {
+          "name": "getToken",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler$SupplierCsrfToken"
     },
     {
       "type": "org.springframework.security.web.header.HeaderWriterFilter"
@@ -4929,6 +4937,12 @@
       "type": "org.springframework.web.servlet.view.AbstractCachingViewResolver"
     },
     {
+      "type": "org.springframework.web.servlet.view.AbstractUrlBasedView"
+    },
+    {
+      "type": "org.springframework.web.servlet.view.AbstractView"
+    },
+    {
       "type": "org.springframework.web.servlet.view.BeanNameViewResolver"
     },
     {
@@ -4936,6 +4950,9 @@
     },
     {
       "type": "org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator"
+    },
+    {
+      "type": "org.springframework.web.servlet.view.InternalResourceView"
     },
     {
       "type": "org.springframework.web.servlet.view.InternalResourceViewResolver"
@@ -4957,6 +4974,9 @@
     },
     {
       "type": "reactor.core.publisher.Flux"
+    },
+    {
+      "type": "reactor.core.publisher.FluxConcatArray$ConcatArraySubscriber"
     },
     {
       "type": "reactor.core.publisher.FluxDoFinally$DoFinallySubscriber"
@@ -5404,10 +5424,25 @@
       "type": "sun.util.resources.cldr.TimeZoneNames_en_US"
     },
     {
+      "type": "tools.jackson.core.TokenStreamFactory"
+    },
+    {
       "type": "tools.jackson.core.TreeCodec"
     },
     {
       "type": "tools.jackson.core.Versioned"
+    },
+    {
+      "type": "tools.jackson.core.base.DecorableTSFactory"
+    },
+    {
+      "type": "tools.jackson.core.base.TextualTSFactory"
+    },
+    {
+      "type": "tools.jackson.core.json.JsonFactory"
+    },
+    {
+      "type": "tools.jackson.core.util.Snapshottable"
     },
     {
       "type": "tools.jackson.databind.JacksonModule"
@@ -5559,7 +5594,16 @@
   ],
   "resources": [
     {
+      "glob": "META-INF/resources/chunk-BSCUBFK2.js"
+    },
+    {
+      "glob": "META-INF/resources/chunk-G3C67LNT.js"
+    },
+    {
       "glob": "META-INF/resources/index.html"
+    },
+    {
+      "glob": "META-INF/resources/main-4GL5H3ZR.js"
     },
     {
       "glob": "META-INF/services/ch.qos.logback.classic.spi.Configurator"
@@ -6033,10 +6077,28 @@
       "glob": "org/springframework/boot/transaction/autoconfigure/TransactionAutoConfiguration$EnableTransactionManagementConfiguration$CglibAutoProxyConfiguration.class"
     },
     {
+      "glob": "public/chunk-BSCUBFK2.js"
+    },
+    {
+      "glob": "public/chunk-G3C67LNT.js"
+    },
+    {
       "glob": "public/index.html"
     },
     {
+      "glob": "public/main-4GL5H3ZR.js"
+    },
+    {
+      "glob": "resources/chunk-BSCUBFK2.js"
+    },
+    {
+      "glob": "resources/chunk-G3C67LNT.js"
+    },
+    {
       "glob": "resources/index.html"
+    },
+    {
+      "glob": "resources/main-4GL5H3ZR.js"
     },
     {
       "glob": "schema-all.sql"
@@ -6048,7 +6110,16 @@
       "glob": "spring.properties"
     },
     {
+      "glob": "static/chunk-BSCUBFK2.js"
+    },
+    {
+      "glob": "static/chunk-G3C67LNT.js"
+    },
+    {
       "glob": "static/index.html"
+    },
+    {
+      "glob": "static/main-4GL5H3ZR.js"
     },
     {
       "module": "java.base",
