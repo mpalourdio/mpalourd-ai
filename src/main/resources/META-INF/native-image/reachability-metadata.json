@@ -5594,16 +5594,7 @@
   ],
   "resources": [
     {
-      "glob": "META-INF/resources/chunk-BSCUBFK2.js"
-    },
-    {
-      "glob": "META-INF/resources/chunk-G3C67LNT.js"
-    },
-    {
       "glob": "META-INF/resources/index.html"
-    },
-    {
-      "glob": "META-INF/resources/main-4GL5H3ZR.js"
     },
     {
       "glob": "META-INF/services/ch.qos.logback.classic.spi.Configurator"
@@ -6077,28 +6068,10 @@
       "glob": "org/springframework/boot/transaction/autoconfigure/TransactionAutoConfiguration$EnableTransactionManagementConfiguration$CglibAutoProxyConfiguration.class"
     },
     {
-      "glob": "public/chunk-BSCUBFK2.js"
-    },
-    {
-      "glob": "public/chunk-G3C67LNT.js"
-    },
-    {
       "glob": "public/index.html"
     },
     {
-      "glob": "public/main-4GL5H3ZR.js"
-    },
-    {
-      "glob": "resources/chunk-BSCUBFK2.js"
-    },
-    {
-      "glob": "resources/chunk-G3C67LNT.js"
-    },
-    {
       "glob": "resources/index.html"
-    },
-    {
-      "glob": "resources/main-4GL5H3ZR.js"
     },
     {
       "glob": "schema-all.sql"
@@ -6110,16 +6083,7 @@
       "glob": "spring.properties"
     },
     {
-      "glob": "static/chunk-BSCUBFK2.js"
-    },
-    {
-      "glob": "static/chunk-G3C67LNT.js"
-    },
-    {
       "glob": "static/index.html"
-    },
-    {
-      "glob": "static/main-4GL5H3ZR.js"
     },
     {
       "module": "java.base",
