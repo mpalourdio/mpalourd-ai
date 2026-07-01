@@ -21,8 +21,7 @@ export const modelTypes: ModelType[] = [
         provider: 'anthropic'
     },
     {
-        name: 'claude-sonnet-4-6',
-        temperature: 0.1,
+        name: 'claude-sonnet-5',
         provider: 'anthropic'
     },
     {
