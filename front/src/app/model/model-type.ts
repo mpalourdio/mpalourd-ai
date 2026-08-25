@@ -25,7 +25,7 @@ export const modelTypes: ModelType[] = [
         provider: 'anthropic'
     },
     {
-        name: 'claude-opus-4-8',
+        name: 'claude-opus-5',
         provider: 'anthropic'
     },
     {
