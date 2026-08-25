@@ -1989,9 +1989,6 @@
       "type": "java.sql.Wrapper"
     },
     {
-      "type": "java.text.ListFormat"
-    },
-    {
       "type": "java.text.NumberFormat"
     },
     {
@@ -2317,10 +2314,6 @@
           "parameterTypes": []
         },
         {
-          "name": "getLocalPort",
-          "parameterTypes": []
-        },
-        {
           "name": "getProperty",
           "parameterTypes": [
             "java.lang.String"
@@ -2398,6 +2391,9 @@
       "type": "org.eclipse.core.runtime.FileLocator"
     },
     {
+      "type": "org.eclipse.jetty.client.HttpClient"
+    },
+    {
       "type": "org.graalvm.nativeimage.ImageInfo",
       "methods": [
         {
@@ -2447,6 +2443,9 @@
     },
     {
       "type": "org.springframework.ai.anthropic.AnthropicChatModel"
+    },
+    {
+      "type": "org.springframework.ai.audio.transcription.StreamingTranscriptionModel"
     },
     {
       "type": "org.springframework.ai.audio.transcription.TranscriptionModel"
@@ -3213,7 +3212,7 @@
       "type": "org.springframework.boot.http.client.HttpClientSettings"
     },
     {
-      "type": "org.springframework.boot.http.client.HttpComponentsClientHttpRequestFactoryBuilder"
+      "type": "org.springframework.boot.http.client.ReactorClientHttpRequestFactoryBuilder"
     },
     {
       "type": "org.springframework.boot.http.client.autoconfigure.HttpClientAutoConfiguration"
@@ -5022,6 +5021,15 @@
     },
     {
       "type": "reactor.core.publisher.StrictSubscriber"
+    },
+    {
+      "type": "reactor.core.scheduler.BoundedElasticScheduler"
+    },
+    {
+      "type": "reactor.core.scheduler.BoundedElasticScheduler$BoundedServices"
+    },
+    {
+      "type": "reactor.core.scheduler.BoundedElasticScheduler$BoundedState"
     },
     {
       "type": "reactor.core.scheduler.BoundedElasticThreadPerTaskScheduler"
