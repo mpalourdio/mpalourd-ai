@@ -353,9 +353,14 @@
             "com.anthropic.core.JsonField",
             "com.anthropic.core.JsonField",
             "com.anthropic.core.JsonValue",
-            "com.anthropic.core.JsonField",
-            "int",
-            "kotlin.jvm.internal.DefaultConstructorMarker"
+            "com.anthropic.core.JsonField"
+          ]
+        },
+        {
+          "name": "putAdditionalProperty",
+          "parameterTypes": [
+            "java.lang.String",
+            "com.anthropic.core.JsonValue"
           ]
         }
       ]
@@ -699,9 +704,7 @@
             "com.anthropic.core.JsonField",
             "com.anthropic.core.JsonField",
             "com.anthropic.core.JsonField",
-            "com.anthropic.core.JsonField",
-            "int",
-            "kotlin.jvm.internal.DefaultConstructorMarker"
+            "com.anthropic.core.JsonField"
           ]
         }
       ]
@@ -761,6 +764,24 @@
     },
     {
       "type": "com.anthropic.models.messages.ServerToolUsage"
+    },
+    {
+      "type": "com.anthropic.models.messages.SignatureDelta",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonValue"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.SignatureDelta$Builder"
+    },
+    {
+      "type": "com.anthropic.models.messages.SignatureDelta$Companion"
     },
     {
       "type": "com.anthropic.models.messages.StopReason",
@@ -859,7 +880,47 @@
       "type": "com.anthropic.models.messages.TextDelta$Companion"
     },
     {
+      "type": "com.anthropic.models.messages.ThinkingBlock",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonValue"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.ThinkingBlock$Builder"
+    },
+    {
+      "type": "com.anthropic.models.messages.ThinkingBlock$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.ThinkingBlockParam"
+    },
+    {
       "type": "com.anthropic.models.messages.ThinkingConfigParam"
+    },
+    {
+      "type": "com.anthropic.models.messages.ThinkingDelta",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonValue"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.ThinkingDelta$Builder"
+    },
+    {
+      "type": "com.anthropic.models.messages.ThinkingDelta$Companion"
     },
     {
       "type": "com.anthropic.models.messages.ToolChoice"
@@ -884,6 +945,13 @@
             "com.anthropic.core.JsonField",
             "int",
             "kotlin.jvm.internal.DefaultConstructorMarker"
+          ]
+        },
+        {
+          "name": "putAdditionalProperty",
+          "parameterTypes": [
+            "java.lang.String",
+            "com.anthropic.core.JsonValue"
           ]
         }
       ]
@@ -2105,9 +2173,6 @@
     },
     {
       "type": "kotlin.Boolean"
-    },
-    {
-      "type": "kotlin.Cloneable"
     },
     {
       "type": "kotlin.Deprecated"
@@ -5602,7 +5667,28 @@
   ],
   "resources": [
     {
+      "glob": "META-INF/resources/chunk-BBQKPWC5.js"
+    },
+    {
+      "glob": "META-INF/resources/chunk-YALRNX3U.js"
+    },
+    {
+      "glob": "META-INF/resources/favicon.png"
+    },
+    {
       "glob": "META-INF/resources/index.html"
+    },
+    {
+      "glob": "META-INF/resources/main-7I3FIJEJ.js"
+    },
+    {
+      "glob": "META-INF/resources/media/bootstrap-icons-4CTG3PFR.woff2"
+    },
+    {
+      "glob": "META-INF/resources/scripts-BBIAI3OR.js"
+    },
+    {
+      "glob": "META-INF/resources/styles-X3M7OTIP.css"
     },
     {
       "glob": "META-INF/services/ch.qos.logback.classic.spi.Configurator"
@@ -6076,10 +6162,55 @@
       "glob": "org/springframework/boot/transaction/autoconfigure/TransactionAutoConfiguration$EnableTransactionManagementConfiguration$CglibAutoProxyConfiguration.class"
     },
     {
+      "glob": "org/springframework/boot/web/server/mime-mappings.properties"
+    },
+    {
+      "glob": "public/chunk-BBQKPWC5.js"
+    },
+    {
+      "glob": "public/chunk-YALRNX3U.js"
+    },
+    {
+      "glob": "public/favicon.png"
+    },
+    {
       "glob": "public/index.html"
     },
     {
+      "glob": "public/main-7I3FIJEJ.js"
+    },
+    {
+      "glob": "public/media/bootstrap-icons-4CTG3PFR.woff2"
+    },
+    {
+      "glob": "public/scripts-BBIAI3OR.js"
+    },
+    {
+      "glob": "public/styles-X3M7OTIP.css"
+    },
+    {
+      "glob": "resources/chunk-BBQKPWC5.js"
+    },
+    {
+      "glob": "resources/chunk-YALRNX3U.js"
+    },
+    {
+      "glob": "resources/favicon.png"
+    },
+    {
       "glob": "resources/index.html"
+    },
+    {
+      "glob": "resources/main-7I3FIJEJ.js"
+    },
+    {
+      "glob": "resources/media/bootstrap-icons-4CTG3PFR.woff2"
+    },
+    {
+      "glob": "resources/scripts-BBIAI3OR.js"
+    },
+    {
+      "glob": "resources/styles-X3M7OTIP.css"
     },
     {
       "glob": "schema-all.sql"
@@ -6091,7 +6222,28 @@
       "glob": "spring.properties"
     },
     {
+      "glob": "static/chunk-BBQKPWC5.js"
+    },
+    {
+      "glob": "static/chunk-YALRNX3U.js"
+    },
+    {
+      "glob": "static/favicon.png"
+    },
+    {
       "glob": "static/index.html"
+    },
+    {
+      "glob": "static/main-7I3FIJEJ.js"
+    },
+    {
+      "glob": "static/media/bootstrap-icons-4CTG3PFR.woff2"
+    },
+    {
+      "glob": "static/scripts-BBIAI3OR.js"
+    },
+    {
+      "glob": "static/styles-X3M7OTIP.css"
     },
     {
       "module": "java.base",
