@@ -265,6 +265,29 @@
       "type": "com.anthropic.core.KnownValue$Companion"
     },
     {
+      "type": "com.anthropic.models.messages.AssistantMessageParam",
+      "methods": [
+        {
+          "name": "_additionalProperties",
+          "parameterTypes": []
+        },
+        {
+          "name": "_content",
+          "parameterTypes": []
+        },
+        {
+          "name": "_role",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.AssistantMessageParam$Builder"
+    },
+    {
+      "type": "com.anthropic.models.messages.AssistantMessageParam$Companion"
+    },
+    {
       "type": "com.anthropic.models.messages.CacheControlEphemeral",
       "methods": [
         {
@@ -339,11 +362,18 @@
       ]
     },
     {
+      "type": "com.anthropic.models.messages.Diagnostics"
+    },
+    {
+      "type": "com.anthropic.models.messages.DiagnosticsParam"
+    },
+    {
       "type": "com.anthropic.models.messages.Message",
       "methods": [
         {
           "name": "<init>",
           "parameterTypes": [
+            "com.anthropic.core.JsonField",
             "com.anthropic.core.JsonField",
             "com.anthropic.core.JsonField",
             "com.anthropic.core.JsonField",
@@ -355,13 +385,6 @@
             "com.anthropic.core.JsonValue",
             "com.anthropic.core.JsonField"
           ]
-        },
-        {
-          "name": "putAdditionalProperty",
-          "parameterTypes": [
-            "java.lang.String",
-            "com.anthropic.core.JsonValue"
-          ]
         }
       ]
     },
@@ -370,6 +393,18 @@
     },
     {
       "type": "com.anthropic.models.messages.Message$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.MessageContentParam"
+    },
+    {
+      "type": "com.anthropic.models.messages.MessageContentParam$Serializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
     },
     {
       "type": "com.anthropic.models.messages.MessageCreateParams"
@@ -387,6 +422,10 @@
         },
         {
           "name": "_container",
+          "parameterTypes": []
+        },
+        {
+          "name": "_diagnostics",
           "parameterTypes": []
         },
         {
@@ -418,15 +457,15 @@
           "parameterTypes": []
         },
         {
+          "name": "_speed",
+          "parameterTypes": []
+        },
+        {
           "name": "_stopSequences",
           "parameterTypes": []
         },
         {
           "name": "_system",
-          "parameterTypes": []
-        },
-        {
-          "name": "_temperature",
           "parameterTypes": []
         },
         {
@@ -439,14 +478,6 @@
         },
         {
           "name": "_tools",
-          "parameterTypes": []
-        },
-        {
-          "name": "_topK",
-          "parameterTypes": []
-        },
-        {
-          "name": "_topP",
           "parameterTypes": []
         }
       ]
@@ -461,6 +492,9 @@
       "type": "com.anthropic.models.messages.MessageCreateParams$ServiceTier"
     },
     {
+      "type": "com.anthropic.models.messages.MessageCreateParams$Speed"
+    },
+    {
       "type": "com.anthropic.models.messages.MessageCreateParams$System"
     },
     {
@@ -471,6 +505,9 @@
           "parameterTypes": []
         }
       ]
+    },
+    {
+      "type": "com.anthropic.models.messages.MessageCreateParamsContainer"
     },
     {
       "type": "com.anthropic.models.messages.MessageDeltaUsage",
@@ -497,57 +534,16 @@
       "type": "com.anthropic.models.messages.MessageDeltaUsage$Companion"
     },
     {
-      "type": "com.anthropic.models.messages.MessageParam",
-      "methods": [
-        {
-          "name": "_additionalProperties",
-          "parameterTypes": []
-        },
-        {
-          "name": "_content",
-          "parameterTypes": []
-        },
-        {
-          "name": "_role",
-          "parameterTypes": []
-        }
-      ]
+      "type": "com.anthropic.models.messages.MessageParam"
     },
     {
-      "type": "com.anthropic.models.messages.MessageParam$Builder"
-    },
-    {
-      "type": "com.anthropic.models.messages.MessageParam$Companion"
-    },
-    {
-      "type": "com.anthropic.models.messages.MessageParam$Content"
-    },
-    {
-      "type": "com.anthropic.models.messages.MessageParam$Content$Serializer",
+      "type": "com.anthropic.models.messages.MessageParam$Serializer",
       "methods": [
         {
           "name": "<init>",
           "parameterTypes": []
         }
       ]
-    },
-    {
-      "type": "com.anthropic.models.messages.MessageParam$Role",
-      "methods": [
-        {
-          "name": "_value",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.anthropic.models.messages.MessageParam$Role$Companion"
-    },
-    {
-      "type": "com.anthropic.models.messages.MessageParam$Role$Known"
-    },
-    {
-      "type": "com.anthropic.models.messages.MessageParam$Role$Value"
     },
     {
       "type": "com.anthropic.models.messages.Metadata"
@@ -556,14 +552,14 @@
       "type": "com.anthropic.models.messages.Model",
       "methods": [
         {
-          "name": "<init>",
+          "name": "_value",
+          "parameterTypes": []
+        },
+        {
+          "name": "of",
           "parameterTypes": [
             "com.anthropic.core.JsonField"
           ]
-        },
-        {
-          "name": "_value",
-          "parameterTypes": []
         }
       ]
     },
@@ -787,7 +783,7 @@
       "type": "com.anthropic.models.messages.StopReason",
       "methods": [
         {
-          "name": "<init>",
+          "name": "of",
           "parameterTypes": [
             "com.anthropic.core.JsonField"
           ]
@@ -943,15 +939,9 @@
             "com.anthropic.core.JsonField",
             "com.anthropic.core.JsonField",
             "com.anthropic.core.JsonField",
+            "com.anthropic.core.JsonField",
             "int",
             "kotlin.jvm.internal.DefaultConstructorMarker"
-          ]
-        },
-        {
-          "name": "putAdditionalProperty",
-          "parameterTypes": [
-            "java.lang.String",
-            "com.anthropic.core.JsonValue"
           ]
         }
       ]
@@ -966,7 +956,7 @@
       "type": "com.anthropic.models.messages.Usage$ServiceTier",
       "methods": [
         {
-          "name": "<init>",
+          "name": "of",
           "parameterTypes": [
             "com.anthropic.core.JsonField"
           ]
@@ -981,6 +971,49 @@
     },
     {
       "type": "com.anthropic.models.messages.Usage$ServiceTier$Value"
+    },
+    {
+      "type": "com.anthropic.models.messages.Usage$Speed",
+      "methods": [
+        {
+          "name": "of",
+          "parameterTypes": [
+            "com.anthropic.core.JsonField"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.Usage$Speed$Companion"
+    },
+    {
+      "type": "com.anthropic.models.messages.Usage$Speed$Known"
+    },
+    {
+      "type": "com.anthropic.models.messages.Usage$Speed$Value"
+    },
+    {
+      "type": "com.anthropic.models.messages.UserMessageParam",
+      "methods": [
+        {
+          "name": "_additionalProperties",
+          "parameterTypes": []
+        },
+        {
+          "name": "_content",
+          "parameterTypes": []
+        },
+        {
+          "name": "_role",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.anthropic.models.messages.UserMessageParam$Builder"
+    },
+    {
+      "type": "com.anthropic.models.messages.UserMessageParam$Companion"
     },
     {
       "type": "com.fasterxml.jackson.annotation.JacksonAnnotation"
@@ -1224,192 +1257,6 @@
       ]
     },
     {
-      "type": "com.openai.core.Enum"
-    },
-    {
-      "type": "com.openai.core.JsonField"
-    },
-    {
-      "type": "com.openai.core.JsonField$Deserializer",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.openai.core.JsonField$IsMissing",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.openai.core.JsonField$Visitor"
-    },
-    {
-      "type": "com.openai.core.JsonMissing$Serializer",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.openai.core.JsonValue"
-    },
-    {
-      "type": "com.openai.core.JsonValue$Deserializer",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.openai.core.KnownValue",
-      "fields": [
-        {
-          "name": "value"
-        }
-      ]
-    },
-    {
-      "type": "com.openai.core.KnownValue$Companion"
-    },
-    {
-      "type": "com.openai.core.Params"
-    },
-    {
-      "type": "com.openai.core.http.Headers"
-    },
-    {
-      "type": "com.openai.core.http.QueryParams"
-    },
-    {
-      "type": "com.openai.models.ErrorObject",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "com.openai.core.JsonField",
-            "com.openai.core.JsonField",
-            "com.openai.core.JsonField",
-            "com.openai.core.JsonField"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "com.openai.models.ErrorObject$Builder"
-    },
-    {
-      "type": "com.openai.models.ErrorObject$Companion"
-    },
-    {
-      "type": "com.openai.models.embeddings.EmbeddingCreateParams",
-      "methods": [
-        {
-          "name": "model",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.openai.models.embeddings.EmbeddingCreateParams$Body",
-      "methods": [
-        {
-          "name": "_additionalProperties",
-          "parameterTypes": []
-        },
-        {
-          "name": "_dimensions",
-          "parameterTypes": []
-        },
-        {
-          "name": "_encodingFormat",
-          "parameterTypes": []
-        },
-        {
-          "name": "_input",
-          "parameterTypes": []
-        },
-        {
-          "name": "_model",
-          "parameterTypes": []
-        },
-        {
-          "name": "_user",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.openai.models.embeddings.EmbeddingCreateParams$Body$Builder"
-    },
-    {
-      "type": "com.openai.models.embeddings.EmbeddingCreateParams$Body$Companion"
-    },
-    {
-      "type": "com.openai.models.embeddings.EmbeddingCreateParams$Builder"
-    },
-    {
-      "type": "com.openai.models.embeddings.EmbeddingCreateParams$Companion"
-    },
-    {
-      "type": "com.openai.models.embeddings.EmbeddingCreateParams$EncodingFormat",
-      "methods": [
-        {
-          "name": "_value",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.openai.models.embeddings.EmbeddingCreateParams$EncodingFormat$Companion"
-    },
-    {
-      "type": "com.openai.models.embeddings.EmbeddingCreateParams$EncodingFormat$Known"
-    },
-    {
-      "type": "com.openai.models.embeddings.EmbeddingCreateParams$EncodingFormat$Value"
-    },
-    {
-      "type": "com.openai.models.embeddings.EmbeddingCreateParams$Input"
-    },
-    {
-      "type": "com.openai.models.embeddings.EmbeddingCreateParams$Input$Serializer",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.openai.models.embeddings.EmbeddingModel",
-      "methods": [
-        {
-          "name": "_value",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.openai.models.embeddings.EmbeddingModel$Companion"
-    },
-    {
-      "type": "com.openai.models.embeddings.EmbeddingModel$Known"
-    },
-    {
-      "type": "com.openai.models.embeddings.EmbeddingModel$Value"
-    },
-    {
       "type": "com.rometools.rome.feed.WireFeed"
     },
     {
@@ -1497,6 +1344,42 @@
     },
     {
       "type": "com.sun.crypto.provider.HmacCore$HmacSHA384",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.crypto.provider.ML_KEM_Impls$K",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.crypto.provider.ML_KEM_Impls$KF3",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.crypto.provider.ML_KEM_Impls$KF5",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.crypto.provider.ML_KEM_Impls$KPG3",
       "methods": [
         {
           "name": "<init>",
@@ -1736,9 +1619,6 @@
       "type": "java.lang.ClassValue"
     },
     {
-      "type": "java.lang.Comparable"
-    },
-    {
       "type": "java.lang.Comparable[]"
     },
     {
@@ -1755,9 +1635,6 @@
     },
     {
       "type": "java.lang.Module"
-    },
-    {
-      "type": "java.lang.Number"
     },
     {
       "type": "java.lang.Object"
@@ -1798,6 +1675,10 @@
       "type": "java.lang.Thread",
       "methods": [
         {
+          "name": "isVirtual",
+          "parameterTypes": []
+        },
+        {
           "name": "ofVirtual",
           "parameterTypes": []
         }
@@ -1832,9 +1713,6 @@
     },
     {
       "type": "java.lang.constant.Constable[]"
-    },
-    {
-      "type": "java.lang.constant.ConstantDesc"
     },
     {
       "type": "java.lang.constant.ConstantDesc[]"
@@ -1912,6 +1790,9 @@
     },
     {
       "type": "java.security.KeyStoreSpi"
+    },
+    {
+      "type": "java.security.SecureClassLoader"
     },
     {
       "type": "java.security.interfaces.ECPrivateKey"
@@ -2158,6 +2039,9 @@
     },
     {
       "type": "jdk.crac.management.CRaCMXBean"
+    },
+    {
+      "type": "jdk.internal.loader.BuiltinClassLoader"
     },
     {
       "type": "jdk.internal.loader.ClassLoaders$AppClassLoader"
@@ -2552,6 +2436,9 @@
       "type": "org.springframework.ai.chat.model.StreamingChatModel"
     },
     {
+      "type": "org.springframework.ai.decision.DecisionModel"
+    },
+    {
       "type": "org.springframework.ai.document.DocumentWriter"
     },
     {
@@ -2601,6 +2488,18 @@
       ]
     },
     {
+      "type": "org.springframework.ai.model.audio.observation.autoconfigure.AudioObservationAutoConfiguration"
+    },
+    {
+      "type": "org.springframework.ai.model.audio.observation.autoconfigure.AudioObservationAutoConfiguration$TracerNotPresentObservationConfiguration"
+    },
+    {
+      "type": "org.springframework.ai.model.audio.observation.autoconfigure.AudioSpeechObservationProperties"
+    },
+    {
+      "type": "org.springframework.ai.model.audio.observation.autoconfigure.AudioTranscriptionObservationProperties"
+    },
+    {
       "type": "org.springframework.ai.model.chat.memory.autoconfigure.ChatMemoryAutoConfiguration"
     },
     {
@@ -2620,6 +2519,9 @@
     },
     {
       "type": "org.springframework.ai.model.chat.observation.autoconfigure.ChatObservationProperties"
+    },
+    {
+      "type": "org.springframework.ai.model.decision.observation.autoconfigure.DecisionObservationAutoConfiguration"
     },
     {
       "type": "org.springframework.ai.model.embedding.observation.autoconfigure.EmbeddingObservationAutoConfiguration"
@@ -2666,6 +2568,21 @@
       "type": "org.springframework.ai.model.openai.autoconfigure.OpenAiCommonProperties"
     },
     {
+      "type": "org.springframework.ai.model.openai.autoconfigure.OpenAiConnectionDetails"
+    },
+    {
+      "type": "org.springframework.ai.model.openai.autoconfigure.OpenAiConnectionDetailsConfiguration"
+    },
+    {
+      "type": "org.springframework.ai.model.openai.autoconfigure.OpenAiConnectionDetailsConfiguration$PropertiesOpenAiConnectionDetails"
+    },
+    {
+      "type": "org.springframework.ai.model.openai.autoconfigure.OpenAiDecisionAutoConfiguration"
+    },
+    {
+      "type": "org.springframework.ai.model.openai.autoconfigure.OpenAiDecisionProperties"
+    },
+    {
       "type": "org.springframework.ai.model.openai.autoconfigure.OpenAiEmbeddingAutoConfiguration"
     },
     {
@@ -2682,6 +2599,12 @@
     },
     {
       "type": "org.springframework.ai.model.openai.autoconfigure.OpenAiModerationProperties"
+    },
+    {
+      "type": "org.springframework.ai.model.openai.autoconfigure.OpenAiResponsesChatAutoConfiguration"
+    },
+    {
+      "type": "org.springframework.ai.model.openai.autoconfigure.OpenAiResponsesChatProperties"
     },
     {
       "type": "org.springframework.ai.model.tool.DefaultToolCallingManager"
@@ -2706,6 +2629,9 @@
     },
     {
       "type": "org.springframework.ai.openai.OpenAiChatModel"
+    },
+    {
+      "type": "org.springframework.ai.openai.OpenAiDecisionModel"
     },
     {
       "type": "org.springframework.ai.openai.OpenAiEmbeddingModel"
@@ -2960,7 +2886,16 @@
       "type": "org.springframework.boot.autoconfigure.context.LifecycleProperties"
     },
     {
+      "type": "org.springframework.boot.autoconfigure.context.MessageSourceAutoConfiguration"
+    },
+    {
+      "type": "org.springframework.boot.autoconfigure.context.MessageSourceProperties"
+    },
+    {
       "type": "org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration"
+    },
+    {
+      "type": "org.springframework.boot.autoconfigure.context.ResourceBasedMessageSourceConfigurer"
     },
     {
       "type": "org.springframework.boot.autoconfigure.info.ProjectInfoAutoConfiguration"
@@ -3552,6 +3487,15 @@
       "type": "org.springframework.boot.loader.launch.LaunchedClassLoader"
     },
     {
+      "type": "org.springframework.boot.loader.net.protocol.jar.JarUrlClassLoader",
+      "methods": [
+        {
+          "name": "clearCache",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
       "type": "org.springframework.boot.logging.java.JavaLoggingSystem$Factory",
       "methods": [
         {
@@ -3964,6 +3908,9 @@
     },
     {
       "type": "org.springframework.boot.web.server.WebServerFactoryCustomizer"
+    },
+    {
+      "type": "org.springframework.boot.web.server.autoconfigure.ConditionalOnForwardedHeaderStrategy"
     },
     {
       "type": "org.springframework.boot.web.server.autoconfigure.ServerProperties",
@@ -4950,9 +4897,6 @@
       "type": "org.springframework.web.servlet.handler.HandlerExceptionResolverComposite"
     },
     {
-      "type": "org.springframework.web.servlet.handler.MatchableHandlerMapping"
-    },
-    {
       "type": "org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"
     },
     {
@@ -4972,6 +4916,9 @@
     },
     {
       "type": "org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping"
+    },
+    {
+      "type": "org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping$HttpHeadQueryHandler"
     },
     {
       "type": "org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping$HttpOptionsHandler"
@@ -5058,6 +5005,9 @@
       "type": "reactor.core.publisher.FluxSubscribeOn$SubscribeOnSubscriber"
     },
     {
+      "type": "reactor.core.publisher.FluxSubscribeOnCallable$CallableSubscribeOnSubscription"
+    },
+    {
       "type": "reactor.core.publisher.FluxSubscribeOnValue$ScheduledScalar"
     },
     {
@@ -5065,9 +5015,6 @@
     },
     {
       "type": "reactor.core.publisher.FluxTimeout$TimeoutTimeoutSubscriber"
-    },
-    {
-      "type": "reactor.core.publisher.MonoCompletionStage$MonoCompletionStageSubscription"
     },
     {
       "type": "reactor.core.publisher.MonoDelay$MonoDelayRunnable"
@@ -5245,6 +5192,24 @@
       ]
     },
     {
+      "type": "sun.security.provider.SHA3$SHA256",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.SHA3$SHA512",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
       "type": "sun.security.provider.SHA5$SHA384",
       "methods": [
         {
@@ -5318,6 +5283,15 @@
     },
     {
       "type": "sun.security.rsa.RSASignature$SHA224withRSA",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.ssl.DHasKEM",
       "methods": [
         {
           "name": "<init>",
@@ -5667,28 +5641,13 @@
   ],
   "resources": [
     {
-      "glob": "META-INF/resources/chunk-BBQKPWC5.js"
-    },
-    {
-      "glob": "META-INF/resources/chunk-YALRNX3U.js"
-    },
-    {
-      "glob": "META-INF/resources/favicon.png"
+      "glob": "META-INF/resources/chunk-6IUZJFAU.js"
     },
     {
       "glob": "META-INF/resources/index.html"
     },
     {
-      "glob": "META-INF/resources/main-7I3FIJEJ.js"
-    },
-    {
-      "glob": "META-INF/resources/media/bootstrap-icons-4CTG3PFR.woff2"
-    },
-    {
-      "glob": "META-INF/resources/scripts-BBIAI3OR.js"
-    },
-    {
-      "glob": "META-INF/resources/styles-X3M7OTIP.css"
+      "glob": "META-INF/resources/main-U3BPOE6G.js"
     },
     {
       "glob": "META-INF/services/ch.qos.logback.classic.spi.Configurator"
@@ -6162,55 +6121,22 @@
       "glob": "org/springframework/boot/transaction/autoconfigure/TransactionAutoConfiguration$EnableTransactionManagementConfiguration$CglibAutoProxyConfiguration.class"
     },
     {
-      "glob": "org/springframework/boot/web/server/mime-mappings.properties"
-    },
-    {
-      "glob": "public/chunk-BBQKPWC5.js"
-    },
-    {
-      "glob": "public/chunk-YALRNX3U.js"
-    },
-    {
-      "glob": "public/favicon.png"
+      "glob": "public/chunk-6IUZJFAU.js"
     },
     {
       "glob": "public/index.html"
     },
     {
-      "glob": "public/main-7I3FIJEJ.js"
+      "glob": "public/main-U3BPOE6G.js"
     },
     {
-      "glob": "public/media/bootstrap-icons-4CTG3PFR.woff2"
-    },
-    {
-      "glob": "public/scripts-BBIAI3OR.js"
-    },
-    {
-      "glob": "public/styles-X3M7OTIP.css"
-    },
-    {
-      "glob": "resources/chunk-BBQKPWC5.js"
-    },
-    {
-      "glob": "resources/chunk-YALRNX3U.js"
-    },
-    {
-      "glob": "resources/favicon.png"
+      "glob": "resources/chunk-6IUZJFAU.js"
     },
     {
       "glob": "resources/index.html"
     },
     {
-      "glob": "resources/main-7I3FIJEJ.js"
-    },
-    {
-      "glob": "resources/media/bootstrap-icons-4CTG3PFR.woff2"
-    },
-    {
-      "glob": "resources/scripts-BBIAI3OR.js"
-    },
-    {
-      "glob": "resources/styles-X3M7OTIP.css"
+      "glob": "resources/main-U3BPOE6G.js"
     },
     {
       "glob": "schema-all.sql"
@@ -6222,28 +6148,13 @@
       "glob": "spring.properties"
     },
     {
-      "glob": "static/chunk-BBQKPWC5.js"
-    },
-    {
-      "glob": "static/chunk-YALRNX3U.js"
-    },
-    {
-      "glob": "static/favicon.png"
+      "glob": "static/chunk-6IUZJFAU.js"
     },
     {
       "glob": "static/index.html"
     },
     {
-      "glob": "static/main-7I3FIJEJ.js"
-    },
-    {
-      "glob": "static/media/bootstrap-icons-4CTG3PFR.woff2"
-    },
-    {
-      "glob": "static/scripts-BBIAI3OR.js"
-    },
-    {
-      "glob": "static/styles-X3M7OTIP.css"
+      "glob": "static/main-U3BPOE6G.js"
     },
     {
       "module": "java.base",
