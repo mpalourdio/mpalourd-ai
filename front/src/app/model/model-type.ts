@@ -21,11 +21,11 @@ export const modelTypes: ModelType[] = [
         provider: 'anthropic'
     },
     {
-        name: 'claude-sonnet-5',
+        name: 'claude-sonnet-5-5',
         provider: 'anthropic'
     },
     {
-        name: 'claude-opus-5',
+        name: 'claude-opus-5-5',
         provider: 'anthropic'
     },
     {
