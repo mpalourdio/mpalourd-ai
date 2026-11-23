@@ -16,7 +16,7 @@ import org.springframework.ai.anthropic.AnthropicCacheOptions
 import org.springframework.ai.anthropic.AnthropicCacheStrategy
 import org.springframework.ai.anthropic.AnthropicChatOptions
 import org.springframework.ai.chat.client.ChatClient
-import org.springframework.ai.chat.memory.ChatMemory.CONVERSATION_ID
+import org.springframework.ai.chat.client.advisor.api.MemoryAdvisor.CONVERSATION_ID
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
 
@@ -40,7 +40,6 @@ class AnthropicReactiveChatProcessorHandler {
                             .build()
                     )
                     .model(chatRequestBody.modelType.name)
-                    .temperature(chatRequestBody.modelType.temperature)
             )
             .advisors { a -> a.param(CONVERSATION_ID, session.id) }
             .stream()

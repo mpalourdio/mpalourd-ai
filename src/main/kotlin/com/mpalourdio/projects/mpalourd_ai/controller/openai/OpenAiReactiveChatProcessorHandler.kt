@@ -12,7 +12,7 @@ package com.mpalourdio.projects.mpalourd_ai.controller.openai
 import com.mpalourdio.projects.mpalourd_ai.model.ChatRequestBody
 import jakarta.servlet.http.HttpSession
 import org.springframework.ai.chat.client.ChatClient
-import org.springframework.ai.chat.memory.ChatMemory.CONVERSATION_ID
+import org.springframework.ai.chat.client.advisor.api.MemoryAdvisor.CONVERSATION_ID
 import org.springframework.ai.chat.prompt.ChatOptions
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux

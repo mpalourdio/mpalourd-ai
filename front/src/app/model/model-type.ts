@@ -17,7 +17,6 @@ export interface ModelType {
 export const modelTypes: ModelType[] = [
     {
         name: 'claude-haiku-4-5',
-        temperature: 0.1,
         provider: 'anthropic'
     },
     {

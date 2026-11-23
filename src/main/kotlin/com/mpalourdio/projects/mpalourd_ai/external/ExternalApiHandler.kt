@@ -19,10 +19,10 @@ import org.springframework.ai.reader.JsonReader
 import org.springframework.ai.vectorstore.filter.Filter
 import org.springframework.ai.vectorstore.filter.FilterExpressionBuilder
 import org.springframework.ai.vectorstore.pgvector.PgVectorStore
-import org.springframework.boot.restclient.RestTemplateBuilder
 import org.springframework.core.io.ByteArrayResource
 import org.springframework.stereotype.Service
-import org.springframework.web.client.getForObject
+import org.springframework.web.client.RestClient
+import org.springframework.web.client.body
 
 @Service
 class ExternalApiHandler(
@@ -53,11 +53,12 @@ class ExternalApiHandler(
 
     private fun fetchAndExtractResults(): List<Tree> {
         log.info("Fetching external API to populate vector store")
-        val apiResult = RestTemplateBuilder()
+        val apiResult = RestClient.builder()
             .build()
-            .getForObject<Array<Tree>>(
-                externalApiConfigurationProperties.url
-            )
+            .get()
+            .uri(externalApiConfigurationProperties.url)
+            .retrieve()
+            .body<Array<Tree>>()
         // we only get the first element of the JSON array because the last array is useless.
         // the first object of this first array is useless too (/media/xxxxxx/XXXX/XXXX).
         return apiResult!![0].contents!!
