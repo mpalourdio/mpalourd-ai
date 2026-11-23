@@ -10,19 +10,16 @@
 package com.mpalourdio.projects.mpalourd_ai.controller.openai
 
 import com.mpalourdio.projects.mpalourd_ai.config.AiConfigurationProperties
-import com.mpalourdio.projects.mpalourd_ai.external.ExternalApiConfigurationProperties
 import com.mpalourdio.projects.mpalourd_ai.external.ExternalApiHandler
 import com.mpalourdio.projects.mpalourd_ai.model.ChatRequestBody
 import jakarta.servlet.http.HttpSession
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.ai.chat.client.ChatClient
-import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor
 import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor
-import org.springframework.ai.chat.memory.MessageWindowChatMemory
-import org.springframework.ai.chat.memory.repository.jdbc.JdbcChatMemoryRepository
-import org.springframework.ai.vectorstore.SearchRequest
+import org.springframework.ai.session.SessionService
+import org.springframework.ai.session.advisor.SessionAdvisors
 import org.springframework.ai.vectorstore.pgvector.PgVectorStore
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
@@ -34,9 +31,8 @@ import java.io.File
 class OpenAiController(
     openAiChatClientBuilder: ChatClient.Builder,
     aiConfigurationProperties: AiConfigurationProperties,
-    externalApiConfigurationProperties: ExternalApiConfigurationProperties,
     vectorStore: PgVectorStore,
-    chatMemoryRepository: JdbcChatMemoryRepository,
+    private val sessionService: SessionService,
     private val session: HttpSession,
     private val openAiReactiveChatProcessorHandler: OpenAiReactiveChatProcessorHandler,
     private val externalApiHandler: ExternalApiHandler,
@@ -44,39 +40,23 @@ class OpenAiController(
     private final val customDefaultSystem: String =
         File(aiConfigurationProperties.defaultSystemFilePath).readText(Charsets.UTF_8)
 
-    private final val messageChatMemoryAdvisor = MessageChatMemoryAdvisor.builder(
-        MessageWindowChatMemory.builder()
-            .chatMemoryRepository(chatMemoryRepository)
-            .build())
-        // TODO: Should not be necessary to set this
-        // But, it fails in native image with "Caused by: java.lang.IllegalArgumentException: scheduler cannot be null"
-        .scheduler(MessageChatMemoryAdvisor.DEFAULT_SCHEDULER)
-        .build()
-
     private final val customChatClient = openAiChatClientBuilder.clone()
         .defaultSystem(customDefaultSystem)
-        .defaultAdvisors(
-            messageChatMemoryAdvisor,
-            SimpleLoggerAdvisor(),
-            QuestionAnswerAdvisor
-                .builder(vectorStore)
-                .searchRequest(
-                    SearchRequest
-                        .builder()
-                        .topK(externalApiConfigurationProperties.topK)
-                        .similarityThreshold(externalApiConfigurationProperties.similarityThreshold)
-                        .build()
-                )
-                .build()
-        )
+        .defaultAdvisors {
+            it
+                .advisors(SessionAdvisors.builder(sessionService).build())
+                .advisors(SimpleLoggerAdvisor())
+                .advisors(QuestionAnswerAdvisor.builder(vectorStore).build())
+        }
         .build()
 
     private final val boringChatClient = openAiChatClientBuilder.clone()
         .defaultSystem("You are the mpalourdio corp. chatbot")
-        .defaultAdvisors(
-            SimpleLoggerAdvisor(),
-            messageChatMemoryAdvisor
-        )
+        .defaultAdvisors {
+            it
+                .advisors(SimpleLoggerAdvisor())
+                .advisors(SessionAdvisors.builder(sessionService).build())
+        }
         .build()
 
     companion object {
